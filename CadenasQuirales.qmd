@@ -4,7 +4,6 @@ El objetivo de este trabajo es mostrar los cálculos de la relación de dispersi
 
 ```{python}
 from pylab import *
-import plotly.graph_objects as go
 ```
 
 ## Tensor de constantes de red para una cadena quiral
