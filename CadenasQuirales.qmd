@@ -1,4 +1,4 @@
-# Introducción
+# Cálculos de relación de dispersión para cadenas quirales
 
 El objetivo de este trabajo es mostrar los cálculos de la relación de dispersión de fonones de distintas cadenas con simetría de tornillo. En este documento se presentan cálculos para cadenas con simetrías $C_{2}$, $C_{3}$ y $C_{4}$ si se ve la cadena desde arriba. Estos cálculos se hacen con el objetivo de replicar los resultados obtenidos en el paper “Chiral Phonon Diode Effect in Chiral Crystals,” Nano Lett. 2022, 22, 4, 1688-1693 y de explorar la posibilidad de encontrar fonones quirales con velocidad de grupo no nula. 
 

@@ -1,5 +1,5 @@
-# Preface {.unnumbered}
+# Introducción {.unnumbered}
 
-This is a Quarto book.
+En este libro se muestran los cálculos realizados por los estudiante Diego Bautista Avilés y Frida Fernanda García Lopez en colaboración con el Dr. José Eduardo Barrios Vargas y el Dr. Luis E. F. Foa Torre. 
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Para el trabajo aquí realizado se agradece el apoyo a CONAHCYT por medio de una beca de proyecto CONAHCYT frontera. 

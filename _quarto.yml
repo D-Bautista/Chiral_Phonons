@@ -4,12 +4,10 @@ project:
 
 book:
   title: "Chiral_Phonons"
-  author: "Jane Doe"
+  author: "Diego Bautista"
   date: "9/2/2024"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
     - CadenasQuirales.qmd
     - references.qmd
 
