@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - CadenasQuirales.qmd
+    - nanocinta.qmd
     - references.qmd
 
 bibliography: references.bib
