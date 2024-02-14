@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Chiral_Phonons",
     "section": "",
-    "text": "Introducción\nEn este libro se muestran los cálculos realizados por los estudiante Diego Bautista Avilés y Frida Fernanda García Lopez en colaboración con el Dr. José Eduardo Barrios Vargas y el Dr. Luis E. F. Foa Torre.\nPara el trabajo aquí realizado se agradece el apoyo a CONAHCYT por medio de una beca de proyecto CONAHCYT frontera."
+    "text": "En este libro se muestran los cálculos realizados por los estudiante Diego Bautista Avilés y Frida Fernanda García Lopez en colaboración con el Dr. José Eduardo Barrios Vargas y el Dr. Luis E. F. Foa Torre.\nPara el trabajo aquí realizado se agradece el apoyo a CONAHCYT por medio de una beca de proyecto CONAHCYT frontera."
   },
   {
     "objectID": "intro.html",
@@ -30,28 +30,28 @@
   {
     "objectID": "CadenasQuirales.html",
     "href": "CadenasQuirales.html",
-    "title": "1  Cálculos de relación de dispersión para cadenas quirales",
+    "title": "1  Cálculos de relación de dispersión de frecuencia en cadenas quirales",
     "section": "",
-    "text": "2 Cálculos para la simetría \\(C_{2}\\)\nDebajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría \\(C_{2}\\), y que además obtiene la polarización de los modos vibracionales.\nFinalmente, se muestra la gráfica de bandas para la cadena $C_{2}:\nDebajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría \\(C_{2}\\), y que además obtiene la polarización de los modos vibracionales.\nFinalmente, se muestra la gráfica de bandas para la cadena $C_{3}:\nDebajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría \\(C_{2}\\), y que además obtiene la polarización de los modos vibracionales.\nFinalmente, se muestra la gráfica de bandas para la cadena $C_{4}:"
+    "text": "El objetivo de este trabajo es mostrar los cálculos de la relación de dispersión de fonones de distintas cadenas con simetría de tornillo. En este documento se presentan cálculos para cadenas con simetrías \\(C_{2}\\), \\(C_{3}\\) y \\(C_{4}\\) si se ve la cadena desde arriba. Estos cálculos se hacen con el objetivo de replicar los resultados obtenidos en el paper “Chiral Phonon Diode Effect in Chiral Crystals,” Nano Lett. 2022, 22, 4, 1688-1693 y de explorar la posibilidad de encontrar fonones quirales con velocidad de grupo no nula."
   },
   {
     "objectID": "CadenasQuirales.html#tensor-de-constantes-de-red-para-una-cadena-quiral",
     "href": "CadenasQuirales.html#tensor-de-constantes-de-red-para-una-cadena-quiral",
-    "title": "1  Cálculos de relación de dispersión para cadenas quirales",
+    "title": "1  Cálculos de relación de dispersión de frecuencia en cadenas quirales",
     "section": "1.1 Tensor de constantes de red para una cadena quiral",
     "text": "1.1 Tensor de constantes de red para una cadena quiral\nLos tensores de constante de red para estos sistemas se calculan siguiendo la técnica expuesta por Saito en su libro Physical Properties of Carbon Nanotubes, la cual consiste en transformar el tensor de esfuerzos en su representación diagonal por matrices de rotación cuyos ángulos son obtenidos de las posiciones relativas entre dos átomos del sistema. Para las cadenas modeladas a continuación, se supuso que los enlaces de interacción entre los átomos formaban ángulos de \\(\\varphi = \\pi/3\\) respecto a los planos perpendiculares al eje de traslación. Asimismo, vistos desde arriba los tres sitios tenían ángulos de \\(\\theta = 2 \\pi / n\\) entre ellos donde \\(n\\) es el entero que define la simetría \\(C_{n}\\).\nSe asumió que todos los átomos de la cadena (4 como máximo para el caso de \\(C_{4}\\)) tenían la misma masa. Asimismo, se asumió que en todos los casos el tensor de constante de red en su representación diagonal se escribía como sigue: \\[K_{x} = \\begin{pmatrix}K_{L} & 0 & 0 \\\\\n0 & K_{T1} & 0 \\\\\n0 & 0 & K_{T2}\\end{pmatrix},\\] donde \\(K_{L} = 1\\), \\(K_{T1} = 0.05\\) y \\(K_{T2} = 0.25\\).\n\n#Constantes\nm1 = 1\nm2 = 1\nm3 = 1\nm4 = 1\nc = 1\n\n\n#Matriz de resortes a lo largo de x.\nKL = 1\nKT1 = 0.05\nKT2 = 0.25\n\nKx = array([[KL,0,0],\n              [0,KT1,0],\n              [0,0,KT2]],dtype=complex)\n\nSe definió una rotación en torno al eje y como \\[T(\\varphi) = \\begin{pmatrix} \\cos (\\varphi) & 0 & \\sin (\\varphi) \\\\\n0 & 1 & 0 \\\\\n- \\sin (\\varphi) & 0 & \\cos(\\varphi)\\end{pmatrix}.\\] De esta forma, la constante de fuerza \\[K_{x2} = T(\\varphi) K_{x} T(- \\varphi)\\] tiene un angulo de \\(\\varphi\\) respecto al plano x - y. Por otra parte, se definió la matriz de rotación respecto al eje - z como \\[U(\\theta) = \\begin{pmatrix} \\cos (\\theta) & - \\sin (\\theta) & 0 \\\\\n- \\sin (\\theta) & \\cos (\\theta) & 0 \\\\\n0 & 0 & 1\\end{pmatrix}.\\] De esta forma, si \\(\\theta\\) era el ángulo entre dos sitios, podía definirse la constante de red entre dichos sitios como \\[K = U(\\theta)K_{x2}U(-\\theta).\\]\n\n#Rotación de φ respecto al plano x - y.\nφxy = pi/3\n\ndef T(φ):\n  return array([[cos(φ) ,0.  ,sin(φ)],\n                [0.     ,1.  ,0],\n                [-sin(φ),0.  ,cos(φ)]])\n\n\n#Rotación respecto al eje z.\ndef U(θ):\n  return array([[cos(θ),-sin(θ),0],\n              [sin(θ),cos(θ),0],\n              [       0,      0,1]] )\n\n\n#Matriz de resortes a lo largo de x.\nKL = 1\nKT1 = 0.05\nKT2 = 0.25\n\nKx = array([[KL,0,0],\n              [0,KT1,0],\n              [0,0,KT2]],dtype=complex)"
   },
   {
     "objectID": "CadenasQuirales.html#definición-de-la-matriz-dinámica",
     "href": "CadenasQuirales.html#definición-de-la-matriz-dinámica",
-    "title": "1  Cálculos de relación de dispersión para cadenas quirales",
+    "title": "1  Cálculos de relación de dispersión de frecuencia en cadenas quirales",
     "section": "1.2 Definición de la matriz dinámica",
     "text": "1.2 Definición de la matriz dinámica\nEn general, los elementos de la matriz dinámica tenían la forma \\[D_{ij} = - \\frac{K_{ij}}{\\sqrt{m_{i}m_{j}}}\\] para elementos fuera de la diagonal y \\[K_{ii} = \\frac{\\sum_{i\\neq j}Kij}{m_{i}}\\] para elementos fuera de la diagonal. En este último término la suma es solo sobre los primeros vecinos del elemento i. Asimismo, en caso de que la interacción fuera con un elemento fuera de la celda unitaria, se añadía la fase correspondiente."
   },
   {
     "objectID": "CadenasQuirales.html#definición-del-operador-de-polarización",
     "href": "CadenasQuirales.html#definición-del-operador-de-polarización",
-    "title": "1  Cálculos de relación de dispersión para cadenas quirales",
+    "title": "1  Cálculos de relación de dispersión de frecuencia en cadenas quirales",
     "section": "1.3 Definición del operador de polarización",
     "text": "1.3 Definición del operador de polarización\nLa quiralidad de los fonones se determina a partir de un valor no nulo de la polarización de fonón. Esta se obtiene apartir del valor esperado del operador de polarización. Este operador corresponde a la proyección sobre una base con movimiento circular bien definido. Para un sólo átomo, esta base es \\[| R \\rangle = \\frac{1}{\\sqrt{2}}(1,i)^{T}; | L \\rangle = \\frac{1}{\\sqrt{2}}(1,-i)^{T}.\\] Explícitamente, el operador de Polarización está dado por \\[\\hat{S}_{z} = \\sum_{\\alpha = 1}^{n} \\left(|R_{\\alpha}\\rangle \\langle R_{\\alpha}| -  |L_{\\alpha}\\rangle \\langle L_{\\alpha}|\\right).\\] La suma se hace sobre todos los sitios del sistema. Debajo, se muestran bloques de código donde se define un operador de pseudomomento para una cadena con \\(n\\) átomos, así como una función que calcula el valor esperado de un operador.\n\ndef OperadorPseudomomento(n):\n\n  Sz = array([[0,-1J,0],\n              [1J,0,0],\n              [0,0,0]],dtype=complex)\n\n  return np.kron(np.eye(n,dtype=complex),Sz)\n\ndef expectedval(vec,S):\n    return dot(np.conj(vec).T,dot(S,vec)).real"
   }
