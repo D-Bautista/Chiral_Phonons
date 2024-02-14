@@ -3,3 +3,4 @@
 Los cálculos de phonopy asumen que los átomos tienen posiciones de equilibrio donde la fuerza sobre los átomos es cero. También, se asume que siempre hay una celda unitaria y que el sistema forma una estructura cristalina. Dada esta celda con sus átomos, phonopy busca si el sistema tiene alguna simetría (cuando el archivo no tiene información al respecto). Para ello, se le aplican operaciones de simetría al cristal y se comprueba si este las comple o no. Hay una tolerancia respecto a desviaciones entre el objeto original y el objeto con operaciones aplicadas. La tolerancia base es de $10^{-5}$, pero esta puede modificarse manualmente. 
 
 Los cálculos de fonones pueden realizarse de dos formas: con cálculos de fuerzas atómicas obtenidas de desplazamientos finitos, o obtenidos directamente si las constantes de fuerzas son dadas. 
+
