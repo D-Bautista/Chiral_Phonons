@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,12 +17,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,24 +46,54 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./GrafenoCCM.html" rel="next">
 <link href="./CadenasQuirales.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,13 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,31 +119,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script type="text/javascript">
-window.PlotlyConfig = {MathJaxConfig: 'local'};
-if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.27.0.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
-</script>
-
+        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-2.27.0.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        
 
 
 </head>
@@ -129,16 +150,11 @@ require(['plotly'], function(Plotly) {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nanocinta.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -146,47 +162,47 @@ require(['plotly'], function(Plotly) {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Chiral_Phonons</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introducción</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></span></a>
+  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></span></a>
+  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Referencias</span></a>
+  <a href="./GrafenoCCM.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referencias</a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -196,7 +212,7 @@ require(['plotly'], function(Plotly) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></h1>
 </div>
 
 
@@ -209,13 +225,11 @@ require(['plotly'], function(Plotly) {
   </div>
   
 
-
 </header>
-
 
 <p>Este código busca describir los modos vibracionales de un ribbon de grafeno. Para ello, se usa la paquetería ASE para importar un objeto con las posiciones y masas del ribbon. Este ribbon se construye especificando los índices (n,m) que definen la celda unitaria. En el código, se implementa una función que calcula los primeros vecinos del ribbon, especificando si son intracelda o extracelda. Esto permite hacer una gráfica del objeto.</p>
 <p>Posteriormente, se define una función que consigue obtener el tensor de constante de red entre cualesquiera dos sitios. Para ello, se parte del tensor de esfuerzos de los carbonos en grafeno y se aplican las transformaciones pertinentes.</p>
-<div id="1860cc91" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Primero, se importan las paqueterías a usar. </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
@@ -224,7 +238,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linalg <span class="im">as</span> LA</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> ishermitian</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2bb2a731" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se construye el objeto de nanotubo, se obtienen las posiciones y masas de cada átomo. </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cnt1     <span class="op">=</span> graphene_nanoribbon(<span class="dv">10</span>,<span class="dv">2</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'zigzag'</span>)</span>
@@ -248,7 +262,7 @@ require(['plotly'], function(Plotly) {
     a3 = [0.         0.         4.91902429]</code></pre>
 </div>
 </div>
-<div id="389ffdf8" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Debajo, se definen las funcioens que buscan los primeros vecinos. Además, se define la función que permite graficar el ribbon.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> findnn(X,Y,Z):</span>
@@ -345,14 +359,14 @@ require(['plotly'], function(Plotly) {
 <span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> DATA,annos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5166f7bf" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Los primeros vecinos se almacenan en un diccionario. </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nn <span class="op">=</span> findnn(X,Y,Z)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>nn_minus_a3 <span class="op">=</span> findnn_minus(X,Y,Z)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nn_plus_a3  <span class="op">=</span> findnn_plus(X,Y,Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="10dcad97" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se construye la imagen del ribbon. </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>DATA,annos <span class="op">=</span> GetDATAplot(X,Y,Z,nn,nn_minus_a3,nn_plus_a3)</span>
@@ -360,9 +374,10 @@ require(['plotly'], function(Plotly) {
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig.update_layout(scene<span class="op">=</span><span class="bu">dict</span>(annotations<span class="op">=</span>annos))</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>                            <div id="506ac22c-545c-4c70-83a6-0495b91219e9" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("506ac22c-545c-4c70-83a6-0495b91219e9")) {                    Plotly.newPlot(                        "506ac22c-545c-4c70-83a6-0495b91219e9",                        [{"mode":"markers","showlegend":false,"x":[0.0,0.71,0.0,0.71,2.13,2.84,2.13,2.84,4.26,4.97,4.26,4.97,6.39,7.1,6.39,7.1,8.52,9.23,8.52,9.23,10.649999999999999,11.36,10.649999999999999,11.36,12.78,13.489999999999998,12.78,13.489999999999998,14.91,15.620000000000001,14.91,15.620000000000001,17.04,17.75,17.04,17.75,19.169999999999998,19.88,19.169999999999998,19.88],"y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"z":[0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,2.13],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,2.13],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,0.71],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,4.26],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,0.71],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,4.26],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,2.84],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,6.39],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,2.84],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,6.39],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,4.97],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,8.52],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,4.97],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,8.52],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,7.1],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,10.649999999999999],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,7.1],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,10.649999999999999],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,9.23],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,12.78],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,9.23],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,12.78],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,11.36],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,14.91],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,11.36],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,14.91],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,13.489999999999998],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,17.04],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,13.489999999999998],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,17.04],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,15.620000000000001],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,19.169999999999998],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,15.620000000000001],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,19.169999999999998],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,17.75],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,17.75],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"scene":{"annotations":[{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"0","x":0.0,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"1","x":0.71,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"2","x":0.0,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"3","x":0.71,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"4","x":2.13,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"5","x":2.84,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"6","x":2.13,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"7","x":2.84,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"8","x":4.26,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"9","x":4.97,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"10","x":4.26,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"11","x":4.97,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"12","x":6.39,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"13","x":7.1,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"14","x":6.39,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"15","x":7.1,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"16","x":8.52,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"17","x":9.23,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"18","x":8.52,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"19","x":9.23,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"20","x":10.649999999999999,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"21","x":11.36,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"22","x":10.649999999999999,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"23","x":11.36,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"24","x":12.78,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"25","x":13.489999999999998,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"26","x":12.78,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"27","x":13.489999999999998,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"28","x":14.91,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"29","x":15.620000000000001,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"30","x":14.91,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"31","x":15.620000000000001,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"32","x":17.04,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"33","x":17.75,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"34","x":17.04,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"35","x":17.75,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"36","x":19.169999999999998,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"37","x":19.88,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"38","x":19.169999999999998,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"39","x":19.88,"y":0.0,"z":0.0}]}},                        {"responsive": true}                    ).then(function(){
+
+<div>                            <div id="688e835c-b587-4aa5-9aed-5d5b5ec07a1d" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("688e835c-b587-4aa5-9aed-5d5b5ec07a1d")) {                    Plotly.newPlot(                        "688e835c-b587-4aa5-9aed-5d5b5ec07a1d",                        [{"mode":"markers","showlegend":false,"x":[0.0,0.71,0.0,0.71,2.13,2.84,2.13,2.84,4.26,4.97,4.26,4.97,6.39,7.1,6.39,7.1,8.52,9.23,8.52,9.23,10.649999999999999,11.36,10.649999999999999,11.36,12.78,13.489999999999998,12.78,13.489999999999998,14.91,15.620000000000001,14.91,15.620000000000001,17.04,17.75,17.04,17.75,19.169999999999998,19.88,19.169999999999998,19.88],"y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"z":[0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0,0.0,1.2297560733739028,2.4595121467478056,3.6892682201217086,1.2297560733739028,2.4595121467478056,3.6892682201217086,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,2.13],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[0.71,2.13],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,0.71],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,4.26],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,0.71],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[2.84,4.26],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,2.84],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,6.39],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,2.84],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[4.97,6.39],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,4.97],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,8.52],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,4.97],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[7.1,8.52],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,7.1],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,10.649999999999999],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,7.1],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[9.23,10.649999999999999],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,9.23],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,12.78],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,9.23],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[11.36,12.78],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,11.36],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,14.91],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,11.36],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[13.489999999999998,14.91],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,13.489999999999998],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,17.04],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,13.489999999999998],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[15.620000000000001,17.04],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,15.620000000000001],"y":[0.0,0.0],"z":[0.0,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,19.169999999999998],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,15.620000000000001],"y":[0.0,0.0],"z":[2.4595121467478056,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[17.75,19.169999999999998],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,17.75],"y":[0.0,0.0],"z":[1.2297560733739028,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[1.2297560733739028,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[1.2297560733739028,0.0],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[2.4595121467478056,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,17.75],"y":[0.0,0.0],"z":[3.6892682201217086,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[3.6892682201217086,2.4595121467478056],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[0.0,1.2297560733739028],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[0.0,0.71],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[2.84,2.13],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[4.26,4.97],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[7.1,6.39],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[8.52,9.23],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[11.36,10.649999999999999],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[12.78,13.489999999999998],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[15.620000000000001,14.91],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[17.04,17.75],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[19.88,19.169999999999998],"y":[0.0,0.0],"z":[4.919024293495611,3.6892682201217086],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[0.71,0.0],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[2.13,2.84],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[4.97,4.26],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[6.39,7.1],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[9.23,8.52],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[10.649999999999999,11.36],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[13.489999999999998,12.78],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[14.91,15.620000000000001],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[17.75,17.04],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[19.169999999999998,19.88],"y":[0.0,0.0],"z":[-1.2297560733739026,0.0],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"scene":{"annotations":[{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"0","x":0.0,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"1","x":0.71,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"2","x":0.0,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"3","x":0.71,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"4","x":2.13,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"5","x":2.84,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"6","x":2.13,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"7","x":2.84,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"8","x":4.26,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"9","x":4.97,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"10","x":4.26,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"11","x":4.97,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"12","x":6.39,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"13","x":7.1,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"14","x":6.39,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"15","x":7.1,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"16","x":8.52,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"17","x":9.23,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"18","x":8.52,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"19","x":9.23,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"20","x":10.649999999999999,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"21","x":11.36,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"22","x":10.649999999999999,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"23","x":11.36,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"24","x":12.78,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"25","x":13.489999999999998,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"26","x":12.78,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"27","x":13.489999999999998,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"28","x":14.91,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"29","x":15.620000000000001,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"30","x":14.91,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"31","x":15.620000000000001,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"32","x":17.04,"y":0.0,"z":0.0},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"33","x":17.75,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"34","x":17.04,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"35","x":17.75,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"36","x":19.169999999999998,"y":0.0,"z":1.2297560733739028},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"37","x":19.88,"y":0.0,"z":2.4595121467478056},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"38","x":19.169999999999998,"y":0.0,"z":3.6892682201217086},{"arrowhead":0,"ax":0,"ay":0,"bgcolor":"white","font":{"color":"black"},"opacity":0.2,"showarrow":false,"text":"39","x":19.88,"y":0.0,"z":0.0}]}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('506ac22c-545c-4c70-83a6-0495b91219e9');
+var gd = document.getElementById('688e835c-b587-4aa5-9aed-5d5b5ec07a1d');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -387,7 +402,7 @@ if (outputEl) {{
                         })                };                });            </script>        </div>
 </div>
 </div>
-<div id="7315d6dd" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se define la función que calcula el tensor de constante de red para cualesquiera dos puntos. </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>KL1 <span class="op">=</span> <span class="fl">365.0</span> <span class="co">#N/m</span></span>
@@ -414,7 +429,7 @@ if (outputEl) {{
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dot(T,dot(Krib,inv(T)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="47d6e72a" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora, se calcula una función que construye la matriz dinámica para cada punto en el espacio k, y obtiene las eigenfrecuencias y pseudomomento asociado. </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Para ello, se definen una función que calcula la polarización de fonón y otra que calcula el valor esperado. </span></span>
@@ -489,7 +504,7 @@ if (outputEl) {{
 <span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi<span class="op">/</span>cluz,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="76c4e1ce" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Finalmente, se hace el cálculo de las bandas de frecuencia.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi,pi,<span class="dv">500</span>)</span>
@@ -520,11 +535,7 @@ if (outputEl) {{
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_ylim(1,100)</span></span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nanocinta_files/figure-html/cell-9-output-1.png" width="419" height="503" class="figure-img"></p>
-</figure>
-</div>
+<p><img src="nanocinta_files/figure-html/cell-9-output-1.png" width="420" height="503"></p>
 </div>
 </div>
 
@@ -558,23 +569,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -610,9 +607,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -622,17 +620,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -647,238 +636,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -920,18 +677,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./CadenasQuirales.html" class="pagination-link  aria-label=" &lt;span="" de="" relación="" dispersión="" frecuencia="" en="" cadenas="" quirales&lt;="" span&gt;"="">
+      <a href="./CadenasQuirales.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Referencias">
-        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./GrafenoCCM.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
