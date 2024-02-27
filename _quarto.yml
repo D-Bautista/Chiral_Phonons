@@ -11,6 +11,7 @@ book:
     - CadenasQuirales.qmd
     - nanocinta.qmd
     - GrafenoCCM.qmd
+    - CCMC3.qmd
     - references.qmd
 
 bibliography: references.bib
