@@ -50,12 +50,12 @@ s2 = 2*(a1 + a2)/2
 RCM = (m1*s1 + m2*s2)/(m1 + m2)
 
 # Coordenada Relativa 1
-q1 = sqrt(m1)*(s1 - RCM)
+qrcm1 = sqrt(m1)*(s1 - RCM)
 
 #Coordenada Relativa 2
-q2 = sqrt(m2)*(s2 - RCM)
+qrcm2 = sqrt(m2)*(s2 - RCM)
 
-Q = [q1,q2]
+Qrcm = [qrcm1,qrcm2]
 ```
 
 Para evaluar la reflexión que maximizaba la aquiralidad de la estructura, se partió de una reflexión respecto al eje $y$ que fue rotada por varios ángulos hasta encontrar el apropiado. Para ello, primero se definen la reflexión y un operador de rotación. Asimismo, se define una función que aplica la rotación a un operador arbitrario.
@@ -67,8 +67,8 @@ Id = array([[1,0],
               [0,1]] )
 
 #Reflexión respecto al eje y.
-σy = array([[1,0],
-              [0,-1]] )
+σy = array([[-1,0],
+              [0,1]] )
 
 def Rot(θ):
 
@@ -88,9 +88,9 @@ Con esto, se define la función que hace el cálculo del CCM de la estructura.
 def CCMS(σ):
     num = 0
     den = 0
-    for q in Q:
-        num = num + dot(q1,dot(Id + σ,q1))
-        den = den + dot(q1,q1)
+    for q in Qrcm:
+        num = num + dot(q,dot(Id + σ,q))
+        den = den + dot(q,q)
     return 1 - (num/(2*den))
 ```
 
@@ -184,7 +184,25 @@ def expectedval(vec,S = Sz):
     return vdot(vec,dot(S,vec)).real
 ```
 
-Debajo, se muestra una función que calcula los modos normales de vibración del grafeno. En esta función se obtienen tanto el valor de polarización de fonón (método de Lifa Zhang), como el valor de CCM. 
+Debajo, se muestra una función que calcula los modos normales de vibración del grafeno. En esta función se obtienen tanto el valor de polarización de fonón (método de Lifa Zhang), como el valor de CCM. Para ello, antes se define una función que regresa el CCM.
+
+```{python}
+
+θ = linspace(0,pi,300)
+
+def CCMMax(q):
+    max = 0
+
+
+    for ang in θ:
+        σ = TensT(ang,σy)
+        if abs(expectedval(q,Id + σ)) > max:
+            max = abs(expectedval(q,Id + σ))
+            M = expectedval(q,Id + σ)
+
+    return M
+    
+```
 
 ```{python}
 def Eigenfrequencies(k):
@@ -235,7 +253,7 @@ def Eigenfrequencies(k):
     pseudomom.append(expectedval(eigvec,S = Sz))
 
   CCM = []
-
+    
   for i in range(len(ω2)):
     eigvec = eigvecs[:,i]
     q1 = sqrt(m1) * eigvec[0:2]
@@ -247,7 +265,7 @@ def Eigenfrequencies(k):
     den = 0
 
     for q in Q:
-        num = num + expectedval(q,Id + σy)
+        num = num + CCMMax(q)
         den = den + vdot(q,q).real
 
     CCM.append(1 - (num/(2*den)))
@@ -273,10 +291,6 @@ pseudomom = DATA[:,1,:]
 CCM = DATA[:,2,:]
 ```
 
-```{python}
-Eigenfrequencies(K/2)
-```
-
 Se realizan las gráficas.
 
 ```{python}
@@ -287,6 +301,8 @@ kenum = arange(len(frec))
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbands):
     grafica = ax.scatter(kenum,frec.T[j],c = pseudomom.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
 fig.colorbar(grafica)
 ```
 
@@ -297,12 +313,9 @@ kenum = arange(len(frec))
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbands):
-    grafica = ax.scatter(kenum,frec.T[j],c = CCM.T[j],cmap = "coolwarm",vmax = 1, vmin = 0,s = 5)
+    grafica = ax.scatter(kenum,frec.T[j],c = CCM.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
 fig.colorbar(grafica)
 ```
 
-```{python}
-
-print(CCM)
-print(pseudomom)
-```
