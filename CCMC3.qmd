@@ -2,10 +2,10 @@
 
 ```{python}
 from pylab import *
-
+import plotly.graph_objects as go
 ```
 
-Los cálculos de la estructura de bandas 
+Los cálculos de la estructura de bandas se realizan de forma análoga a los descritos en el capítulo anterior. En este capítulo, sin embargo, se calcula la quiralidad de la estructura y los fonones usando el CCM como criterio.
 
 ```{python}
 #Constantes
@@ -25,12 +25,56 @@ KT2 = 0.25
 Kx = array([[KL,0,0],
               [0,KT1,0],
               [0,0,KT2]],dtype=complex)
+
+
+a = 1
+d = 2
+
+φxy = arccos(a/d)
+
+c = 3 * a * tan(φxy)
+
+r1 = array([1,0,0])
+r2 = array([-1/2, sqrt(3)/2,c/3])
+r3 = array([-1/2, -sqrt(3)/2,2*c/3])
+r1plus = r1 + [0,0,c]
+r3minus = r3 - [0,0,c]
+
+positions = array([r1,r2,r3])
+
+positionsnn = array([r3minus,r1plus])
+
+X,Y,Z = positions.T
+Xnn,Ynn,Znn = positionsnn.T
+```
+
+
+```{python}
+DATA = [go.Scatter3d(x=X, y=Y, z=Z,mode='markers',marker_color = "blue",showlegend=False)]
+
+DATA.append(go.Scatter3d(x=Xnn, y=Ynn, z=Znn,mode='markers',marker_color = "red",showlegend=False))
+
+DATA.append(go.Scatter3d(x= [X[0],Xnn[0]], y=[Y[0],Ynn[0]], z=[Z[0],Znn[0]],mode='lines',line=dict(color='red'),showlegend=False))
+
+DATA.append(go.Scatter3d(x= [X[0],X[1]], y=[Y[0],Y[1]], z=[Z[0],Z[1]],mode='lines',line=dict(color='blue'),showlegend=False))
+
+DATA.append(go.Scatter3d(x= [X[2],X[1]], y=[Y[2],Y[1]], z=[Z[2],Z[1]],mode='lines',line=dict(color='blue'),showlegend=False))
+
+DATA.append(go.Scatter3d(x= [X[2],Xnn[1]], y=[Y[2],Ynn[1]], z=[Z[2],Znn[1]],mode='lines',line=dict(color='red'),showlegend=False))
+
 ```
 
 ```{python}
-#Rotación de φ respecto al plano x - y.
-φxy = pi/3
+fig = go.Figure(data=DATA)
+fig.show()
+```
 
+## Cálculo de CCM de la estructura
+
+Para calcular el CCM de la estructura, se definen algunas rotaciones útiles. 
+
+```{python}
+#Rotación de φ respecto al plano x - y.
 def T(φ):
   return array([[cos(φ) ,0.  ,sin(φ)],
                 [0.     ,1.  ,0],
@@ -44,6 +88,69 @@ def U(θ):
               [sin(θ),cos(θ),0],
               [       0,      0,1]] )
 
+```
+
+```{python}
+
+#Matriz identidad.
+Id = array([[1,0,0],
+            [0,1,0],
+            [0,0,1]] )
+
+#Reflexión respecto al eje y.
+σy = array([[-1,0,0],
+            [0,1,0],
+            [0,0,1]] )
+
+def TensT(O,A):
+  """Función que aplica transforma por un operador O a un tensor A."""
+  return dot( inv(O), dot(A,O) )
+```
+
+Con esto, se define la función que hace el cálculo del CCM de la estructura.
+
+```{python}
+RCM = (m1*r1 + m2*r2 + m3*r3)/(m1 + m2 + m3)
+
+# Coordenada Relativa 1
+qrcm1 = sqrt(m1)*(r1 - RCM)
+
+#Coordenada Relativa 2
+qrcm2 = sqrt(m2)*(r2 - RCM)
+
+qrcm3 = sqrt(m3)*(r3 - RCM)
+
+Qrcm = [qrcm1,qrcm2,qrcm3]
+```
+
+```{python}
+def CCMS(σ):
+    num = 0
+    den = 0
+    for q in Qrcm:
+        num = num + dot(q,dot(Id + σ,q))
+        den = den + dot(q,q)
+    return 1 - (num/(2*den))
+```
+
+```{python}
+θ = linspace(0,pi,300)
+
+φ = linspace(0,pi,300)
+
+σ = []
+
+for phi in φ:
+  for ang in θ:
+      σ.append(TensT(T(phi),TensT(U(ang),σy)))
+σ = array(σ)
+
+CCM_estructura = []
+
+for ref in σ:
+    CCM_estructura.append(CCMS(ref))
+
+print("La CCM de la estructura es", str(np.min(CCM_estructura)))
 ```
 
 ```{python}

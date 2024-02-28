@@ -64,5 +64,15 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Descripción de una nanocinta de grafeno</span>"
     ]
+  },
+  {
+    "objectID": "CCMC3.html",
+    "href": "CCMC3.html",
+    "title": "4  Cálculo de CCM para una cadena quiral C3",
+    "section": "",
+    "text": "4.1 Cálculo de CCM de la estructura\nPara calcular el CCM de la estructura, se definen algunas rotaciones útiles.\n#Rotación de φ respecto al plano x - y.\ndef T(φ):\n  return array([[cos(φ) ,0.  ,sin(φ)],\n                [0.     ,1.  ,0],\n                [-sin(φ),0.  ,cos(φ)]])\n#Rotación respecto al eje z.\ndef U(θ):\n  return array([[cos(θ),-sin(θ),0],\n              [sin(θ),cos(θ),0],\n              [       0,      0,1]] )\n#Matriz identidad.\nId = array([[1,0,0],\n            [0,1,0],\n            [0,0,1]] )\n\n#Reflexión respecto al eje y.\nσy = array([[-1,0,0],\n            [0,1,0],\n            [0,0,1]] )\n\ndef TensT(O,A):\n  \"\"\"Función que aplica transforma por un operador O a un tensor A.\"\"\"\n  return dot( inv(O), dot(A,O) )\nCon esto, se define la función que hace el cálculo del CCM de la estructura.\nRCM = (m1*r1 + m2*r2 + m3*r3)/(m1 + m2 + m3)\n\n# Coordenada Relativa 1\nqrcm1 = sqrt(m1)*(r1 - RCM)\n\n#Coordenada Relativa 2\nqrcm2 = sqrt(m2)*(r2 - RCM)\n\nqrcm3 = sqrt(m3)*(r3 - RCM)\n\nQrcm = [qrcm1,qrcm2,qrcm3]\ndef CCMS(σ):\n    num = 0\n    den = 0\n    for q in Qrcm:\n        num = num + dot(q,dot(Id + σ,q))\n        den = den + dot(q,q)\n    return 1 - (num/(2*den))\nθ = linspace(0,pi,300)\n\nφ = linspace(0,pi,300)\n\nσ = []\n\nfor phi in φ:\n  for ang in θ:\n      σ.append(TensT(T(phi),TensT(U(ang),σy)))\nσ = array(σ)\n\nCCM_estructura = []\n\nfor ref in σ:\n    CCM_estructura.append(CCMS(ref))\n\nprint(\"La CCM de la estructura es\", str(np.min(CCM_estructura)))\n\nLa CCM de la estructura es 2.9956824428856166e-06\n#Matriz de resortes a lo largo de x.\nKL = 1\nKT1 = 0.05\nKT2 = 0.25\n\nKx = array([[KL,0,0],\n              [0,KT1,0],\n              [0,0,KT2]],dtype=complex)\ndef OperadorPseudomomento(n):\n\n  Sz = array([[0,-1J,0],\n              [1J,0,0],\n              [0,0,0]],dtype=complex)\n\n  return np.kron(np.eye(n,dtype=complex),Sz)\n\ndef expectedval(vec,S):\n    return dot(np.conj(vec).T,dot(S,vec)).real",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Cálculo de CCM para una cadena quiral C3</span>"
+    ]
   }
 ]
