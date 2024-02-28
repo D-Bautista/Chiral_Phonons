@@ -137,7 +137,8 @@ def EigenfrequenciesC2(k):
 
   return sqrt(abs(ω2))/2/pi,pseudomom
 ```
-Finalmente, se muestra la gráfica de bandas para la cadena $C_{2}:
+Finalmente, se muestra la gráfica de bandas para la cadena $C_{2}$:
+
 
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
@@ -162,8 +163,8 @@ kenumC2 = arange(numKC2)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC2):
-  grafica = ax.scatter(kenumC2,BandasC2.T[j],c = PseudomomC2.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
-fig.colorbar(grafica)
+  graficaC2 = ax.scatter(kenumC2,BandasC2.T[j],c = PseudomomC2.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC2)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```

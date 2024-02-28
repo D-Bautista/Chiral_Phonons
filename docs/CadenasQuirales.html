@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finalmente, se muestra la gráfica de bandas para la cadena $C_{2}:</p>
+<p>Finalmente, se muestra la gráfica de bandas para la cadena <span class="math inline">\(C_{2}\)</span>:</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -373,8 +373,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC2):</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  grafica <span class="op">=</span> ax.scatter(kenumC2,BandasC2.T[j],c <span class="op">=</span> PseudomomC2.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(grafica)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  graficaC2 <span class="op">=</span> ax.scatter(kenumC2,BandasC2.T[j],c <span class="op">=</span> PseudomomC2.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC2)</span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">

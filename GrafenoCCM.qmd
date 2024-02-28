@@ -34,6 +34,7 @@ a2 = sqrt(3)*aCC*array([sqrt(3)/2,-1/2])
 #Masa de cada sitio
 m1 =  2E-26
 m2 = 2.158E-26
+m2 = m1
 
 #Velocidad de la luz en cm/s
 cluz = 2.99792458E10
@@ -319,3 +320,6 @@ ax.set_xticklabels(Klabels,fontsize = 20);
 fig.colorbar(grafica)
 ```
 
+```{python}
+np.max(CCM)
+```

@@ -250,9 +250,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Masa de cada sitio</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span>  <span class="fl">2E-26</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> <span class="fl">2.158E-26</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Velocidad de la luz en cm/s</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>cluz <span class="op">=</span> <span class="fl">2.99792458E10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> m1</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Velocidad de la luz en cm/s</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>cluz <span class="op">=</span> <span class="fl">2.99792458E10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Los sitios de los orbitales se escriben debajo en términos de los vectores de red. Además, se calculan las coordenadas del centro de masa y las coordenadas relativas.</p>
 <div class="cell" data-execution_count="3">
@@ -502,8 +503,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>fig.colorbar(grafica)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7f86a06eb380&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7f05683f7170&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="GrafenoCCM_files/figure-html/cell-12-output-2.png" width="420" height="503"></p>
@@ -519,11 +520,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>fig.colorbar(grafica)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7f85b34b96d0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7f05683f74d0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="GrafenoCCM_files/figure-html/cell-13-output-2.png" width="400" height="503"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">max</span>(CCM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>0.49999999999999956</code></pre>
 </div>
 </div>
 
