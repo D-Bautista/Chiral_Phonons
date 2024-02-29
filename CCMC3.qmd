@@ -15,6 +15,8 @@ m1 = 1
 m2 = 1
 m3 = 1
 
+M = [m1,m2,m3]
+
 # Matriz de resortes a lo largo de x.
 KL = 1
 KT1 = 0.05
@@ -233,8 +235,6 @@ def EigenfrequenciesC3(k):
 
   ω2,eigvecs = eigh(Dynamical)
 
-  #Se definen los operadores de Pseudomomento.
-
   CCM = []
     
   for i in range(len(ω2)):
@@ -243,7 +243,7 @@ def EigenfrequenciesC3(k):
     q2 = sqrt(m2) * eigvec[3:6]
     q3 = sqrt(m3) * eigvec[6:]
 
-    Q = [q1,q2]
+    Q = [q1,q2,q3]
 
     num = 0
     den = 0
@@ -288,3 +288,88 @@ ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
 
+Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
+
+```{python}
+def EigenfrequenciesC3PM(k):
+
+  """Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""
+
+  #Se define el tensor de esfuerzos de todo el sistema.
+
+  #Matriz con constante de fuerza considerando una rotación respecto al plano x - y.
+  φxy = pi/3
+  Kx2 = dot(T(φxy),dot(Kx,T(-φxy)))
+
+  #Matrices de fuerza para cada uno de los vectores en la red.
+  K23 = dot(U(pi),dot(Kx2,U(-pi)))     #Calculada tomando 2 como origen.
+  K12 = dot(U(pi/3),dot(Kx2,U(-pi/3))) #Calculada tomando 1 como origen.
+  K13 = dot(U(-pi/3),dot(Kx2,U(pi/3))) #Calculado tomando 3 como origen.
+
+  DicMat   = { 0: (K12 + K13)/m1,
+               1: -K12/sqrt(m1*m2),
+               2: -K13/sqrt(m1*m3)*exp(-1J*k*c),
+               3: -K12/sqrt(m1*m2),
+               4: (K23+K12)/m2,
+               5: -K23/sqrt(m2*m3),
+               6: -K13/sqrt(m1*m3)*exp(1J*k*c),
+               7: -K23/sqrt(m2*m3),
+               8: (K23 + K13)/m3 }
+
+  Dinteger = array([[0,1,2],
+                    [3,4,5],
+                    [6,7,8]])
+
+  Dm = [ [DicMat[i] for i in rw] for rw in Dinteger ]
+  Dynamical = asarray(np.bmat(Dm))
+
+  ω2,eigvecs = eigh(Dynamical)
+
+  PM = []
+    
+  for i in range(len(ω2)):
+    eigvec = eigvecs[:,i]
+    ω = sqrt(abs(ω2[i]))/2/pi
+    q1 = sqrt(m1) * eigvec[0:3]
+    q2 = sqrt(m2) * eigvec[3:6]
+    q3 = sqrt(m3) * eigvec[6:]
+
+    Q = [q1,q2,q3]
+
+    pz = 0
+
+    for i in range(3):
+        pz = pz + M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
+    PM.append(pz)
+
+  return sqrt(abs(ω2))/2/pi,PM
+```
+
+```{python}
+Kpoints = np.linspace(-pi/c,pi/c,500)
+
+Klabels = [r"K/2",r"Γ",r"K/2"]
+Kticks = concatenate([[0],[250],[500]])
+
+BandasC3 = []
+PseudomomC3 = []
+
+KevaluateC3 = (list( map(EigenfrequenciesC3PM,Kpoints) ))
+
+for ω2,psmom in KevaluateC3:
+  BandasC3.append(ω2)
+  PseudomomC3.append(psmom)
+
+BandasC3 = array(BandasC3)
+PseudomomC3 = array(PseudomomC3)
+
+numKC3,nbandsC3 = shape(BandasC3)
+kenumC3 = arange(numKC3)
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC3):
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PseudomomC3.T[j],cmap = "coolwarm",vmax = 0.1, vmin = -0.1,s = 5)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
