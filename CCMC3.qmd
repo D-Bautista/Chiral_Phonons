@@ -67,7 +67,6 @@ DATA.append(go.Scatter3d(x= [X[0],X[1]], y=[Y[0],Y[1]], z=[Z[0],Z[1]],mode='line
 DATA.append(go.Scatter3d(x= [X[2],X[1]], y=[Y[2],Y[1]], z=[Z[2],Z[1]],mode='lines',line=dict(color='blue'),showlegend=False))
 
 DATA.append(go.Scatter3d(x= [X[2],Xnn[1]], y=[Y[2],Ynn[1]], z=[Z[2],Znn[1]],mode='lines',line=dict(color='red'),showlegend=False))
-
 ```
 
 ```{python}
@@ -181,7 +180,6 @@ Ahora calculamos el CCM asociado a los modos normales. Para ello, debemos tambi�
 Primero, se define una función que regresa el valor máximo del producto $\langle Q| Q \rangle$ para cierto plano de reflexión. Además, se define una función que regresa el valor esperado y que será usada más adelante. 
 
 ```{python}
-
 def expectedval(vec,S):
     return dot(np.conj(vec).T,dot(S,vec)).real
 
@@ -195,7 +193,6 @@ def CCMMax(q):
             max = abs(expectedval(q,Id + σ))
             M = expectedval(q,Id + σ)
     return M
-    
 ```
 
 Luego, se define la función que calcula las frecuencias de un modo normal para un punto del espacio recíproco dado. 
@@ -235,8 +232,14 @@ def EigenfrequenciesC3(k):
 
   ω2,eigvecs = eigh(Dynamical)
 
+  return sqrt(abs(ω2))/2/pi,eigvecs
+```
+
+Se definió una función que calculaba el CCM dadas una frecuencia y un modo normal. 
+
+```{python}
+def CCM_general(ω,eigvecs):
   CCM = []
-    
   for i in range(len(ω2)):
     eigvec = eigvecs[:,i]
     q1 = sqrt(m1) * eigvec[0:3]
@@ -248,13 +251,15 @@ def EigenfrequenciesC3(k):
     num = 0
     den = 0
 
+    
+
     for q in Q:
-        num = num + CCMMax(q)
-        den = den + vdot(q,q).real
+        num += CCMMax(q)
+        den += vdot(q,q).real
 
     CCM.append(1 - (num/(2*den)))
 
-  return sqrt(abs(ω2))/2/pi,CCM
+  return CCM
 ```
 
 Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}$ junto con los respectivos valores de CCM en cada punto:
@@ -266,47 +271,35 @@ Klabels = [r"K/2",r"Γ",r"K/2"]
 Kticks = concatenate([[0],[250],[500]])
 
 BandasC3 = []
-PseudomomC3 = []
+EigvecsC3 = []
+CCMC3 = []
 
 KevaluateC3 = (list( map(EigenfrequenciesC3,Kpoints) ))
 
-for ω2,psmom in KevaluateC3:
+for ω2,eigvec in KevaluateC3:
   BandasC3.append(ω2)
-  PseudomomC3.append(psmom)
+  EigvecsC3.append(eigvec)
 
+for i in range(len(BandasC3)):
+  CCMC3.append(CCM_general(BandasC3[i],EigvecsC3[i]))
+
+CCMC3 = array(CCMC3)
 BandasC3 = array(BandasC3)
-PseudomomC3 = array(PseudomomC3)
+```
 
+```{python}
 numKC3,nbandsC3 = shape(BandasC3)
 kenumC3 = arange(numKC3)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC3):
-  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PseudomomC3.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = CCMC3.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
 fig.colorbar(graficaC3)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
 
 Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
-
-```{python}
-def CCM_mode(ω,c):
-  q1 = sqrt(m1) * c[0:3]
-  q2 = sqrt(m2) * c[3:6]
-  q3 = sqrt(m3) * c[6:]
-
-  Q = [q1,q2,q3]
-
-  num = 0
-  den = 0
-
-  for q in Q:
-      num = num + CCMMax(q)
-      den = den + vdot(q,q).real
-
-  return 1 - (num/(2*den))
-```
 
 
 ```{python}

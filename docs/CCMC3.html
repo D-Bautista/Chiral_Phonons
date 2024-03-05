@@ -261,13 +261,13 @@ window.Quarto = {
 </header>
 
 
-<div id="268a55d6" class="cell" data-execution_count="1">
+<div id="28a18efb" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Los cálculos de la estructura de bandas se realizan de forma análoga a los descritos en el capítulo anterior. En este capítulo, sin embargo, se calcula la quiralidad de la estructura y los fonones usando el CCM como criterio.</p>
 <p>Debajo, se definen varias constantes a emplear. Dentro de estas están las masas de los sitios, la longitud de los lados del ángulo vista desde arriba, las constantes de resorte y el ángulo de los enlaces respecto al plano x - y. Además, se definen las posiciones los tres átomos dentro de la celda unitaria, y dos átomos de celdas vecinas.</p>
-<div id="0c943aff" class="cell" data-execution_count="2">
+<div id="b7e30927" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Masas de los distintos sitios. </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> <span class="dv">1</span></span>
@@ -311,7 +311,7 @@ window.Quarto = {
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>Xnn,Ynn,Znn <span class="op">=</span> positionsnn.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Debajo, se muestra una imagen de la cadena.</p>
-<div id="e850570d" class="cell" data-execution_count="3">
+<div id="dd5273ef" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> [go.Scatter3d(x<span class="op">=</span>X, y<span class="op">=</span>Y, z<span class="op">=</span>Z,mode<span class="op">=</span><span class="st">'markers'</span>,marker_color <span class="op">=</span> <span class="st">"blue"</span>,showlegend<span class="op">=</span><span class="va">False</span>)]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>DATA.append(go.Scatter3d(x<span class="op">=</span>Xnn, y<span class="op">=</span>Ynn, z<span class="op">=</span>Znn,mode<span class="op">=</span><span class="st">'markers'</span>,marker_color <span class="op">=</span> <span class="st">"red"</span>,showlegend<span class="op">=</span><span class="va">False</span>))</span>
@@ -324,13 +324,13 @@ window.Quarto = {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>DATA.append(go.Scatter3d(x<span class="op">=</span> [X[<span class="dv">2</span>],Xnn[<span class="dv">1</span>]], y<span class="op">=</span>[Y[<span class="dv">2</span>],Ynn[<span class="dv">1</span>]], z<span class="op">=</span>[Z[<span class="dv">2</span>],Znn[<span class="dv">1</span>]],mode<span class="op">=</span><span class="st">'lines'</span>,line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'red'</span>),showlegend<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a14cd949" class="cell" data-execution_count="4">
+<div id="0608993e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>DATA)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>                            <div id="39ad7628-d75b-4a50-a1eb-f15667d27ec2" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("39ad7628-d75b-4a50-a1eb-f15667d27ec2")) {                    Plotly.newPlot(                        "39ad7628-d75b-4a50-a1eb-f15667d27ec2",                        [{"marker":{"color":"blue"},"mode":"markers","showlegend":false,"x":[1.0,-0.5,-0.5],"y":[0.0,0.8660254037844386,-0.8660254037844386],"z":[0.0,1.7320508075688767,3.4641016151377535],"type":"scatter3d"},{"marker":{"color":"red"},"mode":"markers","showlegend":false,"x":[-0.5,1.0],"y":[-0.8660254037844386,0.0],"z":[-1.7320508075688767,5.19615242270663],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[1.0,-0.5],"y":[0.0,-0.8660254037844386],"z":[0.0,-1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[1.0,-0.5],"y":[0.0,0.8660254037844386],"z":[0.0,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[-0.5,-0.5],"y":[-0.8660254037844386,0.8660254037844386],"z":[3.4641016151377535,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[-0.5,1.0],"y":[-0.8660254037844386,0.0],"z":[3.4641016151377535,5.19615242270663],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}}},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="f893a0cf-f21f-439d-8695-f73b52387c57" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f893a0cf-f21f-439d-8695-f73b52387c57")) {                    Plotly.newPlot(                        "f893a0cf-f21f-439d-8695-f73b52387c57",                        [{"marker":{"color":"blue"},"mode":"markers","showlegend":false,"x":[1.0,-0.5,-0.5],"y":[0.0,0.8660254037844386,-0.8660254037844386],"z":[0.0,1.7320508075688767,3.4641016151377535],"type":"scatter3d"},{"marker":{"color":"red"},"mode":"markers","showlegend":false,"x":[-0.5,1.0],"y":[-0.8660254037844386,0.0],"z":[-1.7320508075688767,5.19615242270663],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[1.0,-0.5],"y":[0.0,-0.8660254037844386],"z":[0.0,-1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[1.0,-0.5],"y":[0.0,0.8660254037844386],"z":[0.0,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[-0.5,-0.5],"y":[-0.8660254037844386,0.8660254037844386],"z":[3.4641016151377535,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[-0.5,1.0],"y":[-0.8660254037844386,0.0],"z":[3.4641016151377535,5.19615242270663],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('39ad7628-d75b-4a50-a1eb-f15667d27ec2');
+var gd = document.getElementById('f893a0cf-f21f-439d-8695-f73b52387c57');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -358,7 +358,7 @@ if (outputEl) {{
 <section id="cálculo-de-ccm-de-la-estructura" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="cálculo-de-ccm-de-la-estructura"><span class="header-section-number">4.1</span> Cálculo de CCM de la estructura</h2>
 <p>Para calcular el CCM de la estructura se sigue la definición del capítulo pasado. Sin embargo, para hacer este cálculo sólo se consideran reflexiones por planos que contengan al eje z. Esto pues sólo nos interesa la quiralidad respecto a este eje. Aún así, se define una rotación respecto al plano x - y que será utilizada más adelante en el cálculo de la matriz dinámica.</p>
-<div id="8781c8c5" class="cell" data-execution_count="5">
+<div id="100a83c5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rotación de φ respecto al plano x - y.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(φ):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(φ) ,<span class="fl">0.</span>  ,sin(φ)],</span>
@@ -372,7 +372,7 @@ if (outputEl) {{
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>              [       <span class="dv">0</span>,      <span class="dv">0</span>,<span class="dv">1</span>]] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>También se definen la matriz identidad en 3D y una reflexión respecto al plano xz. Además, se define una funciín que transforma operadores. Esta función se usará para rotar el plano respecto al cual se realiza la rotación.</p>
-<div id="4eab7e2c" class="cell" data-execution_count="6">
+<div id="784256ad" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz identidad.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Id <span class="op">=</span> array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
@@ -388,7 +388,7 @@ if (outputEl) {{
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dot( inv(O), dot(A,O) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ya con todas las funciones a usar bien definidas, se hace el cálculo de la CCM De la estructura. Para ello, primero se calculan las coordenadas respecto al centro de masa.</p>
-<div id="0cf5d68e" class="cell" data-execution_count="7">
+<div id="6c27c1d5" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masa</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>RCM <span class="op">=</span> (m1<span class="op">*</span>r1 <span class="op">+</span> m2<span class="op">*</span>r2 <span class="op">+</span> m3<span class="op">*</span>r3)<span class="op">/</span>(m1 <span class="op">+</span> m2 <span class="op">+</span> m3)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -405,7 +405,7 @@ if (outputEl) {{
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>Qrcm <span class="op">=</span> [qrcm1,qrcm2,qrcm3]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Queremos calcular la CCM tal que el plano de inversión elegido maximize la superposición de la estructura con la estructura invertida. Para ello, se define una función que calcula el CCM de la estructura tomando una reflexión respecto a un plano de entrada.</p>
-<div id="8cdc9e9d" class="cell" data-execution_count="8">
+<div id="20232bd8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> CCMS(σ):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> <span class="dv">0</span></span>
@@ -415,7 +415,7 @@ if (outputEl) {{
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> (num<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>den))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ya hecho esto, se calcula el CCM de la estructura. Notamos que para esta cadena el CCM es igual sin importar que plano de reflexión se use. Esto se ve en la gráfica mostrada debajo.</p>
-<div id="5f3226c2" class="cell" data-execution_count="9">
+<div id="34fa8f2d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> linspace(<span class="dv">0</span>,pi,<span class="dv">300</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span> []</span>
@@ -434,7 +434,7 @@ if (outputEl) {{
 <pre><code>La CCM de la estructura es 0.16666666666666674</code></pre>
 </div>
 </div>
-<div id="0d77f39e" class="cell" data-execution_count="10">
+<div id="3e2cddf3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Labels <span class="op">=</span> [<span class="vs">r"0"</span>,<span class="vs">r"π/2"</span>,<span class="vs">r"π"</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Ticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[pi<span class="op">/</span><span class="dv">2</span>],[pi]])</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -458,7 +458,7 @@ if (outputEl) {{
 <h2 data-number="4.2" class="anchored" data-anchor-id="cálculos-del-ccm-de-los-modos-vibracionales"><span class="header-section-number">4.2</span> Cálculos del CCM de los modos vibracionales</h2>
 <p>Ahora calculamos el CCM asociado a los modos normales. Para ello, debemos también construir un programa que obtenga las frecuencias de dichos modos, así como una función que de el CCM de un modo dado.</p>
 <p>Primero, se define una función que regresa el valor máximo del producto <span class="math inline">\(\langle Q| Q \rangle\)</span> para cierto plano de reflexión. Además, se define una función que regresa el valor esperado y que será usada más adelante.</p>
-<div id="62e58f1b" class="cell" data-execution_count="11">
+<div id="f806a16a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> expectedval(vec,S):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dot(np.conj(vec).T,dot(S,vec)).real</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -474,7 +474,7 @@ if (outputEl) {{
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Luego, se define la función que calcula las frecuencias de un modo normal para un punto del espacio recíproco dado.</p>
-<div id="4b95c9e2" class="cell" data-execution_count="12">
+<div id="0fd31e6e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC3(k):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
@@ -509,163 +509,157 @@ if (outputEl) {{
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  ω<span class="dv">2</span>,eigvecs <span class="op">=</span> eigh(Dynamical)</span>
 <span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  CCM <span class="op">=</span> []</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> eigvec[<span class="dv">6</span>:]</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> [q1,q2,q3]</span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> q <span class="kw">in</span> Q:</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>        num <span class="op">=</span> num <span class="op">+</span> CCMMax(q)</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>        den <span class="op">=</span> den <span class="op">+</span> vdot(q,q).real</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>    CCM.append(<span class="dv">1</span> <span class="op">-</span> (num<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>den)))</span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,CCM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,eigvecs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se definió una función que calculaba el CCM dadas una frecuencia y un modo normal.</p>
+<div id="d84f85a8" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> CCM_general(ω,eigvecs):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  CCM <span class="op">=</span> []</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> eigvec[<span class="dv">6</span>:]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> [q1,q2,q3]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> q <span class="kw">in</span> Q:</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        num <span class="op">+=</span> CCMMax(q)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        den <span class="op">+=</span> vdot(q,q).real</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    CCM.append(<span class="dv">1</span> <span class="op">-</span> (num<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>den)))</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> CCM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente, se muestra la gráfica de bandas para la cadena <span class="math inline">\(C_{3}\)</span> junto con los respectivos valores de CCM en cada punto:</p>
-<div id="359de794" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> []</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3,Kpoints) ))</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,psmom <span class="kw">in</span> KevaluateC3:</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  PseudomomC3.append(psmom)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> array(PseudomomC3)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PseudomomC3.T[j],cmap <span class="op">=</span> <span class="st">"Reds"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="dv">0</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="90a9cd66" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>EigvecsC3 <span class="op">=</span> []</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> []</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3,Kpoints) ))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,eigvec <span class="kw">in</span> KevaluateC3:</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  EigvecsC3.append(eigvec)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(BandasC3)):</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  CCMC3.append(CCM_general(BandasC3[i],EigvecsC3[i]))</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> array(CCMC3)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="39de8640" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> CCMC3.T[j],cmap <span class="op">=</span> <span class="st">"Reds"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="dv">0</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CCMC3_files/figure-html/cell-14-output-1.png" width="395" height="503" class="figure-img"></p>
+<p><img src="CCMC3_files/figure-html/cell-16-output-1.png" width="395" height="503" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo <span class="math inline">\(k\)</span>, este está determinado por <span class="math display">\[(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].\]</span> Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de <span class="math inline">\(k\)</span>.</p>
-<div id="e57c96b8" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC3PM(k):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se define el tensor de esfuerzos de todo el sistema.</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matriz con constante de fuerza considerando una rotación respecto al plano x - y.</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  φxy <span class="op">=</span> pi<span class="op">/</span><span class="dv">3</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  Kx2 <span class="op">=</span> dot(T(φxy),dot(Kx,T(<span class="op">-</span>φxy)))</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matrices de fuerza para cada uno de los vectores en la red.</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  K23 <span class="op">=</span> dot(U(pi),dot(Kx2,U(<span class="op">-</span>pi)))     <span class="co">#Calculada tomando 2 como origen.</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  K12 <span class="op">=</span> dot(U(pi<span class="op">/</span><span class="dv">3</span>),dot(Kx2,U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">3</span>))) <span class="co">#Calculada tomando 1 como origen.</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  K13 <span class="op">=</span> dot(U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">3</span>),dot(Kx2,U(pi<span class="op">/</span><span class="dv">3</span>))) <span class="co">#Calculado tomando 3 como origen.</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  DicMat   <span class="op">=</span> { <span class="dv">0</span>: (K12 <span class="op">+</span> K13)<span class="op">/</span>m1,</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>               <span class="dv">2</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3)<span class="op">*</span>exp(<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>               <span class="dv">3</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>               <span class="dv">4</span>: (K23<span class="op">+</span>K12)<span class="op">/</span>m2,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>               <span class="dv">5</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>               <span class="dv">6</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3)<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>               <span class="dv">7</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>               <span class="dv">8</span>: (K23 <span class="op">+</span> K13)<span class="op">/</span>m3 }</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  Dinteger <span class="op">=</span> array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>],</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>],</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]])</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  Dm <span class="op">=</span> [ [DicMat[i] <span class="cf">for</span> i <span class="kw">in</span> rw] <span class="cf">for</span> rw <span class="kw">in</span> Dinteger ]</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  Dynamical <span class="op">=</span> asarray(np.bmat(Dm))</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  ω<span class="dv">2</span>,eigvecs <span class="op">=</span> eigh(Dynamical)</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  PM <span class="op">=</span> []</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    ω <span class="op">=</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>[i]))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> eigvec[<span class="dv">6</span>:]</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> [q1,q2,q3]</span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>    pz <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>        pz <span class="op">=</span> pz <span class="op">+</span> M[i]<span class="op">*</span>Q[i][<span class="dv">2</span>]<span class="op">*</span>(X[i]<span class="op">*</span>Q[i][<span class="dv">1</span>] <span class="op">-</span> Y[i]<span class="op">*</span>Q[i][<span class="dv">0</span>]).real</span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>    PM.append(pz)</span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,PM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1553c7c2" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC3PM(k):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se define el tensor de esfuerzos de todo el sistema.</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matriz con constante de fuerza considerando una rotación respecto al plano x - y.</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  φxy <span class="op">=</span> pi<span class="op">/</span><span class="dv">3</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  Kx2 <span class="op">=</span> dot(T(φxy),dot(Kx,T(<span class="op">-</span>φxy)))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matrices de fuerza para cada uno de los vectores en la red.</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  K23 <span class="op">=</span> dot(U(pi),dot(Kx2,U(<span class="op">-</span>pi)))     <span class="co">#Calculada tomando 2 como origen.</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  K12 <span class="op">=</span> dot(U(pi<span class="op">/</span><span class="dv">3</span>),dot(Kx2,U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">3</span>))) <span class="co">#Calculada tomando 1 como origen.</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  K13 <span class="op">=</span> dot(U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">3</span>),dot(Kx2,U(pi<span class="op">/</span><span class="dv">3</span>))) <span class="co">#Calculado tomando 3 como origen.</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  DicMat   <span class="op">=</span> { <span class="dv">0</span>: (K12 <span class="op">+</span> K13)<span class="op">/</span>m1,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>               <span class="dv">2</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3)<span class="op">*</span>exp(<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>               <span class="dv">3</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>               <span class="dv">4</span>: (K23<span class="op">+</span>K12)<span class="op">/</span>m2,</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>               <span class="dv">5</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>               <span class="dv">6</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3)<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>               <span class="dv">7</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>               <span class="dv">8</span>: (K23 <span class="op">+</span> K13)<span class="op">/</span>m3 }</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  Dinteger <span class="op">=</span> array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>],</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>],</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]])</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>  Dm <span class="op">=</span> [ [DicMat[i] <span class="cf">for</span> i <span class="kw">in</span> rw] <span class="cf">for</span> rw <span class="kw">in</span> Dinteger ]</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  Dynamical <span class="op">=</span> asarray(np.bmat(Dm))</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  ω<span class="dv">2</span>,eigvecs <span class="op">=</span> eigh(Dynamical)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  PM <span class="op">=</span> []</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    ω <span class="op">=</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>[i]))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> eigvec[<span class="dv">6</span>:]</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> [q1,q2,q3]</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>    pz <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>        pz <span class="op">=</span> pz <span class="op">+</span> M[i]<span class="op">*</span>Q[i][<span class="dv">2</span>]<span class="op">*</span>(X[i]<span class="op">*</span>Q[i][<span class="dv">1</span>] <span class="op">-</span> Y[i]<span class="op">*</span>Q[i][<span class="dv">0</span>]).real</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    PM.append(pz)</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,PM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Definimos una función que recibe como entrada los modos normales de una una función y regresa el valor de CCM para cada modo.</p>
-<div id="1d88ca76" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> CCM_mode(ω,c):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> c[<span class="dv">0</span>:<span class="dv">3</span>]</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> c[<span class="dv">3</span>:<span class="dv">6</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> c[<span class="dv">6</span>:]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  Q <span class="op">=</span> [q1,q2,q3]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  num <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  den <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> q <span class="kw">in</span> Q:</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      num <span class="op">=</span> num <span class="op">+</span> CCMMax(q)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      den <span class="op">=</span> den <span class="op">+</span> vdot(q,q).real</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> (num<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>den))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="817a04ef" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> []</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3PM,Kpoints) ))</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,psmom <span class="kw">in</span> KevaluateC3:</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  PseudomomC3.append(psmom)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> array(PseudomomC3)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PseudomomC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="fl">0.1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="635fe709" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> []</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3PM,Kpoints) ))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,psmom <span class="kw">in</span> KevaluateC3:</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  PseudomomC3.append(psmom)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>PseudomomC3 <span class="op">=</span> array(PseudomomC3)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PseudomomC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="fl">0.1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/diegobautistaaviles/anaconda3/envs/chiral/lib/python3.12/site-packages/matplotlib/cbook.py:1699: ComplexWarning:
 
@@ -679,7 +673,7 @@ Casting complex values to real discards the imaginary part
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CCMC3_files/figure-html/cell-17-output-2.png" width="424" height="503" class="figure-img"></p>
+<p><img src="CCMC3_files/figure-html/cell-18-output-2.png" width="424" height="503" class="figure-img"></p>
 </figure>
 </div>
 </div>
