@@ -291,6 +291,25 @@ ax.set_xticklabels(Klabels,fontsize = 20);
 Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
 
 ```{python}
+def CCM_mode(ω,c):
+  q1 = sqrt(m1) * c[0:3]
+  q2 = sqrt(m2) * c[3:6]
+  q3 = sqrt(m3) * c[6:]
+
+  Q = [q1,q2,q3]
+
+  num = 0
+  den = 0
+
+  for q in Q:
+      num = num + CCMMax(q)
+      den = den + vdot(q,q).real
+
+  return 1 - (num/(2*den))
+```
+
+
+```{python}
 def EigenfrequenciesC3PM(k):
 
   """Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""
@@ -344,6 +363,8 @@ def EigenfrequenciesC3PM(k):
 
   return sqrt(abs(ω2))/2/pi,PM
 ```
+
+Definimos una función que recibe como entrada los modos normales de una una función y regresa el valor de CCM para cada modo.
 
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
