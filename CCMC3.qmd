@@ -5,9 +5,9 @@ from pylab import *
 import plotly.graph_objects as go
 ```
 
-Los cálculos de la estructura de bandas se realizan de forma análoga a los descritos en el capítulo anterior. En este capítulo, sin embargo, se calcula la quiralidad de la estructura y los fonones usando el CCM como criterio.
+ En este capítulo se estudiará la quiralidad de los modos normales de una cadena quiral con simetría $C_{3}$. Los criterios usados son la polarización de fonón, el CCM y el pseudoescalar de momento angular.
 
-Debajo, se definen varias constantes a emplear. Dentro de estas están las masas de los sitios, la longitud de los lados del ángulo vista desde arriba, las constantes de resorte y el ángulo de los enlaces respecto al plano x - y. Además, se definen las posiciones los tres átomos dentro de la celda unitaria, y dos átomos de celdas vecinas. 
+Debajo, se definen varias constantes a emplear. Dentro de estas están las masas de los sitios, la longitud de los lados del ángulo vista desde arriba, las constantes de resorte y el ángulo de los enlaces respecto al plano x - y. Además, se definen las posiciones los tres átomos dentro de la celda unitaria, y dos átomos de celdas vecinas. También, se defienen dos rotaciones que serán usadas de forma constante. 
 
 ```{python}
 # Masas de los distintos sitios. 
@@ -36,10 +36,23 @@ a = 1
 # Longitud de la celda unitaria.
 c = 3 * a * tan(φxy)
 
+#Rotación de φ respecto al plano x - y.
+def T(φ):
+  return array([[cos(φ) ,0.  ,sin(φ)],
+                [0.     ,1.  ,0],
+                [-sin(φ),0.  ,cos(φ)]])
+
+                #Rotación respecto al eje z.
+def U(θ):
+  return array([[cos(θ),-sin(θ),0],
+              [sin(θ),cos(θ),0],
+              [       0,      0,1]] )
+
+
 # Posiciones de los átomos en la celda unitaria de la cadena.
 r1 = array([1,0,0])
-r2 = array([-1/2, sqrt(3)/2,c/3])
-r3 = array([-1/2, -sqrt(3)/2,2*c/3])
+r2 = dot(U(2*pi/3),r1) + array([0,0,c/3])
+r3 = dot(U(4*pi/3),r1)+ array([0,0,2*c/3])
 
 # Posición de los átomos en la celda vecina. 
 r1plus = r1 + [0,0,c]
@@ -78,18 +91,9 @@ fig.show()
 
 Para calcular el CCM de la estructura se sigue la definición del capítulo pasado. Sin embargo, para hacer este cálculo sólo se consideran reflexiones por planos que contengan al eje z. Esto pues sólo nos interesa la quiralidad respecto a este eje. Aún así, se define una rotación respecto al plano x - y que será utilizada más adelante en el cálculo de la matriz dinámica. 
 
-```{python}
-#Rotación de φ respecto al plano x - y.
-def T(φ):
-  return array([[cos(φ) ,0.  ,sin(φ)],
-                [0.     ,1.  ,0],
-                [-sin(φ),0.  ,cos(φ)]])
 
-                #Rotación respecto al eje z.
-def U(θ):
-  return array([[cos(θ),-sin(θ),0],
-              [sin(θ),cos(θ),0],
-              [       0,      0,1]] )
+```{python}
+r2 - dot(U(2*pi/3),r1)
 ```
 
 También se definen la matriz identidad en 3D y una reflexión respecto al plano xz. Además, se define una funciín que transforma operadores. Esta función se usará para rotar el plano respecto al cual se realiza la rotación. 
@@ -235,7 +239,7 @@ def EigenfrequenciesC3(k):
   return sqrt(abs(ω2))/2/pi,eigvecs
 ```
 
-Se definió una función que calculaba el CCM dadas una frecuencia y un modo normal. 
+Se definieron funciones que calculaba la polarización de fonón, la CCM y el pseudoescalar de momento angular dadas una frecuencia y un modo normal. 
 
 ```{python}
 def CCM_general(ω,eigvecs):
@@ -251,8 +255,6 @@ def CCM_general(ω,eigvecs):
     num = 0
     den = 0
 
-    
-
     for q in Q:
         num += CCMMax(q)
         den += vdot(q,q).real
@@ -262,6 +264,46 @@ def CCM_general(ω,eigvecs):
   return CCM
 ```
 
+```{python}
+# Primero se define una función que regresa el operador de polarización de fonón. 
+def OperadorPseudomomento(n):
+
+  Sz = array([[0,-1J,0],
+              [1J,0,0],
+              [0,0,0]],dtype=complex)
+
+  return np.kron(np.eye(n,dtype=complex),Sz)
+
+S = OperadorPseudomomento(3)
+
+def Pol_general(ω,eigvecs):
+  Pol = []
+  for i in range(len(ω)):
+    eigvec = eigvecs[:,i]
+    Pol.append(expectedval(eigvec,S))
+
+  return Pol
+```
+```{python}
+def Pz_general(ω,eigvecs):
+  pzlist = []
+  for i in range(len(ω)):
+    eigvec = eigvecs[:,i]
+    ω = sqrt(abs(ω2[i]))/2/pi
+    q1 = sqrt(m1) * eigvec[0:3]
+    q2 = sqrt(m2) * eigvec[3:6]
+    q3 = sqrt(m3) * eigvec[6:]
+
+    Q = [q1,q2,q3]
+
+    pz = 0
+
+    for i in range(len(Q)):
+        pz = pz + M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
+    pzlist.append(pz)
+
+  return pzlist
+```
 Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}$ junto con los respectivos valores de CCM en cada punto:
 
 ```{python}
@@ -273,6 +315,8 @@ Kticks = concatenate([[0],[250],[500]])
 BandasC3 = []
 EigvecsC3 = []
 CCMC3 = []
+PolC3 = []
+PzC3 = []
 
 KevaluateC3 = (list( map(EigenfrequenciesC3,Kpoints) ))
 
@@ -282,15 +326,28 @@ for ω2,eigvec in KevaluateC3:
 
 for i in range(len(BandasC3)):
   CCMC3.append(CCM_general(BandasC3[i],EigvecsC3[i]))
+  PolC3.append(Pol_general(BandasC3[i],EigvecsC3[i]))
+  PzC3.append(Pz_general(BandasC3[i],EigvecsC3[i]))
 
 CCMC3 = array(CCMC3)
 BandasC3 = array(BandasC3)
+PolC3 = array(PolC3)
+PzC3 = array(PzC3)
 ```
 
 ```{python}
 numKC3,nbandsC3 = shape(BandasC3)
 kenumC3 = arange(numKC3)
 
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC3):
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PolC3.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
+
+```{python}
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC3):
   graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = CCMC3.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
@@ -299,91 +356,15 @@ ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
 
-Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
-
-
 ```{python}
-def EigenfrequenciesC3PM(k):
-
-  """Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""
-
-  #Se define el tensor de esfuerzos de todo el sistema.
-
-  #Matriz con constante de fuerza considerando una rotación respecto al plano x - y.
-  φxy = pi/3
-  Kx2 = dot(T(φxy),dot(Kx,T(-φxy)))
-
-  #Matrices de fuerza para cada uno de los vectores en la red.
-  K23 = dot(U(pi),dot(Kx2,U(-pi)))     #Calculada tomando 2 como origen.
-  K12 = dot(U(pi/3),dot(Kx2,U(-pi/3))) #Calculada tomando 1 como origen.
-  K13 = dot(U(-pi/3),dot(Kx2,U(pi/3))) #Calculado tomando 3 como origen.
-
-  DicMat   = { 0: (K12 + K13)/m1,
-               1: -K12/sqrt(m1*m2),
-               2: -K13/sqrt(m1*m3)*exp(-1J*k*c),
-               3: -K12/sqrt(m1*m2),
-               4: (K23+K12)/m2,
-               5: -K23/sqrt(m2*m3),
-               6: -K13/sqrt(m1*m3)*exp(1J*k*c),
-               7: -K23/sqrt(m2*m3),
-               8: (K23 + K13)/m3 }
-
-  Dinteger = array([[0,1,2],
-                    [3,4,5],
-                    [6,7,8]])
-
-  Dm = [ [DicMat[i] for i in rw] for rw in Dinteger ]
-  Dynamical = asarray(np.bmat(Dm))
-
-  ω2,eigvecs = eigh(Dynamical)
-
-  PM = []
-    
-  for i in range(len(ω2)):
-    eigvec = eigvecs[:,i]
-    ω = sqrt(abs(ω2[i]))/2/pi
-    q1 = sqrt(m1) * eigvec[0:3]
-    q2 = sqrt(m2) * eigvec[3:6]
-    q3 = sqrt(m3) * eigvec[6:]
-
-    Q = [q1,q2,q3]
-
-    pz = 0
-
-    for i in range(3):
-        pz = pz + M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
-    PM.append(pz)
-
-  return sqrt(abs(ω2))/2/pi,PM
-```
-
-Definimos una función que recibe como entrada los modos normales de una una función y regresa el valor de CCM para cada modo.
-
-```{python}
-Kpoints = np.linspace(-pi/c,pi/c,500)
-
-Klabels = [r"K/2",r"Γ",r"K/2"]
-Kticks = concatenate([[0],[250],[500]])
-
-BandasC3 = []
-PseudomomC3 = []
-
-KevaluateC3 = (list( map(EigenfrequenciesC3PM,Kpoints) ))
-
-for ω2,psmom in KevaluateC3:
-  BandasC3.append(ω2)
-  PseudomomC3.append(psmom)
-
-BandasC3 = array(BandasC3)
-PseudomomC3 = array(PseudomomC3)
-
-numKC3,nbandsC3 = shape(BandasC3)
-kenumC3 = arange(numKC3)
-
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC3):
-  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PseudomomC3.T[j],cmap = "coolwarm",vmax = 0.1, vmin = -0.1,s = 5)
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PzC3.T[j],cmap = "coolwarm",vmax = 0.1, vmin = -0.1,s = 5)
 fig.colorbar(graficaC3)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
+
+Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
+
+
