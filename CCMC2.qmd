@@ -1,4 +1,4 @@
-# Cálculo de CCM para una cadena quiral C3
+# Cálculo de CCM para una cadena quiral C2
 
 ```{python}
 from pylab import *
@@ -8,15 +8,12 @@ import plotly.graph_objects as go
 Los cálculos de la estructura de bandas se realizan de forma análoga a los descritos en el capítulo anterior. En este capítulo, sin embargo, se calcula la quiralidad de la estructura y los fonones usando el CCM como criterio.
 
 ```{python}
-#Constantes
+# Masas de los distintos sitios. 
 m1 = 1
 m2 = 1
-m3 = 1
 
-c = 1
-```
+M = [m1,m2]
 
-```{python}
 #Matriz de resortes a lo largo de x.
 KL = 1
 KT1 = 0.05
@@ -32,21 +29,33 @@ d = 2
 
 φxy = arccos(a/d)
 
-c = 3 * a * tan(φxy)
+c = 2 * a * tan(φxy)
+
+#Rotación de φ respecto al plano x - y.
+def T(φ):
+  return array([[cos(φ) ,0.  ,sin(φ)],
+                [0.     ,1.  ,0],
+                [-sin(φ),0.  ,cos(φ)]])
+
+                #Rotación respecto al eje z.
+def U(θ):
+  return array([[cos(θ),-sin(θ),0],
+              [sin(θ),cos(θ),0],
+              [       0,      0,1]] )
 
 r1 = array([1,0,0])
-r2 = array([-1/2, sqrt(3)/2,c/3])
-r3 = array([-1/2, -sqrt(3)/2,2*c/3])
+r2 = dot(U(2*pi/2),r1) + array([0,0,c/2])
 r1plus = r1 + [0,0,c]
-r3minus = r3 - [0,0,c]
+r2minus = r2 - [0,0,c]
 
-positions = array([r1,r2,r3])
+positions = array([r1,r2])
 
-positionsnn = array([r3minus,r1plus])
+positionsnn = array([r2minus,r1plus])
 
 X,Y,Z = positions.T
 Xnn,Ynn,Znn = positionsnn.T
 ```
+
 
 
 ```{python}
@@ -58,9 +67,7 @@ DATA.append(go.Scatter3d(x= [X[0],Xnn[0]], y=[Y[0],Ynn[0]], z=[Z[0],Znn[0]],mode
 
 DATA.append(go.Scatter3d(x= [X[0],X[1]], y=[Y[0],Y[1]], z=[Z[0],Z[1]],mode='lines',line=dict(color='blue'),showlegend=False))
 
-DATA.append(go.Scatter3d(x= [X[2],X[1]], y=[Y[2],Y[1]], z=[Z[2],Z[1]],mode='lines',line=dict(color='blue'),showlegend=False))
-
-DATA.append(go.Scatter3d(x= [X[2],Xnn[1]], y=[Y[2],Ynn[1]], z=[Z[2],Znn[1]],mode='lines',line=dict(color='red'),showlegend=False))
+DATA.append(go.Scatter3d(x= [X[1],Xnn[1]], y=[Y[1],Ynn[1]], z=[Z[1],Znn[1]],mode='lines',line=dict(color='red'),showlegend=False))
 
 ```
 
@@ -71,25 +78,6 @@ fig.show()
 
 ## Cálculo de CCM de la estructura
 
-Para calcular el CCM de la estructura, se definen algunas rotaciones útiles. 
-
-```{python}
-#Rotación de φ respecto al plano x - y.
-def T(φ):
-  return array([[cos(φ) ,0.  ,sin(φ)],
-                [0.     ,1.  ,0],
-                [-sin(φ),0.  ,cos(φ)]])
-```
-
-```{python}
-#Rotación respecto al eje z.
-def U(θ):
-  return array([[cos(θ),-sin(θ),0],
-              [sin(θ),cos(θ),0],
-              [       0,      0,1]] )
-
-```
-
 ```{python}
 
 #Matriz identidad.
@@ -97,7 +85,7 @@ Id = array([[1,0,0],
             [0,1,0],
             [0,0,1]] )
 
-#Reflexión respecto al eje y.
+#Reflexión respecto al plano x - z.
 σy = array([[-1,0,0],
             [0,1,0],
             [0,0,1]] )
@@ -110,7 +98,7 @@ def TensT(O,A):
 Con esto, se define la función que hace el cálculo del CCM de la estructura.
 
 ```{python}
-RCM = (m1*r1 + m2*r2 + m3*r3)/(m1 + m2 + m3)
+RCM = (m1*r1 + m2*r2)/(m1 + m2)
 
 # Coordenada Relativa 1
 qrcm1 = sqrt(m1)*(r1 - RCM)
@@ -118,9 +106,7 @@ qrcm1 = sqrt(m1)*(r1 - RCM)
 #Coordenada Relativa 2
 qrcm2 = sqrt(m2)*(r2 - RCM)
 
-qrcm3 = sqrt(m3)*(r3 - RCM)
-
-Qrcm = [qrcm1,qrcm2,qrcm3]
+Qrcm = [qrcm1,qrcm2]
 ```
 
 ```{python}
@@ -147,7 +133,7 @@ CCM_estructura = []
 for ref in σ:
     CCM_estructura.append(CCMS(ref))
 
-print("La CCM de la estructura es", str(np.max(CCM_estructura)))
+print("La CCM de la estructura es", str(np.min(CCM_estructura)))
 ```
 
 ```{python}
@@ -163,27 +149,14 @@ ax.set_ylabel("CCM",fontsize = 20)
 plt.show()
 ```
 
-```{python}
-#Matriz de resortes a lo largo de x.
-KL = 1
-KT1 = 0.05
-KT2 = 0.25
 
-Kx = array([[KL,0,0],
-              [0,KT1,0],
-              [0,0,KT2]],dtype=complex)
-```
-
-```{python}
-def expectedval(vec,S):
-    return dot(np.conj(vec).T,dot(S,vec)).real
-```
-
-# Cálculos para la simetría $C_{3}$
+# Cálculos de los modos vibracionales$
 
 Debajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría $C_{2}$, y que además obtiene la polarización de los modos vibracionales. 
 
 ```{python}
+def expectedval(vec,S):
+    return dot(np.conj(vec).T,dot(S,vec)).real
 
 θ = linspace(0,pi,300)
 
@@ -195,11 +168,10 @@ def CCMMax(q):
             max = abs(expectedval(q,Id + σ))
             M = expectedval(q,Id + σ)
     return M
-    
 ```
 
 ```{python}
-def EigenfrequenciesC3(k):
+def EigenfrequenciesC2(k):
 
   """Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""
 
@@ -210,38 +182,32 @@ def EigenfrequenciesC3(k):
   Kx2 = dot(T(φxy),dot(Kx,T(-φxy)))
 
   #Matrices de fuerza para cada uno de los vectores en la red.
-  K23 = dot(U(pi),dot(Kx2,U(-pi)))     #Calculada tomando 2 como origen.
-  K12 = dot(U(pi/3),dot(Kx2,U(-pi/3))) #Calculada tomando 1 como origen.
-  K13 = dot(U(-pi/3),dot(Kx2,U(pi/3))) #Calculado tomando 3 como origen.
+  K12 = dot(U(0),dot(Kx2,U(0)))
 
-  DicMat   = { 0: (K12 + K13)/m1,
-               1: -K12/sqrt(m1*m2),
-               2: -K13/sqrt(m1*m3)*exp(-1J*k*c),
-               3: -K12/sqrt(m1*m2),
-               4: (K23+K12)/m2,
-               5: -K23/sqrt(m2*m3),
-               6: -K13/sqrt(m1*m3)*exp(1J*k*c),
-               7: -K23/sqrt(m2*m3),
-               8: (K23 + K13)/m3 }
+  DicMat   = { 0:  2* K12/m1,
+               1: -1*(K12 + K12*exp(-1J*k*c))/sqrt(m1*m2),
+               2: -1*(K12 + K12*exp(-1J*k*c)).conj().T/sqrt(m1*m2),
+               3:  2*K12/m2}
 
-  Dinteger = array([[0,1,2],
-                    [3,4,5],
-                    [6,7,8]])
+
+  Dinteger = array([[0,1],
+                    [2,3]])
 
   Dm = [ [DicMat[i] for i in rw] for rw in Dinteger ]
   Dynamical = asarray(np.bmat(Dm))
 
   ω2,eigvecs = eigh(Dynamical)
 
-  #Se definen los operadores de Pseudomomento.
+  return sqrt(abs(ω2))/2/pi,eigvecs
+```
 
+```{python}
+def CCM_general(ω,eigvecs):
   CCM = []
-    
   for i in range(len(ω2)):
     eigvec = eigvecs[:,i]
     q1 = sqrt(m1) * eigvec[0:3]
-    q2 = sqrt(m2) * eigvec[3:6]
-    q3 = sqrt(m3) * eigvec[6:]
+    q2 = sqrt(m2) * eigvec[3:]
 
     Q = [q1,q2]
 
@@ -249,15 +215,54 @@ def EigenfrequenciesC3(k):
     den = 0
 
     for q in Q:
-        num = num + CCMMax(q)
-        den = den + vdot(q,q).real
+        num += CCMMax(q)
+        den += vdot(q,q).real
 
     CCM.append(1 - (num/(2*den)))
 
-  return sqrt(abs(ω2))/2/pi,CCM
+  return CCM
 ```
 
-Finalmente, se muestra la gráfica de bandas para la cadena $C_{2}$:
+```{python}
+# Primero se define una función que regresa el operador de polarización de fonón. 
+def OperadorPseudomomento(n):
+
+  Sz = array([[0,-1J,0],
+              [1J,0,0],
+              [0,0,0]],dtype=complex)
+
+  return np.kron(np.eye(n,dtype=complex),Sz)
+
+S = OperadorPseudomomento(2)
+
+def Pol_general(ω,eigvecs):
+  Pol = []
+  for i in range(len(ω)):
+    eigvec = eigvecs[:,i]
+    Pol.append(expectedval(eigvec,S))
+
+  return Pol
+```
+
+```{python}
+def Pz_general(ω,eigvecs):
+  pzlist = []
+  for i in range(len(ω)):
+    eigvec = eigvecs[:,i]
+    ω = sqrt(abs(ω2[i]))/2/pi
+    q1 = sqrt(m1) * eigvec[0:3]
+    q2 = sqrt(m2) * eigvec[3:6]
+
+    Q = [q1,q2]
+
+    pz = 0
+
+    for i in range(len(Q)):
+        pz = pz + M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
+    pzlist.append(pz)
+
+  return pzlist
+```
 
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
@@ -265,26 +270,61 @@ Kpoints = np.linspace(-pi/c,pi/c,500)
 Klabels = [r"K/2",r"Γ",r"K/2"]
 Kticks = concatenate([[0],[250],[500]])
 
-BandasC3 = []
-PseudomomC3 = []
+BandasC2 = []
+EigvecsC2 = []
+CCMC2 = []
+PolC2 = []
+PzC2 = []
 
-KevaluateC3 = (list( map(EigenfrequenciesC3,Kpoints) ))
+KevaluateC2 = (list( map(EigenfrequenciesC2,Kpoints) ))
 
-for ω2,psmom in KevaluateC3:
-  BandasC3.append(ω2)
-  PseudomomC3.append(psmom)
+for ω2,eigvec in KevaluateC2:
+  BandasC2.append(ω2)
+  EigvecsC2.append(eigvec)
 
-BandasC3 = array(BandasC3)
-PseudomomC3 = array(PseudomomC3)
+for i in range(len(BandasC2)):
+  CCMC2.append(CCM_general(BandasC2[i],EigvecsC2[i]))
+  PolC2.append(Pol_general(BandasC2[i],EigvecsC2[i]))
+  PzC2.append(Pz_general(BandasC2[i],EigvecsC2[i]))
 
-numKC3,nbandsC3 = shape(BandasC3)
-kenumC3 = arange(numKC3)
+CCMC2 = array(CCMC2)
+BandasC2 = array(BandasC2)
+PolC2 = array(PolC2)
+PzC2 = array(PzC2)
+```
+
+```{python}
+numKC2,nbandsC2 = shape(BandasC2)
+kenumC2 = arange(numKC2)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
-for j in range(nbandsC3):
-  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PseudomomC3.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
+for j in range(nbandsC2):
+  graficaC3 = ax.scatter(kenumC2,BandasC2.T[j],c = PolC2.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
 fig.colorbar(graficaC3)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
 
+```{python}
+numKC2,nbandsC2 = shape(BandasC2)
+kenumC2 = arange(numKC2)
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC2):
+  graficaC3 = ax.scatter(kenumC2,BandasC2.T[j],c = CCMC2.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
+
+```{python}
+numKC2,nbandsC2 = shape(BandasC2)
+kenumC2 = arange(numKC2)
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC2):
+  graficaC3 = ax.scatter(kenumC2,BandasC2.T[j],c = PzC2.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
