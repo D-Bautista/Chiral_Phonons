@@ -356,8 +356,8 @@ kenumC4 = arange(numKC4)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC4):
-  graficaC3 = ax.scatter(kenumC4,BandasC4.T[j],c = PolC4.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
-fig.colorbar(graficaC3)
+  graficaC4 = ax.scatter(kenumC4,BandasC4.T[j],c = PolC4.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC4)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
@@ -368,8 +368,8 @@ kenumC4 = arange(numKC4)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC4):
-  graficaC3 = ax.scatter(kenumC4,BandasC4.T[j],c = CCMC4.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
-fig.colorbar(graficaC3)
+  graficaC4 = ax.scatter(kenumC4,BandasC4.T[j],c = CCMC4.T[j],cmap = "Reds",vmax = 1, vmin = 0,s = 5)
+fig.colorbar(graficaC4)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```
@@ -380,8 +380,8 @@ kenumC4 = arange(numKC4)
 
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC4):
-  graficaC3 = ax.scatter(kenumC4,BandasC4.T[j],c = PzC4.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
-fig.colorbar(graficaC3)
+  graficaC4 = ax.scatter(kenumC4,BandasC4.T[j],c = PzC4.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC4)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
 ```

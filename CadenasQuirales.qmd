@@ -258,6 +258,11 @@ ax.set_xticklabels(Klabels,fontsize = 20);
 Debajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría $C_{2}$, y que además obtiene la polarización de los modos vibracionales. 
 
 ```{python}
+def rad(x):
+  return x*pi/180
+```
+
+```{python}
 def EigenfrequenciesC4(k):
 
   """Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""
