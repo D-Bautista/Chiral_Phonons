@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,11 +17,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,47 +47,17 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -110,7 +81,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,31 +96,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-        <script type="text/javascript">
-        window.PlotlyConfig = {MathJaxConfig: 'local'};
-        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-        if (typeof require !== 'undefined') {
-        require.undef("plotly");
-        requirejs.config({
-            paths: {
-                'plotly': ['https://cdn.plot.ly/plotly-2.27.0.min']
-            }
-        });
-        require(['plotly'], function(Plotly) {
-            window._Plotly = Plotly;
-        });
-        }
-        </script>
-        
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.27.0.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -151,11 +158,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CCMC3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,60 +175,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Chiral_Phonons</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></a>
+  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></a>
+  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./GrafenoCCM.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></a>
+  <a href="./GrafenoCCM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CCMC3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></a>
+  <a href="./CCMC3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">Referencias</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cálculo-de-ccm-de-la-estructura" id="toc-cálculo-de-ccm-de-la-estructura" class="nav-link active" data-scroll-target="#cálculo-de-ccm-de-la-estructura"><span class="toc-section-number">4.1</span>  Cálculo de CCM de la estructura</a></li>
-  <li><a href="#cálculos-del-ccm-de-los-modos-vibracionales" id="toc-cálculos-del-ccm-de-los-modos-vibracionales" class="nav-link" data-scroll-target="#cálculos-del-ccm-de-los-modos-vibracionales"><span class="toc-section-number">4.2</span>  Cálculos del CCM de los modos vibracionales</a></li>
+  <li><a href="#cálculo-de-ccm-de-la-estructura" id="toc-cálculo-de-ccm-de-la-estructura" class="nav-link active" data-scroll-target="#cálculo-de-ccm-de-la-estructura"><span class="header-section-number">4.1</span> Cálculo de CCM de la estructura</a></li>
+  <li><a href="#cálculos-del-ccm-de-los-modos-vibracionales" id="toc-cálculos-del-ccm-de-los-modos-vibracionales" class="nav-link" data-scroll-target="#cálculos-del-ccm-de-los-modos-vibracionales"><span class="header-section-number">4.2</span> Cálculos del CCM de los modos vibracionales</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></h1>
 </div>
 
 
@@ -238,15 +257,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
+
+<div id="cbfc9fd8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En este capítulo se estudiará la quiralidad de los modos normales de una cadena quiral con simetría <span class="math inline">\(C_{3}\)</span>. Los criterios usados son la polarización de fonón, el CCM y el pseudoescalar de momento angular.</p>
 <p>Debajo, se definen varias constantes a emplear. Dentro de estas están las masas de los sitios, la longitud de los lados del ángulo vista desde arriba, las constantes de resorte y el ángulo de los enlaces respecto al plano x - y. Además, se definen las posiciones los tres átomos dentro de la celda unitaria, y dos átomos de celdas vecinas. También, se defienen dos rotaciones que serán usadas de forma constante.</p>
-<div class="cell" data-execution_count="2">
+<div id="a251c9a4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Masas de los distintos sitios. </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> <span class="dv">1</span></span>
@@ -273,37 +294,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Longitud de la celda unitaria.</span></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> a <span class="op">*</span> tan(φxy)</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Rotación de φ respecto al plano x - y.</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(φ):</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(φ) ,<span class="fl">0.</span>  ,sin(φ)],</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                [<span class="fl">0.</span>     ,<span class="fl">1.</span>  ,<span class="dv">0</span>],</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                [<span class="op">-</span>sin(φ),<span class="fl">0.</span>  ,cos(φ)]])</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Rotación respecto al eje z.</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> U(θ):</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(θ),<span class="op">-</span>sin(θ),<span class="dv">0</span>],</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>              [sin(θ),cos(θ),<span class="dv">0</span>],</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>              [       <span class="dv">0</span>,      <span class="dv">0</span>,<span class="dv">1</span>]] )</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Posiciones de los átomos en la celda unitaria de la cadena.</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>r1 <span class="op">=</span> array([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> dot(U(<span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>),r1) <span class="op">+</span> array([<span class="dv">0</span>,<span class="dv">0</span>,c<span class="op">/</span><span class="dv">3</span>])</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>r3 <span class="op">=</span> dot(U(<span class="dv">4</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>),r1)<span class="op">+</span> array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>c<span class="op">/</span><span class="dv">3</span>])</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Posición de los átomos en la celda vecina. </span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>r1plus <span class="op">=</span> r1 <span class="op">+</span> [<span class="dv">0</span>,<span class="dv">0</span>,c]</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>r3minus <span class="op">=</span> r3 <span class="op">-</span> [<span class="dv">0</span>,<span class="dv">0</span>,c]</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> array([r1,r2,r3])</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>avec <span class="op">=</span> array([<span class="dv">0</span>,<span class="dv">0</span>,c])</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#Rotación de φ respecto al plano x - y.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(φ):</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(φ) ,<span class="fl">0.</span>  ,sin(φ)],</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                [<span class="fl">0.</span>     ,<span class="fl">1.</span>  ,<span class="dv">0</span>],</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                [<span class="op">-</span>sin(φ),<span class="fl">0.</span>  ,cos(φ)]])</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Rotación respecto al eje z.</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> U(θ):</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(θ),<span class="op">-</span>sin(θ),<span class="dv">0</span>],</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>              [sin(θ),cos(θ),<span class="dv">0</span>],</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>              [       <span class="dv">0</span>,      <span class="dv">0</span>,<span class="dv">1</span>]] )</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Posiciones de los átomos en la celda unitaria de la cadena.</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>r1 <span class="op">=</span> array([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> dot(U(<span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>),r1) <span class="op">+</span> array([<span class="dv">0</span>,<span class="dv">0</span>,c<span class="op">/</span><span class="dv">3</span>])</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>r3 <span class="op">=</span> dot(U(<span class="dv">4</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>),r1)<span class="op">+</span> array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>c<span class="op">/</span><span class="dv">3</span>])</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Posición de los átomos en la celda vecina. </span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>r1plus <span class="op">=</span> r1 <span class="op">+</span> avec</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>r3minus <span class="op">=</span> r3 <span class="op">-</span> avec</span>
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>positionsnn <span class="op">=</span> array([r3minus,r1plus])</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> array([r1,r2,r3])</span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>X,Y,Z <span class="op">=</span> positions.T</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>Xnn,Ynn,Znn <span class="op">=</span> positionsnn.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>positionsnn <span class="op">=</span> array([r3minus,r1plus])</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>X,Y,Z <span class="op">=</span> positions.T</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>Xnn,Ynn,Znn <span class="op">=</span> positionsnn.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Debajo, se muestra una imagen de la cadena.</p>
-<div class="cell" data-execution_count="3">
+<div id="2e0076bd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> [go.Scatter3d(x<span class="op">=</span>X, y<span class="op">=</span>Y, z<span class="op">=</span>Z,mode<span class="op">=</span><span class="st">'markers'</span>,marker_color <span class="op">=</span> <span class="st">"blue"</span>,showlegend<span class="op">=</span><span class="va">False</span>)]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>DATA.append(go.Scatter3d(x<span class="op">=</span>Xnn, y<span class="op">=</span>Ynn, z<span class="op">=</span>Znn,mode<span class="op">=</span><span class="st">'markers'</span>,marker_color <span class="op">=</span> <span class="st">"red"</span>,showlegend<span class="op">=</span><span class="va">False</span>))</span>
@@ -316,14 +339,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>DATA.append(go.Scatter3d(x<span class="op">=</span> [X[<span class="dv">2</span>],Xnn[<span class="dv">1</span>]], y<span class="op">=</span>[Y[<span class="dv">2</span>],Ynn[<span class="dv">1</span>]], z<span class="op">=</span>[Z[<span class="dv">2</span>],Znn[<span class="dv">1</span>]],mode<span class="op">=</span><span class="st">'lines'</span>,line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'red'</span>),showlegend<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="1b404294" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>DATA)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
-<div>                            <div id="6c88f9d6-c0b4-47dc-8eff-78df51800f52" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("6c88f9d6-c0b4-47dc-8eff-78df51800f52")) {                    Plotly.newPlot(                        "6c88f9d6-c0b4-47dc-8eff-78df51800f52",                        [{"marker":{"color":"blue"},"mode":"markers","showlegend":false,"x":[1.0,-0.4999999999999998,-0.5000000000000004],"y":[0.0,0.8660254037844387,-0.8660254037844384],"z":[0.0,1.7320508075688767,3.4641016151377535],"type":"scatter3d"},{"marker":{"color":"red"},"mode":"markers","showlegend":false,"x":[-0.5000000000000004,1.0],"y":[-0.8660254037844384,0.0],"z":[-1.7320508075688767,5.19615242270663],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[1.0,-0.5000000000000004],"y":[0.0,-0.8660254037844384],"z":[0.0,-1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[1.0,-0.4999999999999998],"y":[0.0,0.8660254037844387],"z":[0.0,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[-0.5000000000000004,-0.4999999999999998],"y":[-0.8660254037844384,0.8660254037844387],"z":[3.4641016151377535,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[-0.5000000000000004,1.0],"y":[-0.8660254037844384,0.0],"z":[3.4641016151377535,5.19615242270663],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="936e2a7c-cc3f-4be3-8576-609f7ffaa276" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("936e2a7c-cc3f-4be3-8576-609f7ffaa276")) {                    Plotly.newPlot(                        "936e2a7c-cc3f-4be3-8576-609f7ffaa276",                        [{"marker":{"color":"blue"},"mode":"markers","showlegend":false,"x":[1.0,-0.49999999999999983,-0.5000000000000004],"y":[0.0,0.8660254037844387,-0.8660254037844384],"z":[0.0,1.7320508075688767,3.4641016151377535],"type":"scatter3d"},{"marker":{"color":"red"},"mode":"markers","showlegend":false,"x":[-0.5000000000000004,1.0],"y":[-0.8660254037844384,0.0],"z":[-1.7320508075688767,5.19615242270663],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[1.0,-0.5000000000000004],"y":[0.0,-0.8660254037844384],"z":[0.0,-1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[1.0,-0.49999999999999983],"y":[0.0,0.8660254037844387],"z":[0.0,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"blue"},"mode":"lines","showlegend":false,"x":[-0.5000000000000004,-0.49999999999999983],"y":[-0.8660254037844384,0.8660254037844387],"z":[3.4641016151377535,1.7320508075688767],"type":"scatter3d"},{"line":{"color":"red"},"mode":"lines","showlegend":false,"x":[-0.5000000000000004,1.0],"y":[-0.8660254037844384,0.0],"z":[3.4641016151377535,5.19615242270663],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('6c88f9d6-c0b4-47dc-8eff-78df51800f52');
+var gd = document.getElementById('936e2a7c-cc3f-4be3-8576-609f7ffaa276');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -351,14 +373,14 @@ if (outputEl) {{
 <section id="cálculo-de-ccm-de-la-estructura" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="cálculo-de-ccm-de-la-estructura"><span class="header-section-number">4.1</span> Cálculo de CCM de la estructura</h2>
 <p>Para calcular el CCM de la estructura se sigue la definición del capítulo pasado. Sin embargo, para hacer este cálculo sólo se consideran reflexiones por planos que contengan al eje z. Esto pues sólo nos interesa la quiralidad respecto a este eje. Aún así, se define una rotación respecto al plano x - y que será utilizada más adelante en el cálculo de la matriz dinámica.</p>
-<div class="cell" data-execution_count="5">
+<div id="5a5052e3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">-</span> dot(U(<span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>),r1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>array([0.        , 0.        , 1.73205081])</code></pre>
 </div>
 </div>
 <p>También se definen la matriz identidad en 3D y una reflexión respecto al plano xz. Además, se define una funciín que transforma operadores. Esta función se usará para rotar el plano respecto al cual se realiza la rotación.</p>
-<div class="cell" data-execution_count="6">
+<div id="416c4af6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz identidad.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Id <span class="op">=</span> array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
@@ -374,7 +396,7 @@ if (outputEl) {{
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dot( inv(O), dot(A,O) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ya con todas las funciones a usar bien definidas, se hace el cálculo de la CCM De la estructura. Para ello, primero se calculan las coordenadas respecto al centro de masa.</p>
-<div class="cell" data-execution_count="7">
+<div id="ccd07fe8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masa</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>RCM <span class="op">=</span> (m1<span class="op">*</span>r1 <span class="op">+</span> m2<span class="op">*</span>r2 <span class="op">+</span> m3<span class="op">*</span>r3)<span class="op">/</span>(m1 <span class="op">+</span> m2 <span class="op">+</span> m3)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -391,7 +413,7 @@ if (outputEl) {{
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>Qrcm <span class="op">=</span> [qrcm1,qrcm2,qrcm3]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Queremos calcular la CCM tal que el plano de inversión elegido maximize la superposición de la estructura con la estructura invertida. Para ello, se define una función que calcula el CCM de la estructura tomando una reflexión respecto a un plano de entrada.</p>
-<div class="cell" data-execution_count="8">
+<div id="2c49cdb7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> CCMS(σ):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> <span class="dv">0</span></span>
@@ -401,7 +423,7 @@ if (outputEl) {{
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> (num<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>den))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ya hecho esto, se calcula el CCM de la estructura. Notamos que para esta cadena el CCM es igual sin importar que plano de reflexión se use. Esto se ve en la gráfica mostrada debajo.</p>
-<div class="cell" data-execution_count="9">
+<div id="bbca088d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> linspace(<span class="dv">0</span>,pi,<span class="dv">300</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span> []</span>
@@ -417,10 +439,10 @@ if (outputEl) {{
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"La CCM de la estructura es"</span>, <span class="bu">str</span>(np.<span class="bu">min</span>(CCM_estructura)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>La CCM de la estructura es 0.16666666666666663</code></pre>
+<pre><code>La CCM de la estructura es 0.16666666666666674</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="44737db6" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Labels <span class="op">=</span> [<span class="vs">r"0"</span>,<span class="vs">r"π/2"</span>,<span class="vs">r"π"</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Ticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[pi<span class="op">/</span><span class="dv">2</span>],[pi]])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -432,7 +454,11 @@ if (outputEl) {{
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"CCM"</span>,fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CCMC3_files/figure-html/cell-11-output-1.png" width="528" height="392"></p>
+<div>
+<figure class="figure">
+<p><img src="CCMC3_files/figure-html/cell-11-output-1.png" width="527" height="392" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -440,7 +466,7 @@ if (outputEl) {{
 <h2 data-number="4.2" class="anchored" data-anchor-id="cálculos-del-ccm-de-los-modos-vibracionales"><span class="header-section-number">4.2</span> Cálculos del CCM de los modos vibracionales</h2>
 <p>Ahora calculamos el CCM asociado a los modos normales. Para ello, debemos también construir un programa que obtenga las frecuencias de dichos modos, así como una función que de el CCM de un modo dado.</p>
 <p>Primero, se define una función que regresa el valor máximo del producto <span class="math inline">\(\langle Q| Q \rangle\)</span> para cierto plano de reflexión. Además, se define una función que regresa el valor esperado y que será usada más adelante.</p>
-<div class="cell" data-execution_count="11">
+<div id="2d2000b9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> expectedval(vec,S):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dot(np.conj(vec).T,dot(S,vec)).real</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -456,7 +482,7 @@ if (outputEl) {{
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Luego, se define la función que calcula las frecuencias de un modo normal para un punto del espacio recíproco dado.</p>
-<div class="cell" data-execution_count="12">
+<div id="edf05e28" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC3(k):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
@@ -494,10 +520,10 @@ if (outputEl) {{
 <span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,eigvecs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Se definieron funciones que calculaba la polarización de fonón, la CCM y el pseudoescalar de momento angular dadas una frecuencia y un modo normal.</p>
-<div class="cell" data-execution_count="13">
+<div id="63504a66" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> CCM_general(ω,eigvecs):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  CCM <span class="op">=</span> []</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω)):</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
@@ -516,7 +542,7 @@ if (outputEl) {{
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> CCM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="530dc747" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primero se define una función que regresa el operador de polarización de fonón. </span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> OperadorPseudomomento(n):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -536,12 +562,12 @@ if (outputEl) {{
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Pol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="dc15a203" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Pz_general(ω,eigvecs):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  pzlist <span class="op">=</span> []</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω)):</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    ω <span class="op">=</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>[i]))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    ω<span class="dv">2</span> <span class="op">=</span> ω[i]</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> sqrt(m1) <span class="op">*</span> eigvec[<span class="dv">0</span>:<span class="dv">3</span>]</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> sqrt(m2) <span class="op">*</span> eigvec[<span class="dv">3</span>:<span class="dv">6</span>]</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> sqrt(m3) <span class="op">*</span> eigvec[<span class="dv">6</span>:]</span>
@@ -557,81 +583,264 @@ if (outputEl) {{
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pzlist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente, se muestra la gráfica de bandas para la cadena <span class="math inline">\(C_{3}\)</span> junto con los respectivos valores de CCM en cada punto:</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>EigvecsC3 <span class="op">=</span> []</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> []</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>PolC3 <span class="op">=</span> []</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>PzC3 <span class="op">=</span> []</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3,Kpoints) ))</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,eigvec <span class="kw">in</span> KevaluateC3:</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  EigvecsC3.append(eigvec)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(BandasC3)):</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  CCMC3.append(CCM_general(BandasC3[i],EigvecsC3[i]))</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  PolC3.append(Pol_general(BandasC3[i],EigvecsC3[i]))</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  PzC3.append(Pz_general(BandasC3[i],EigvecsC3[i]))</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> array(CCMC3)</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>PolC3 <span class="op">=</span> array(PolC3)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>PzC3 <span class="op">=</span> array(PzC3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c44809c0" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>w2,eigvecs <span class="op">=</span> EigenfrequenciesC3(<span class="fl">0.1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p0 <span class="op">=</span> Pol_general(w2,eigvecs)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.988329666333316, -0.9904377641895585, 0.0007179594774639263, 0.12385957236226755, -0.9029833865230039, 0.8472733754502861, -0.12457753183973172, 0.1431643887392731, -0.08534627981031255]</code></pre>
 </div>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PolC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="906618ea" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> []</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>EigvecsC3 <span class="op">=</span> []</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> []</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>PolC3 <span class="op">=</span> []</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>PzC3 <span class="op">=</span> []</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>KevaluateC3 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC3,Kpoints) ))</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,eigvec <span class="kw">in</span> KevaluateC3:</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  BandasC3.append(ω<span class="dv">2</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  EigvecsC3.append(eigvec)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(BandasC3)):</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  CCMC3.append(CCM_general(BandasC3[i],EigvecsC3[i]))</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  PolC3.append(Pol_general(BandasC3[i],EigvecsC3[i]))</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  PzC3.append(Pz_general(BandasC3[i],EigvecsC3[i]))</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>CCMC3 <span class="op">=</span> array(CCMC3)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>BandasC3 <span class="op">=</span> array(BandasC3)</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>PolC3 <span class="op">=</span> array(PolC3)</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>PzC3 <span class="op">=</span> array(PzC3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="40690e90" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>numKC3,nbandsC3 <span class="op">=</span> shape(BandasC3)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>kenumC3 <span class="op">=</span> arange(numKC3)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PolC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CCMC3_files/figure-html/cell-18-output-1.png" width="415" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CCMC3_files/figure-html/cell-19-output-1.png" width="415" height="503" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> CCMC3.T[j],cmap <span class="op">=</span> <span class="st">"Reds"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="dv">0</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6e967f8a" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> CCMC3.T[j],cmap <span class="op">=</span> <span class="st">"Reds"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="dv">0</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CCMC3_files/figure-html/cell-19-output-1.png" width="396" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CCMC3_files/figure-html/cell-20-output-1.png" width="395" height="503" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PzC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="fl">0.1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="aaab6e5c" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC3):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  graficaC3 <span class="op">=</span> ax.scatter(kenumC3,BandasC3.T[j],c <span class="op">=</span> PzC3.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="fl">0.1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC3)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/home/deigobau/anaconda3/envs/chiral/lib/python3.12/site-packages/matplotlib/cbook.py:1699: ComplexWarning:
+<pre><code>/Users/diegobautistaaviles/anaconda3/envs/chiral/lib/python3.12/site-packages/matplotlib/cbook.py:1699: ComplexWarning:
 
 Casting complex values to real discards the imaginary part
 
-/home/deigobau/anaconda3/envs/chiral/lib/python3.12/site-packages/matplotlib/axes/_axes.py:4455: ComplexWarning:
+/Users/diegobautistaaviles/anaconda3/envs/chiral/lib/python3.12/site-packages/matplotlib/axes/_axes.py:4455: ComplexWarning:
 
 Casting complex values to real discards the imaginary part
 </code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="CCMC3_files/figure-html/cell-20-output-2.png" width="424" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CCMC3_files/figure-html/cell-21-output-2.png" width="424" height="503" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo <span class="math inline">\(k\)</span>, este está determinado por <span class="math display">\[(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].\]</span> Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de <span class="math inline">\(k\)</span>.</p>
+<p>##&nbsp;Animación de modos normales</p>
+<div id="bf5ddbf0" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Animacion(k,n,num <span class="op">=</span> <span class="dv">4</span>):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    ωchirl,Eigenvectors <span class="op">=</span> EigenfrequenciesC3(k)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    ωchirl <span class="op">=</span> ωchirl[n]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    Eigenvectors <span class="op">=</span> Eigenvectors[:,n]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""NX,NY,NZ = meshgrid( range(-num + 1,num),range(-num+1,num),range(-num+1,num))</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">    NX = NX.flatten()</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">    NY = NY.flatten()</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">    NZ = NZ.flatten()</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">    NNs = column_stack([NX,NY,NZ])"""</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    NZ <span class="op">=</span> array( <span class="bu">range</span>(<span class="op">-</span>num <span class="op">+</span> <span class="dv">1</span>,num))  </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    NNs <span class="op">=</span> column_stack([NZ])</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    NZ <span class="op">=</span> NZ.flatten()</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    NNs <span class="op">=</span> column_stack([NZ])</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    avecs1 <span class="op">=</span> [avec]</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    xr,yr,zr <span class="op">=</span> dot( NNs,avecs1 ).T   </span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    xeq1,yeq1,zeq1 <span class="op">=</span> dot( NNs,avecs1 ).T <span class="op">+</span> <span class="op">+</span> kron(r1,ones(((<span class="dv">2</span><span class="op">*</span>num<span class="op">-</span><span class="dv">1</span>),<span class="dv">1</span>))).T</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    xeq2,yeq2,zeq2 <span class="op">=</span> dot( NNs,avecs1 ).T <span class="op">+</span> kron(r2,ones(((<span class="dv">2</span><span class="op">*</span>num<span class="op">-</span><span class="dv">1</span>),<span class="dv">1</span>))).T</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    xeq3,yeq3,zeq3 <span class="op">=</span> dot( NNs,avecs1 ).T <span class="op">+</span> kron(r3,ones(((<span class="dv">2</span><span class="op">*</span>num<span class="op">-</span><span class="dv">1</span>),<span class="dv">1</span>))).T</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> array([xr,yr,zr]).T</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ωchirl <span class="op">&lt;</span> <span class="fl">10E-3</span>:</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>        T      <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>        T <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span>ωchirl <span class="co"># periodo</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>    veces  <span class="op">=</span> <span class="dv">5</span>       <span class="co"># número de periodos</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Posición en el tiempo cero</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>    t0  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>    u10 <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ωchirl<span class="op">*</span>t0<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>dot(R,array([<span class="dv">0</span>,<span class="dv">0</span>,k])))</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>    x10 <span class="op">=</span> xeq1 <span class="op">+</span> Eigenvectors[<span class="dv">0</span>]<span class="op">*</span>u10</span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>    y10 <span class="op">=</span> yeq1 <span class="op">+</span> Eigenvectors[<span class="dv">1</span>]<span class="op">*</span>u10</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>    z10 <span class="op">=</span> zeq1 <span class="op">+</span> Eigenvectors[<span class="dv">2</span>]<span class="op">*</span>u10</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>    x20 <span class="op">=</span> xeq2 <span class="op">+</span> Eigenvectors[<span class="dv">3</span>]<span class="op">*</span>u10</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>    y20 <span class="op">=</span> yeq2 <span class="op">+</span> Eigenvectors[<span class="dv">4</span>]<span class="op">*</span>u10</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>    z20 <span class="op">=</span> zeq2 <span class="op">+</span> Eigenvectors[<span class="dv">5</span>]<span class="op">*</span>u10</span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>    x30 <span class="op">=</span> xeq3 <span class="op">+</span> Eigenvectors[<span class="dv">6</span>]<span class="op">*</span>u10</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>    y30 <span class="op">=</span> yeq3 <span class="op">+</span> Eigenvectors[<span class="dv">7</span>]<span class="op">*</span>u10</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>    z30 <span class="op">=</span> zeq3 <span class="op">+</span> Eigenvectors[<span class="dv">8</span>]<span class="op">*</span>u10</span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>    time   <span class="op">=</span> linspace(t0,veces<span class="op">*</span>T,endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>    Frames <span class="op">=</span> []</span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> time:</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>        u1 <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ωchirl<span class="op">*</span>t<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>dot(R,array([<span class="dv">0</span>,<span class="dv">0</span>,k])))</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>        x1 <span class="op">=</span> xeq1 <span class="op">+</span> Eigenvectors[<span class="dv">0</span>]<span class="op">*</span>u1</span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>        y1 <span class="op">=</span> yeq1 <span class="op">+</span> Eigenvectors[<span class="dv">1</span>]<span class="op">*</span>u1</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>        z1 <span class="op">=</span> zeq1 <span class="op">+</span> Eigenvectors[<span class="dv">2</span>]<span class="op">*</span>u1</span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>        x2 <span class="op">=</span> xeq2 <span class="op">+</span> Eigenvectors[<span class="dv">3</span>]<span class="op">*</span>u1</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>        y2 <span class="op">=</span> yeq2 <span class="op">+</span> Eigenvectors[<span class="dv">4</span>]<span class="op">*</span>u1</span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>        z2 <span class="op">=</span> zeq2 <span class="op">+</span> Eigenvectors[<span class="dv">5</span>]<span class="op">*</span>u1</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>        x3 <span class="op">=</span> xeq3 <span class="op">+</span> Eigenvectors[<span class="dv">6</span>]<span class="op">*</span>u1</span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>        y3 <span class="op">=</span> yeq3 <span class="op">+</span> Eigenvectors[<span class="dv">7</span>]<span class="op">*</span>u1</span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>        z3 <span class="op">=</span> zeq3 <span class="op">+</span> Eigenvectors[<span class="dv">8</span>]<span class="op">*</span>u1</span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>        Frames.append( go.Frame(data<span class="op">=</span>[ go.Scatter3d(x<span class="op">=</span>x1.real,</span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y1.real,</span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z1.real,</span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>),</span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a>                                    go.Scatter3d(x<span class="op">=</span>x2.real,</span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y2.real,</span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z2.real,</span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>),</span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a>                                   go.Scatter3d(x<span class="op">=</span>x3.real,</span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y3.real,</span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z3.real,</span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>)             ]) )</span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> go.Figure(</span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>[ go.Scatter3d(x<span class="op">=</span>x10.real,</span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y10.real,</span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z10.real,</span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>),</span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a>                                    go.Scatter3d(x<span class="op">=</span>x20.real,</span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y20.real,</span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z20.real,</span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>),</span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a>                                   go.Scatter3d(x<span class="op">=</span>x30.real,</span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a>                                                y<span class="op">=</span>y30.real,</span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a>                                                z<span class="op">=</span>z30.real,</span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>                                                mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a>                                                marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"blue"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a>                                                name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>)             ],</span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a>        frames <span class="op">=</span> Frames</span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(xaxis<span class="op">=</span> <span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>], autorange<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a>                        yaxis<span class="op">=</span> <span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>], autorange<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a>                        scene<span class="op">=</span>{</span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'xaxis'</span>: {<span class="st">'range'</span>: [<span class="op">-</span><span class="fl">5.2</span><span class="op">*</span>num, <span class="fl">5.2</span><span class="op">*</span>num], <span class="st">'rangemode'</span>: <span class="st">'tozero'</span>, <span class="st">'tickmode'</span>: <span class="st">"linear"</span>, <span class="st">'tick0'</span>: <span class="op">-</span><span class="dv">5</span>, <span class="st">'dtick'</span>: <span class="dv">1</span>},</span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'yaxis'</span>: {<span class="st">'range'</span>: [<span class="op">-</span><span class="fl">5.2</span><span class="op">*</span>num, <span class="fl">5.2</span><span class="op">*</span>num], <span class="st">'rangemode'</span>: <span class="st">'tozero'</span>, <span class="st">'tickmode'</span>: <span class="st">"linear"</span>, <span class="st">'tick0'</span>: <span class="op">-</span><span class="dv">5</span>, <span class="st">'dtick'</span>: <span class="dv">1</span>},</span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'zaxis'</span>: {<span class="st">'range'</span>: [<span class="op">-</span><span class="fl">5.2</span><span class="op">*</span>num, <span class="fl">5.2</span><span class="op">*</span>num], <span class="st">'rangemode'</span>: <span class="st">'tozero'</span>, <span class="st">'tickmode'</span>: <span class="st">"linear"</span>, <span class="st">'tick0'</span>: <span class="op">-</span><span class="dv">5</span>, <span class="st">'dtick'</span>: <span class="dv">1</span>},</span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'aspectratio'</span>: {</span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'x'</span>: <span class="dv">1</span>,</span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'y'</span>: <span class="dv">1</span>,</span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'z'</span>: <span class="dv">1</span>,                       }},</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a>                        showlegend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a>                        title<span class="op">=</span><span class="st">"Start Title"</span>,</span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a>                        updatemenus<span class="op">=</span>[<span class="bu">dict</span>(<span class="bu">type</span>    <span class="op">=</span> <span class="st">"buttons"</span>,</span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a>                                            buttons <span class="op">=</span> [<span class="bu">dict</span>(label<span class="op">=</span><span class="st">"Play"</span>,</span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a>                                                            method  <span class="op">=</span> <span class="st">"animate"</span>,</span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a>                                                            args    <span class="op">=</span> [<span class="va">None</span>,</span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a>                                                                        <span class="bu">dict</span>(frame       <span class="op">=</span> <span class="bu">dict</span>(duration<span class="op">=</span><span class="dv">100</span>,redraw<span class="op">=</span><span class="va">True</span>), </span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a>                                                                            transition  <span class="op">=</span> <span class="bu">dict</span>(duration<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a>                                                                            fromcurrent <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>                                                                            mode        <span class="op">=</span> <span class="st">'immediate'</span>)])])]),</span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a>    fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="160d47ee" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Animacion(<span class="fl">0.1</span>,<span class="dv">5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="16fee6dc-7f28-49ee-bb99-3fb1f1c7e549" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("16fee6dc-7f28-49ee-bb99-3fb1f1c7e549")) {                    Plotly.newPlot(                        "16fee6dc-7f28-49ee-bb99-3fb1f1c7e549",                        [{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[0.8472865134862724,0.8240648900307261,0.8472865134862724],"y":[0.09963672965554672,5.412337245047638e-16,-0.09963672965554578],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[-0.31389087445286734,-0.36697921233236586,-0.4551822995477694],"y":[0.939261638175525,1.0125606179673374,1.047177318055828],"z":[-3.4826394567883208,1.769835078662332,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[-0.5552163369837064,-0.45518229954777095,-0.36697921233236735],"y":[-1.0339736423001076,-1.047177318055828,-1.0125606179673377],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"range":[-0.5,0.5],"autorange":false},"yaxis":{"range":[-0.5,0.5],"autorange":false},"scene":{"xaxis":{"range":[-10.4,10.4],"rangemode":"tozero","tickmode":"linear","tick0":-5,"dtick":1},"yaxis":{"range":[-10.4,10.4],"rangemode":"tozero","tickmode":"linear","tick0":-5,"dtick":1},"zaxis":{"range":[-10.4,10.4],"rangemode":"tozero","tickmode":"linear","tick0":-5,"dtick":1},"aspectratio":{"x":1,"y":1,"z":1}},"showlegend":true,"title":{"text":"Start Title"},"updatemenus":[{"buttons":[{"args":[null,{"frame":{"duration":100,"redraw":true},"transition":{"duration":100},"fromcurrent":true,"mode":"immediate"}],"label":"Play","method":"animate"}],"type":"buttons"}]},                        {"responsive": true}                    ).then(function(){
+                            Plotly.addFrames('16fee6dc-7f28-49ee-bb99-3fb1f1c7e549', [{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 0.00","x":[0.8472865134862724,0.8240648900307261,0.8472865134862724],"y":[0.09963672965554672,5.412337245047638e-16,-0.09963672965554578],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 0.00","x":[-0.31389087445286734,-0.36697921233236586,-0.4551822995477694],"y":[0.939261638175525,1.0125606179673374,1.047177318055828],"z":[-3.4826394567883208,1.769835078662332,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 0.00","x":[-0.5552163369837064,-0.45518229954777095,-0.36697921233236735],"y":[-1.0339736423001076,-1.047177318055828,-1.0125606179673377],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 5.46","x":[0.9278010611539685,0.8576655061276323,0.8251033271263215],"y":[0.18298503450520967,0.11794471525058299,0.021769419394651546],"z":[-5.2413230918095355,-0.08905039918037078,5.08672976547861],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 5.46","x":[-0.3156695236826575,-0.3087572467590795,-0.3523291194192678],"y":[0.8270646786851629,0.9207024319896273,0.9999065755288673],"z":[-3.5428737980093006,1.7018512806555235,6.954548412682977],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 5.46","x":[-0.6544588456429953,-0.5751543179514128,-0.47601059758440706],"y":[-0.9600279197885405,-1.0252541864582247,-1.048447332675926],"z":[-1.6328002610310377,3.5738850529941035,8.751589799627087],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 10.92","x":[1.0358931495091737,0.9456330611122692,0.8697247252848441],"y":[0.1964392756064548,0.1908385580688708,0.13486039015144313],"z":[-5.17369617050329,-0.03401422577515576,5.114646774278781],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 10.92","x":[-0.3878561497032149,-0.3235835128217156,-0.3058811965239791],"y":[0.7297493919563831,0.8079594796413717,0.901497775849197],"z":[-3.5730198427413713,1.6454026754854487,6.88669851668594],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 10.92","x":[-0.6947033251297337,-0.6664199412989315,-0.5942051191894047],"y":[-0.8501764311914124,-0.9425110718665054,-1.0146550708412825],"z":[-1.679730861062082,3.557602834826471,8.770254133703707],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 16.39","x":[1.1302752747151559,1.0543669388877308,0.9641068504908263],"y":[0.13486039015144236,0.19083855806887048,0.19643927560645502],"z":[-5.11464677427878,0.03401422577515598,5.17369617050329],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 16.39","x":[-0.5028779149078642,-0.4057948808105962,-0.333580058701069],"y":[0.6844869098946378,0.7173957367275946,0.7895397357023713],"z":[-3.5615628265232573,1.6220507117095533,6.834702010586789],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 16.39","x":[-0.6605777521395355,-0.6941188034760208,-0.6764164871782847],"y":[-0.7463787114380547,-0.8305530317196796,-0.924091327927505],"z":[-1.7466459023691456,3.50560632872732,8.746902169927811],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 21.85","x":[1.1748966728736785,1.1423344938723679,1.0721989388460313],"y":[0.021769419394650494,0.11794471525058213,0.18298503450520923],"z":[-5.08672976547861,0.08905039918037093,5.241323091809536],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 21.85","x":[-0.6168004144344392,-0.5239894024155941,-0.4248456820485882],"y":[0.7085659622323314,0.6836034748929514,0.7067966211106524],"z":[-3.512878940140619,1.6407150457861728,6.818419792419157],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 21.85","x":[-0.5651169356690912,-0.6476708805807316,-0.6912427532409202],"y":[-0.6882819615195137,-0.7321442320400093,-0.8113483755792492],"z":[-1.8079861135315334,3.437756432730284,8.690453564757737],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 27.31","x":[1.1527134865137276,1.1759351099692739,1.1527134865137276],"y":[-0.0996367296555467,-5.166600188112939e-16,0.09963672965554579],"z":[-5.100608492600214,0.11007234681042993,5.291696352813046],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 27.31","x":[-0.6861091255471323,-0.6330207876676338,-0.5448177004522302],"y":[0.7927891693933524,0.71949018960154,0.6848734895130495],"z":[-3.4455637734871862,1.6942665364754215,6.844071116110839],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 27.31","x":[-0.44478366301629446,-0.5448177004522299,-0.6330207876676335],"y":[-0.6980771652687693,-0.6848734895130488,-0.7194901896015391],"z":[-1.8403216187623088,3.3799695009730852,8.622469766750928],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 32.77","x":[1.0721989388460316,1.1423344938723679,1.1748966728736785],"y":[-0.18298503450520956,-0.11794471525058291,-0.02176941939465143],"z":[-5.150981753603725,0.08905039918037082,5.30557507993465],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 32.77","x":[-0.6843304763173422,-0.6912427532409201,-0.6476708805807317],"y":[0.9049861288837143,0.8113483755792501,0.7321442320400101],"z":[-3.3853294322662064,1.76225033448223,6.901858047868037],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 32.77","x":[-0.3455411543570058,-0.4248456820485882,-0.5239894024155939],"y":[-0.7720228877803361,-0.706796621110652,-0.6836034748929508],"z":[-1.8313013541067158,3.3543181772814035,8.56891827606168],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 38.23","x":[0.9641068504908265,1.0543669388877308,1.1302752747151559],"y":[-0.19643927560645483,-0.1908385580688708,-0.1348603901514431],"z":[-5.21860867490997,0.034014225775155775,5.277658071134479],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 38.23","x":[-0.6121438502967848,-0.6764164871782841,-0.6941188034760206],"y":[1.0023014156124943,0.9240913279275057,0.8305530317196804],"z":[-3.3551833875341357,1.8186989396523048,6.969707943865074],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 38.23","x":[-0.30529667487026724,-0.33358005870106944,-0.4057948808105963],"y":[-0.8818743763774644,-0.7895397357023713,-0.7173957367275943],"z":[-1.7843707540756715,3.370600395449036,8.55025394198506],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 43.70","x":[0.8697247252848441,0.9456330611122692,1.0358931495091737],"y":[-0.13486039015144238,-0.19083855806887048,-0.19643927560645502],"z":[-5.27765807113448,-0.034014225775156,5.21860867490997],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 43.70","x":[-0.4971220850921355,-0.5942051191894034,-0.6664199412989307],"y":[1.0475638976742396,1.014655070841283,0.9425110718665061],"z":[-3.3666404037522497,1.8420509034282002,7.021704449964225],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 43.70","x":[-0.3394222478604654,-0.3058811965239801,-0.32358351282171616],"y":[-0.9856720961308221,-0.9014977758491971,-0.8079594796413717],"z":[-1.7174557127686079,3.422596901548187,8.573605905760957],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 49.16","x":[0.8251033271263215,0.8576655061276324,0.9278010611539688],"y":[-0.021769419394650696,-0.11794471525058228,-0.1829850345052093],"z":[-5.30557507993465,-0.08905039918037086,5.150981753603724],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 49.16","x":[-0.38319958556556055,-0.4760105975844057,-0.5751543179514117],"y":[1.0234848453365462,1.048447332675926,1.025254186458225],"z":[-3.4153242901348877,1.823386569351581,7.037986668131857],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 49.16","x":[-0.43488306433090956,-0.35232911941926914,-0.30875724675908056],"y":[-1.043768846049363,-0.9999065755288673,-0.9207024319896273],"z":[-1.6561155016062201,3.490446797545223,8.63005451093103],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 54.62","x":[0.8472865134862724,0.8240648900307261,0.8472865134862725],"y":[0.09963672965554668,4.92086313117824e-16,-0.09963672965554582],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 54.62","x":[-0.31389087445286734,-0.36697921233236586,-0.45518229954776945],"y":[0.939261638175525,1.0125606179673374,1.047177318055828],"z":[-3.4826394567883208,1.769835078662332,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 54.62","x":[-0.5552163369837064,-0.4551822995477709,-0.3669792123323673],"y":[-1.0339736423001076,-1.047177318055828,-1.0125606179673377],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 60.08","x":[0.9278010611539684,0.8576655061276321,0.8251033271263215],"y":[0.18298503450520956,0.11794471525058282,0.021769419394651317],"z":[-5.241323091809536,-0.08905039918037085,5.08672976547861],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 60.08","x":[-0.31566952368265744,-0.30875724675907956,-0.352329119419268],"y":[0.8270646786851631,0.9207024319896274,0.9999065755288674],"z":[-3.5428737980093006,1.7018512806555235,6.954548412682977],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 60.08","x":[-0.6544588456429952,-0.5751543179514126,-0.47601059758440684],"y":[-0.9600279197885406,-1.0252541864582247,-1.048447332675926],"z":[-1.6328002610310377,3.5738850529941035,8.751589799627087],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 65.54","x":[1.0358931495091734,0.945633061112269,0.8697247252848439],"y":[0.19643927560645486,0.19083855806887073,0.13486039015144297],"z":[-5.17369617050329,-0.034014225775155886,5.114646774278781],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 65.54","x":[-0.3878561497032147,-0.3235835128217155,-0.3058811965239791],"y":[0.7297493919563832,0.8079594796413718,0.9014977758491972],"z":[-3.5730198427413713,1.6454026754854487,6.88669851668594],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 65.54","x":[-0.6947033251297337,-0.6664199412989313,-0.5942051191894044],"y":[-0.8501764311914126,-0.9425110718665056,-1.0146550708412825],"z":[-1.679730861062082,3.5576028348264717,8.770254133703707],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 71.01","x":[1.130275274715156,1.0543669388877308,0.9641068504908263],"y":[0.13486039015144227,0.19083855806887048,0.19643927560645502],"z":[-5.11464677427878,0.03401422577515598,5.17369617050329],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 71.01","x":[-0.5028779149078643,-0.4057948808105962,-0.333580058701069],"y":[0.6844869098946378,0.7173957367275946,0.7895397357023713],"z":[-3.5615628265232573,1.6220507117095533,6.834702010586789],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 71.01","x":[-0.6605777521395355,-0.6941188034760208,-0.6764164871782847],"y":[-0.7463787114380547,-0.8305530317196796,-0.924091327927505],"z":[-1.7466459023691459,3.50560632872732,8.746902169927811],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 76.47","x":[1.1748966728736785,1.1423344938723676,1.0721989388460311],"y":[0.021769419394650366,0.11794471525058216,0.18298503450520934],"z":[-5.08672976547861,0.08905039918037091,5.241323091809536],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 76.47","x":[-0.6168004144344393,-0.5239894024155941,-0.42484568204858797],"y":[0.7085659622323315,0.6836034748929514,0.7067966211106524],"z":[-3.512878940140619,1.6407150457861728,6.818419792419157],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 76.47","x":[-0.565116935669091,-0.6476708805807316,-0.6912427532409203],"y":[-0.6882819615195137,-0.7321442320400093,-0.8113483755792494],"z":[-1.8079861135315336,3.437756432730284,8.690453564757737],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 81.93","x":[1.1527134865137278,1.1759351099692739,1.1527134865137274],"y":[-0.09963672965554618,-1.110696705024911e-16,0.099636729655546],"z":[-5.100608492600214,0.11007234681042993,5.291696352813046],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 81.93","x":[-0.6861091255471322,-0.6330207876676335,-0.54481770045223],"y":[0.792789169393352,0.7194901896015398,0.6848734895130495],"z":[-3.4455637734871862,1.6942665364754212,6.844071116110839],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 81.93","x":[-0.444783663016295,-0.5448177004522303,-0.6330207876676337],"y":[-0.6980771652687691,-0.6848734895130489,-0.7194901896015392],"z":[-1.8403216187623088,3.3799695009730852,8.622469766750928],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 87.39","x":[1.0721989388460313,1.1423344938723679,1.1748966728736785],"y":[-0.1829850345052097,-0.11794471525058293,-0.021769419394651296],"z":[-5.150981753603725,0.0890503991803708,5.30557507993465],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 87.39","x":[-0.6843304763173421,-0.6912427532409201,-0.6476708805807316],"y":[0.9049861288837147,0.8113483755792501,0.73214423204001],"z":[-3.3853294322662064,1.76225033448223,6.901858047868037],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 87.39","x":[-0.3455411543570056,-0.4248456820485882,-0.5239894024155941],"y":[-0.7720228877803363,-0.706796621110652,-0.6836034748929508],"z":[-1.8313013541067158,3.3543181772814035,8.56891827606168],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 92.85","x":[0.9641068504908263,1.0543669388877308,1.130275274715156],"y":[-0.1964392756064548,-0.19083855806887076,-0.13486039015144294],"z":[-5.21860867490997,0.0340142257751558,5.277658071134479],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 92.85","x":[-0.6121438502967846,-0.6764164871782841,-0.6941188034760206],"y":[1.0023014156124943,0.9240913279275057,0.8305530317196802],"z":[-3.3551833875341357,1.8186989396523048,6.969707943865074],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 92.85","x":[-0.30529667487026724,-0.33358005870106955,-0.40579488081059645],"y":[-0.8818743763774645,-0.7895397357023712,-0.7173957367275942],"z":[-1.7843707540756713,3.370600395449036,8.55025394198506],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 98.32","x":[0.8697247252848445,0.9456330611122695,1.0358931495091739],"y":[-0.13486039015144283,-0.19083855806887062,-0.196439275606455],"z":[-5.277658071134479,-0.03401422577515579,5.21860867490997],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 98.32","x":[-0.4971220850921361,-0.5942051191894038,-0.6664199412989308],"y":[1.0475638976742396,1.0146550708412827,0.942511071866506],"z":[-3.3666404037522497,1.8420509034282002,7.021704449964225],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 98.32","x":[-0.33942224786046504,-0.30588119652398005,-0.32358351282171627],"y":[-0.9856720961308216,-0.9014977758491968,-0.8079594796413715],"z":[-1.717455712768608,3.4225969015481867,8.573605905760957],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 103.78","x":[0.8251033271263216,0.8576655061276325,0.9278010611539688],"y":[-0.021769419394651098,-0.11794471525058246,-0.18298503450520934],"z":[-5.30557507993465,-0.08905039918037079,5.150981753603724],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 103.78","x":[-0.3831995855655609,-0.47601059758440595,-0.5751543179514117],"y":[1.0234848453365464,1.048447332675926,1.025254186458225],"z":[-3.4153242901348877,1.823386569351581,7.037986668131857],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 103.78","x":[-0.4348830643309092,-0.35232911941926903,-0.30875724675908056],"y":[-1.043768846049363,-0.9999065755288672,-0.9207024319896273],"z":[-1.6561155016062203,3.490446797545223,8.63005451093103],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 109.24","x":[0.8472865134862725,0.8240648900307261,0.8472865134862726],"y":[0.09963672965554679,4.429389017308842e-16,-0.09963672965554601],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 109.24","x":[-0.3138908744528673,-0.36697921233236597,-0.4551822995477697],"y":[0.9392616381755249,1.0125606179673374,1.047177318055828],"z":[-3.4826394567883208,1.769835078662332,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 109.24","x":[-0.5552163369837065,-0.4551822995477709,-0.3669792123323672],"y":[-1.0339736423001074,-1.047177318055828,-1.0125606179673374],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 114.70","x":[0.9278010611539681,0.857665506127632,0.8251033271263215],"y":[0.1829850345052094,0.11794471525058262,0.02176941939465127],"z":[-5.241323091809536,-0.08905039918037093,5.08672976547861],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 114.70","x":[-0.3156695236826573,-0.3087572467590796,-0.35232911941926803],"y":[0.8270646786851634,0.9207024319896276,0.9999065755288674],"z":[-3.5428737980093,1.7018512806555237,6.954548412682977],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 114.70","x":[-0.6544588456429948,-0.5751543179514124,-0.4760105975844068],"y":[-0.960027919788541,-1.0252541864582247,-1.048447332675926],"z":[-1.6328002610310375,3.5738850529941035,8.751589799627087],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 120.16","x":[1.035893149509173,0.9456330611122687,0.8697247252848439],"y":[0.19643927560645494,0.19083855806887065,0.1348603901514429],"z":[-5.17369617050329,-0.034014225775156,5.114646774278781],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 120.16","x":[-0.38785614970321436,-0.32358351282171544,-0.3058811965239791],"y":[0.7297493919563834,0.807959479641372,0.9014977758491972],"z":[-3.5730198427413713,1.6454026754854487,6.88669851668594],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 120.16","x":[-0.6947033251297337,-0.6664199412989311,-0.5942051191894043],"y":[-0.850176431191413,-0.9425110718665058,-1.0146550708412825],"z":[-1.6797308610620818,3.5576028348264717,8.770254133703707],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 125.62","x":[1.1302752747151557,1.0543669388877304,0.9641068504908261],"y":[0.13486039015144283,0.19083855806887062,0.196439275606455],"z":[-5.114646774278781,0.034014225775155775,5.17369617050329],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 125.62","x":[-0.5028779149078636,-0.4057948808105959,-0.3335800587010689],"y":[0.6844869098946379,0.7173957367275948,0.7895397357023716],"z":[-3.5615628265232573,1.6220507117095533,6.834702010586789],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 125.62","x":[-0.6605777521395358,-0.6941188034760208,-0.6764164871782846],"y":[-0.7463787114380551,-0.83055303171968,-0.9240913279275053],"z":[-1.7466459023691454,3.5056063287273203,8.746902169927811],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 131.09","x":[1.1748966728736785,1.1423344938723674,1.0721989388460311],"y":[0.021769419394651122,0.11794471525058249,0.18298503450520934],"z":[-5.08672976547861,0.08905039918037078,5.2413230918095355],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 131.09","x":[-0.6168004144344388,-0.5239894024155937,-0.42484568204858797],"y":[0.708565962232331,0.6836034748929514,0.7067966211106526],"z":[-3.5128789401406193,1.6407150457861726,6.818419792419157],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 131.09","x":[-0.5651169356690917,-0.6476708805807319,-0.6912427532409203],"y":[-0.6882819615195138,-0.7321442320400096,-0.8113483755792495],"z":[-1.8079861135315332,3.437756432730284,8.690453564757737],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 136.55","x":[1.1527134865137278,1.1759351099692739,1.1527134865137274],"y":[-0.09963672965554615,-6.192225911555126e-17,0.09963672965554603],"z":[-5.100608492600214,0.11007234681042993,5.291696352813046],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 136.55","x":[-0.6861091255471321,-0.6330207876676335,-0.54481770045223],"y":[0.792789169393352,0.7194901896015397,0.6848734895130495],"z":[-3.4455637734871862,1.6942665364754212,6.844071116110839],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 136.55","x":[-0.44478366301629507,-0.5448177004522303,-0.6330207876676337],"y":[-0.6980771652687691,-0.6848734895130489,-0.7194901896015392],"z":[-1.8403216187623088,3.3799695009730852,8.622469766750928],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 142.01","x":[1.0721989388460313,1.1423344938723679,1.1748966728736785],"y":[-0.18298503450520967,-0.11794471525058288,-0.021769419394651244],"z":[-5.150981753603725,0.08905039918037082,5.30557507993465],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 142.01","x":[-0.6843304763173421,-0.6912427532409201,-0.6476708805807316],"y":[0.9049861288837147,0.8113483755792501,0.73214423204001],"z":[-3.3853294322662064,1.76225033448223,6.901858047868037],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 142.01","x":[-0.3455411543570056,-0.42484568204858825,-0.5239894024155941],"y":[-0.7720228877803363,-0.706796621110652,-0.6836034748929508],"z":[-1.8313013541067158,3.3543181772814035,8.56891827606168],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 147.47","x":[0.9641068504908263,1.054366938887731,1.130275274715156],"y":[-0.1964392756064548,-0.19083855806887076,-0.1348603901514429],"z":[-5.21860867490997,0.03401422577515583,5.277658071134479],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 147.47","x":[-0.6121438502967848,-0.6764164871782841,-0.6941188034760206],"y":[1.0023014156124943,0.9240913279275056,0.8305530317196802],"z":[-3.3551833875341357,1.8186989396523048,6.969707943865074],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 147.47","x":[-0.30529667487026724,-0.33358005870106955,-0.4057948808105965],"y":[-0.8818743763774644,-0.7895397357023712,-0.7173957367275942],"z":[-1.7843707540756713,3.3706003954490353,8.55025394198506],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 152.93","x":[0.8697247252848441,0.9456330611122693,1.0358931495091739],"y":[-0.13486039015144233,-0.1908385580688705,-0.19643927560645497],"z":[-5.27765807113448,-0.03401422577515595,5.21860867490997],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 152.93","x":[-0.49712208509213546,-0.5942051191894036,-0.6664199412989308],"y":[1.0475638976742396,1.0146550708412827,0.9425110718665058],"z":[-3.3666404037522497,1.8420509034282002,7.021704449964225],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 152.93","x":[-0.3394222478604654,-0.30588119652398016,-0.32358351282171627],"y":[-0.9856720961308221,-0.9014977758491971,-0.8079594796413715],"z":[-1.7174557127686076,3.422596901548187,8.573605905760957],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 158.40","x":[0.8251033271263216,0.8576655061276327,0.9278010611539694],"y":[-0.021769419394651147,-0.1179447152505828,-0.18298503450520964],"z":[-5.30557507993465,-0.08905039918037065,5.150981753603725],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 158.40","x":[-0.3831995855655609,-0.47601059758440634,-0.5751543179514124],"y":[1.0234848453365464,1.048447332675926,1.0252541864582245],"z":[-3.4153242901348877,1.823386569351581,7.037986668131857],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 158.40","x":[-0.4348830643309092,-0.35232911941926875,-0.30875724675908045],"y":[-1.043768846049363,-0.999906575528867,-0.9207024319896266],"z":[-1.6561155016062203,3.4904467975452227,8.63005451093103],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 163.86","x":[0.8472865134862722,0.8240648900307261,0.8472865134862729],"y":[0.09963672965554612,-3.1909438349978163e-16,-0.09963672965554668],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 163.86","x":[-0.3138908744528675,-0.36697921233236647,-0.4551822995477704],"y":[0.9392616381755254,1.0125606179673379,1.047177318055828],"z":[-3.4826394567883203,1.7698350786623325,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 163.86","x":[-0.5552163369837058,-0.4551822995477702,-0.36697921233236663],"y":[-1.0339736423001078,-1.047177318055828,-1.012560617967337],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 169.32","x":[0.927801061153968,0.8576655061276318,0.8251033271263214],"y":[0.1829850345052094,0.11794471525058231,0.021769419394650512],"z":[-5.241323091809536,-0.08905039918037105,5.08672976547861],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 169.32","x":[-0.31566952368265727,-0.3087572467590797,-0.3523291194192685],"y":[0.8270646786851634,0.920702431989628,0.9999065755288679],"z":[-3.5428737980093,1.701851280655524,6.954548412682977],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 169.32","x":[-0.6544588456429948,-0.575154317951412,-0.47601059758440606],"y":[-0.9600279197885411,-1.025254186458225,-1.048447332675926],"z":[-1.6328002610310375,3.5738850529941035,8.751589799627087],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 174.78","x":[1.0358931495091737,0.9456330611122691,0.8697247252848439],"y":[0.1964392756064548,0.19083855806887076,0.13486039015144288],"z":[-5.17369617050329,-0.03401422577515584,5.11464677427878],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 174.78","x":[-0.3878561497032149,-0.3235835128217156,-0.3058811965239791],"y":[0.729749391956383,0.8079594796413718,0.9014977758491973],"z":[-3.5730198427413713,1.6454026754854487,6.88669851668594],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 174.78","x":[-0.6947033251297337,-0.6664199412989313,-0.5942051191894043],"y":[-0.8501764311914124,-0.9425110718665055,-1.0146550708412827],"z":[-1.679730861062082,3.5576028348264717,8.770254133703707],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 180.24","x":[1.1302752747151559,1.0543669388877308,0.9641068504908261],"y":[0.13486039015144233,0.19083855806887054,0.19643927560645497],"z":[-5.11464677427878,0.034014225775155935,5.17369617050329],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 180.24","x":[-0.5028779149078642,-0.4057948808105961,-0.3335800587010689],"y":[0.6844869098946378,0.7173957367275947,0.7895397357023716],"z":[-3.5615628265232573,1.6220507117095533,6.834702010586789],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 180.24","x":[-0.6605777521395355,-0.6941188034760208,-0.6764164871782846],"y":[-0.7463787114380547,-0.8305530317196796,-0.9240913279275053],"z":[-1.7466459023691459,3.50560632872732,8.746902169927811],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 185.71","x":[1.1748966728736785,1.1423344938723676,1.0721989388460311],"y":[0.021769419394650463,0.11794471525058224,0.18298503450520937],"z":[-5.08672976547861,0.08905039918037087,5.2413230918095355],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 185.71","x":[-0.6168004144344393,-0.523989402415594,-0.4248456820485879],"y":[0.7085659622323314,0.6836034748929514,0.7067966211106526],"z":[-3.512878940140619,1.6407150457861728,6.818419792419157],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 185.71","x":[-0.5651169356690912,-0.6476708805807316,-0.6912427532409203],"y":[-0.6882819615195137,-0.7321442320400093,-0.8113483755792495],"z":[-1.8079861135315334,3.437756432730284,8.690453564757737],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 191.17","x":[1.1527134865137276,1.1759351099692739,1.1527134865137274],"y":[-0.09963672965554672,-3.692177846504745e-16,0.09963672965554608],"z":[-5.100608492600214,0.11007234681042993,5.291696352813046],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 191.17","x":[-0.6861091255471323,-0.6330207876676337,-0.5448177004522299],"y":[0.7927891693933524,0.7194901896015399,0.6848734895130495],"z":[-3.4455637734871862,1.6942665364754215,6.844071116110839],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 191.17","x":[-0.44478366301629446,-0.5448177004522301,-0.6330207876676337],"y":[-0.6980771652687693,-0.6848734895130488,-0.7194901896015393],"z":[-1.8403216187623088,3.3799695009730852,8.622469766750928],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 196.63","x":[1.072198938846032,1.1423344938723683,1.1748966728736785],"y":[-0.18298503450520937,-0.11794471525058228,-0.021769419394650488],"z":[-5.150981753603724,0.08905039918037105,5.30557507993465],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 196.63","x":[-0.6843304763173423,-0.69124275324092,-0.6476708805807312],"y":[0.9049861288837139,0.8113483755792494,0.7321442320400096],"z":[-3.385329432266207,1.7622503344822296,6.901858047868037],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 196.63","x":[-0.34554115435700605,-0.4248456820485889,-0.5239894024155949],"y":[-0.7720228877803357,-0.7067966211106517,-0.6836034748929508],"z":[-1.831301354106716,3.3543181772814035,8.56891827606168],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 202.09","x":[0.964106850490827,1.0543669388877315,1.1302752747151565],"y":[-0.19643927560645497,-0.19083855806887054,-0.13486039015144233],"z":[-5.21860867490997,0.034014225775156226,5.27765807113448],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 202.09","x":[-0.6121438502967853,-0.6764164871782844,-0.6941188034760205],"y":[1.0023014156124939,0.9240913279275049,0.8305530317196795],"z":[-3.3551833875341357,1.8186989396523046,6.969707943865073],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 202.09","x":[-0.30529667487026724,-0.3335800587010699,-0.40579488081059717],"y":[-0.8818743763774637,-0.7895397357023706,-0.7173957367275938],"z":[-1.7843707540756717,3.3706003954490353,8.55025394198506],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 207.55","x":[0.8697247252848445,0.9456330611122699,1.0358931495091745],"y":[-0.13486039015144288,-0.19083855806887076,-0.1964392756064548],"z":[-5.277658071134479,-0.03401422577515555,5.21860867490997],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 207.55","x":[-0.4971220850921362,-0.5942051191894042,-0.6664199412989311],"y":[1.0475638976742396,1.0146550708412825,0.9425110718665052],"z":[-3.3666404037522493,1.8420509034282002,7.021704449964225],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 207.55","x":[-0.33942224786046493,-0.30588119652398005,-0.3235835128217166],"y":[-0.9856720961308215,-0.9014977758491964,-0.8079594796413708],"z":[-1.717455712768608,3.4225969015481867,8.573605905760955],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 213.02","x":[0.8251033271263216,0.8576655061276327,0.9278010611539694],"y":[-0.0217694193946512,-0.11794471525058284,-0.18298503450520967],"z":[-5.30557507993465,-0.08905039918037065,5.150981753603725],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 213.02","x":[-0.38319958556556094,-0.4760105975844064,-0.5751543179514125],"y":[1.0234848453365464,1.048447332675926,1.0252541864582245],"z":[-3.4153242901348877,1.8233865693515812,7.037986668131857],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 213.02","x":[-0.4348830643309091,-0.3523291194192687,-0.30875724675908045],"y":[-1.043768846049363,-0.999906575528867,-0.9207024319896265],"z":[-1.6561155016062203,3.4904467975452227,8.63005451093103],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 218.48","x":[0.8472865134862724,0.8240648900307261,0.8472865134862726],"y":[0.09963672965554671,3.4464407895700457e-16,-0.0996367296555461],"z":[-5.291696352813046,-0.11007234681042993,5.100608492600214],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 218.48","x":[-0.31389087445286734,-0.36697921233236597,-0.4551822995477698],"y":[0.939261638175525,1.0125606179673377,1.047177318055828],"z":[-3.4826394567883208,1.769835078662332,7.012335344440175],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 218.48","x":[-0.5552163369837064,-0.4551822995477708,-0.3669792123323671],"y":[-1.0339736423001076,-1.047177318055828,-1.0125606179673374],"z":[-1.6237799963754447,3.5482337293024218,8.69803830893784],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 223.94","x":[0.9278010611539685,0.8576655061276321,0.8251033271263215],"y":[0.18298503450520967,0.11794471525058284,0.021769419394651175],"z":[-5.2413230918095355,-0.08905039918037083,5.08672976547861],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 223.94","x":[-0.3156695236826575,-0.30875724675907956,-0.35232911941926803],"y":[0.8270646786851629,0.9207024319896274,0.9999065755288675],"z":[-3.5428737980093006,1.7018512806555235,6.954548412682977],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 223.94","x":[-0.6544588456429953,-0.5751543179514126,-0.4760105975844067],"y":[-0.9600279197885405,-1.0252541864582247,-1.048447332675926],"z":[-1.6328002610310377,3.5738850529941035,8.751589799627087],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 229.40","x":[1.035893149509173,0.9456330611122684,0.8697247252848435],"y":[0.19643927560645497,0.19083855806887054,0.13486039015144233],"z":[-5.17369617050329,-0.03401422577515624,5.11464677427878],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 229.40","x":[-0.3878561497032143,-0.32358351282171527,-0.30588119652397916],"y":[0.7297493919563836,0.8079594796413725,0.9014977758491979],"z":[-3.5730198427413713,1.645402675485449,6.886698516685941],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 229.40","x":[-0.6947033251297337,-0.666419941298931,-0.5942051191894037],"y":[-0.8501764311914131,-0.9425110718665062,-1.014655070841283],"z":[-1.6797308610620818,3.5576028348264717,8.770254133703707],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 234.86","x":[1.1302752747151554,1.0543669388877301,0.9641068504908255],"y":[0.1348603901514429,0.19083855806887076,0.1964392756064548],"z":[-5.114646774278781,0.03401422577515554,5.17369617050329],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 234.86","x":[-0.5028779149078635,-0.4057948808105955,-0.33358005870106844],"y":[0.6844869098946379,0.717395736727595,0.7895397357023722],"z":[-3.5615628265232573,1.6220507117095533,6.834702010586789],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 234.86","x":[-0.660577752139536,-0.6941188034760208,-0.6764164871782843],"y":[-0.7463787114380552,-0.8305530317196804,-0.9240913279275059],"z":[-1.7466459023691454,3.5056063287273203,8.746902169927813],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 240.33","x":[1.1748966728736785,1.1423344938723672,1.0721989388460305],"y":[0.02176941939465122,0.11794471525058287,0.18298503450520967],"z":[-5.08672976547861,0.08905039918037064,5.2413230918095355],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 240.33","x":[-0.6168004144344387,-0.5239894024155932,-0.42484568204858725],"y":[0.708565962232331,0.6836034748929514,0.7067966211106529],"z":[-3.5128789401406193,1.6407150457861723,6.818419792419157],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 240.33","x":[-0.5651169356690918,-0.6476708805807322,-0.6912427532409204],"y":[-0.6882819615195138,-0.7321442320400099,-0.8113483755792502],"z":[-1.8079861135315332,3.4377564327302843,8.690453564757737],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 245.79","x":[1.1527134865137278,1.1759351099692739,1.1527134865137272],"y":[-0.09963672965554607,3.928155005801914e-16,0.09963672965554674],"z":[-5.100608492600214,0.11007234681042993,5.291696352813046],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 245.79","x":[-0.6861091255471321,-0.6330207876676331,-0.5448177004522292],"y":[0.7927891693933519,0.7194901896015394,0.6848734895130494],"z":[-3.4455637734871867,1.694266536475421,6.844071116110839],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 245.79","x":[-0.4447836630162952,-0.5448177004522308,-0.6330207876676344],"y":[-0.698077165268769,-0.6848734895130489,-0.7194901896015397],"z":[-1.8403216187623088,3.3799695009730852,8.622469766750928],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 251.25","x":[1.072198938846032,1.1423344938723683,1.1748966728736785],"y":[-0.18298503450520934,-0.11794471525058224,-0.02176941939465044],"z":[-5.150981753603724,0.08905039918037108,5.30557507993465],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 251.25","x":[-0.6843304763173425,-0.69124275324092,-0.6476708805807311],"y":[0.9049861288837139,0.8113483755792493,0.7321442320400094],"z":[-3.385329432266207,1.7622503344822296,6.901858047868037],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 251.25","x":[-0.3455411543570061,-0.42484568204858897,-0.5239894024155949],"y":[-0.7720228877803357,-0.7067966211106517,-0.6836034748929508],"z":[-1.831301354106716,3.3543181772814035,8.56891827606168],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 256.71","x":[0.964106850490827,1.0543669388877317,1.1302752747151565],"y":[-0.19643927560645497,-0.1908385580688705,-0.1348603901514423],"z":[-5.21860867490997,0.03401422577515625,5.27765807113448],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 256.71","x":[-0.6121438502967853,-0.6764164871782844,-0.6941188034760205],"y":[1.0023014156124939,0.9240913279275049,0.8305530317196794],"z":[-3.3551833875341357,1.8186989396523046,6.969707943865073],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 256.71","x":[-0.30529667487026724,-0.33358005870106994,-0.4057948808105972],"y":[-0.8818743763774637,-0.7895397357023706,-0.7173957367275937],"z":[-1.7843707540756717,3.3706003954490353,8.55025394198506],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 262.17","x":[0.8697247252848446,0.94563306111227,1.0358931495091745],"y":[-0.13486039015144294,-0.19083855806887076,-0.1964392756064548],"z":[-5.277658071134479,-0.03401422577515552,5.218608674909971],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 262.17","x":[-0.49712208509213623,-0.5942051191894042,-0.6664199412989312],"y":[1.0475638976742396,1.0146550708412823,0.9425110718665052],"z":[-3.3666404037522493,1.8420509034282002,7.021704449964225],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 262.17","x":[-0.33942224786046493,-0.30588119652398005,-0.3235835128217166],"y":[-0.9856720961308215,-0.9014977758491963,-0.8079594796413708],"z":[-1.717455712768608,3.4225969015481867,8.573605905760955],"type":"scatter3d"}]},{"data":[{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[0.8251033271263216,0.8576655061276327,0.9278010611539694],"y":[-0.021769419394651244,-0.1179447152505829,-0.18298503450520967],"z":[-5.30557507993465,-0.08905039918037064,5.150981753603725],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[-0.383199585565561,-0.47601059758440645,-0.5751543179514125],"y":[1.0234848453365464,1.048447332675926,1.0252541864582245],"z":[-3.4153242901348877,1.8233865693515812,7.037986668131857],"type":"scatter3d"},{"marker":{"color":"blue","size":10},"mode":"markers","name":"time = 267.64","x":[-0.43488306433090906,-0.3523291194192687,-0.30875724675908045],"y":[-1.043768846049363,-0.9999065755288669,-0.9207024319896265],"z":[-1.6561155016062203,3.4904467975452227,8.63005451093103],"type":"scatter3d"}]}]);
+                        }).then(function(){
+                            
+var gd = document.getElementById('16fee6dc-7f28-49ee-bb99-3fb1f1c7e549');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
 
 
 </section>
@@ -664,9 +873,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -702,10 +925,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -715,8 +937,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -731,6 +962,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -772,17 +1235,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./GrafenoCCM.html" class="pagination-link">
+      <a href="./GrafenoCCM.html" class="pagination-link  aria-label=" &lt;span="" de="" medida="" quiralidad="" continua&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
         <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

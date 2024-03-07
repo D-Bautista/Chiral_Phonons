@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,11 +17,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,7 +81,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,12 +96,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -132,11 +139,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CadenasQuirales.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -144,64 +156,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Chiral_Phonons</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></a>
+  <a href="./CadenasQuirales.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></a>
+  <a href="./nanocinta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./GrafenoCCM.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></a>
+  <a href="./GrafenoCCM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cálculos de Medida de Quiralidad Continua</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CCMC3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></a>
+  <a href="./CCMC3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cálculo de CCM para una cadena quiral C3</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">Referencias</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tensor-de-constantes-de-red-para-una-cadena-quiral" id="toc-tensor-de-constantes-de-red-para-una-cadena-quiral" class="nav-link active" data-scroll-target="#tensor-de-constantes-de-red-para-una-cadena-quiral"><span class="toc-section-number">1.1</span>  Tensor de constantes de red para una cadena quiral</a></li>
-  <li><a href="#definición-de-la-matriz-dinámica" id="toc-definición-de-la-matriz-dinámica" class="nav-link" data-scroll-target="#definición-de-la-matriz-dinámica"><span class="toc-section-number">1.2</span>  Definición de la matriz dinámica</a></li>
-  <li><a href="#definición-del-operador-de-polarización" id="toc-definición-del-operador-de-polarización" class="nav-link" data-scroll-target="#definición-del-operador-de-polarización"><span class="toc-section-number">1.3</span>  Definición del operador de polarización</a></li>
-  <li><a href="#cálculos-para-la-simetría-c_2" id="toc-cálculos-para-la-simetría-c_2" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_2"><span class="toc-section-number">2</span>  Cálculos para la simetría <span class="math inline">\(C_{2}\)</span></a></li>
-  <li><a href="#cálculos-para-la-simetría-c_3" id="toc-cálculos-para-la-simetría-c_3" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_3"><span class="toc-section-number">3</span>  Cálculos para la simetría <span class="math inline">\(C_{3}\)</span></a></li>
-  <li><a href="#cálculos-para-la-simetría-c_4" id="toc-cálculos-para-la-simetría-c_4" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_4"><span class="toc-section-number">4</span>  Cálculos para la simetría <span class="math inline">\(C_{4}\)</span></a></li>
+  <li><a href="#tensor-de-constantes-de-red-para-una-cadena-quiral" id="toc-tensor-de-constantes-de-red-para-una-cadena-quiral" class="nav-link active" data-scroll-target="#tensor-de-constantes-de-red-para-una-cadena-quiral"><span class="header-section-number">1.1</span> Tensor de constantes de red para una cadena quiral</a></li>
+  <li><a href="#definición-de-la-matriz-dinámica" id="toc-definición-de-la-matriz-dinámica" class="nav-link" data-scroll-target="#definición-de-la-matriz-dinámica"><span class="header-section-number">1.2</span> Definición de la matriz dinámica</a></li>
+  <li><a href="#definición-del-operador-de-polarización" id="toc-definición-del-operador-de-polarización" class="nav-link" data-scroll-target="#definición-del-operador-de-polarización"><span class="header-section-number">1.3</span> Definición del operador de polarización</a></li>
+  <li><a href="#cálculos-para-la-simetría-c_2" id="toc-cálculos-para-la-simetría-c_2" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_2"><span class="header-section-number">2</span> Cálculos para la simetría <span class="math inline">\(C_{2}\)</span></a></li>
+  <li><a href="#cálculos-para-la-simetría-c_3" id="toc-cálculos-para-la-simetría-c_3" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_3"><span class="header-section-number">3</span> Cálculos para la simetría <span class="math inline">\(C_{3}\)</span></a></li>
+  <li><a href="#cálculos-para-la-simetría-c_4" id="toc-cálculos-para-la-simetría-c_4" class="nav-link" data-scroll-target="#cálculos-para-la-simetría-c_4"><span class="header-section-number">4</span> Cálculos para la simetría <span class="math inline">\(C_{4}\)</span></a></li>
   </ul>
 </nav>
     </div>
@@ -210,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculos de relación de dispersión de frecuencia en cadenas quirales</span></h1>
 </div>
 
 
@@ -223,10 +242,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
 
+
 <p>El objetivo de este trabajo es mostrar los cálculos de la relación de dispersión de fonones de distintas cadenas con simetría de tornillo. En este documento se presentan cálculos para cadenas con simetrías <span class="math inline">\(C_{2}\)</span>, <span class="math inline">\(C_{3}\)</span> y <span class="math inline">\(C_{4}\)</span> si se ve la cadena desde arriba. Estos cálculos se hacen con el objetivo de replicar los resultados obtenidos en el paper “Chiral Phonon Diode Effect in Chiral Crystals,” Nano Lett. 2022, 22, 4, 1688-1693 y de explorar la posibilidad de encontrar fonones quirales con velocidad de grupo no nula.</p>
-<div class="cell" data-execution_count="1">
+<div id="d9abde35" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="tensor-de-constantes-de-red-para-una-cadena-quiral" class="level2" data-number="1.1">
@@ -235,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Se asumió que todos los átomos de la cadena (4 como máximo para el caso de <span class="math inline">\(C_{4}\)</span>) tenían la misma masa. Asimismo, se asumió que en todos los casos el tensor de constante de red en su representación diagonal se escribía como sigue: <span class="math display">\[K_{x} = \begin{pmatrix}K_{L} &amp; 0 &amp; 0 \\
 0 &amp; K_{T1} &amp; 0 \\
 0 &amp; 0 &amp; K_{T2}\end{pmatrix},\]</span> donde <span class="math inline">\(K_{L} = 1\)</span>, <span class="math inline">\(K_{T1} = 0.05\)</span> y <span class="math inline">\(K_{T2} = 0.25\)</span>.</p>
-<div class="cell" data-execution_count="2">
+<div id="6a8e2383" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Constantes</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> <span class="dv">1</span></span>
@@ -243,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>m4 <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="1531ced6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz de resortes a lo largo de x.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>KL <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>KT1 <span class="op">=</span> <span class="fl">0.05</span></span>
@@ -258,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - \sin (\varphi) &amp; 0 &amp; \cos(\varphi)\end{pmatrix}.\]</span> De esta forma, la constante de fuerza <span class="math display">\[K_{x2} = T(\varphi) K_{x} T(- \varphi)\]</span> tiene un angulo de <span class="math inline">\(\varphi\)</span> respecto al plano x - y. Por otra parte, se definió la matriz de rotación respecto al eje - z como <span class="math display">\[U(\theta) = \begin{pmatrix} \cos (\theta) &amp; - \sin (\theta) &amp; 0 \\
 - \sin (\theta) &amp; \cos (\theta) &amp; 0 \\
 0 &amp; 0 &amp; 1\end{pmatrix}.\]</span> De esta forma, si <span class="math inline">\(\theta\)</span> era el ángulo entre dos sitios, podía definirse la constante de red entre dichos sitios como <span class="math display">\[K = U(\theta)K_{x2}U(-\theta).\]</span></p>
-<div class="cell" data-execution_count="4">
+<div id="0f41bae9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rotación de φ respecto al plano x - y.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>φxy <span class="op">=</span> pi<span class="op">/</span><span class="dv">3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -267,14 +288,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                [<span class="fl">0.</span>     ,<span class="fl">1.</span>  ,<span class="dv">0</span>],</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                [<span class="op">-</span>sin(φ),<span class="fl">0.</span>  ,cos(φ)]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="6b46e0ea" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rotación respecto al eje z.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> U(θ):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> array([[cos(θ),<span class="op">-</span>sin(θ),<span class="dv">0</span>],</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              [sin(θ),cos(θ),<span class="dv">0</span>],</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              [       <span class="dv">0</span>,      <span class="dv">0</span>,<span class="dv">1</span>]] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="29e11d79" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz de resortes a lo largo de x.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>KL <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>KT1 <span class="op">=</span> <span class="fl">0.05</span></span>
@@ -292,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="definición-del-operador-de-polarización" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="definición-del-operador-de-polarización"><span class="header-section-number">1.3</span> Definición del operador de polarización</h2>
 <p>La quiralidad de los fonones se determina a partir de un valor no nulo de la polarización de fonón. Esta se obtiene apartir del valor esperado del operador de polarización. Este operador corresponde a la proyección sobre una base con movimiento circular bien definido. Para un sólo átomo, esta base es <span class="math display">\[| R \rangle = \frac{1}{\sqrt{2}}(1,i)^{T}; | L \rangle = \frac{1}{\sqrt{2}}(1,-i)^{T}.\]</span> Explícitamente, el operador de Polarización está dado por <span class="math display">\[\hat{S}_{z} = \sum_{\alpha = 1}^{n} \left(|R_{\alpha}\rangle \langle R_{\alpha}| -  |L_{\alpha}\rangle \langle L_{\alpha}|\right).\]</span> La suma se hace sobre todos los sitios del sistema. Debajo, se muestran bloques de código donde se define un operador de pseudomomento para una cadena con <span class="math inline">\(n\)</span> átomos, así como una función que calcula el valor esperado de un operador.</p>
-<div class="cell" data-execution_count="7">
+<div id="f4dc3c27" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> OperadorPseudomomento(n):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  Sz <span class="op">=</span> array([[<span class="dv">0</span>,<span class="op">-</span><span class="ot">1J</span>,<span class="dv">0</span>],</span>
@@ -308,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="cálculos-para-la-simetría-c_2" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Cálculos para la simetría <span class="math inline">\(C_{2}\)</span></h1>
 <p>Debajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría <span class="math inline">\(C_{2}\)</span>, y que además obtiene la polarización de los modos vibracionales.</p>
-<div class="cell" data-execution_count="8">
+<div id="ef711322" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC2(k):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
@@ -350,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente, se muestra la gráfica de bandas para la cadena <span class="math inline">\(C_{2}\)</span>:</p>
-<div class="cell" data-execution_count="9">
+<div id="e7593e4f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
@@ -378,14 +399,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CadenasQuirales_files/figure-html/cell-10-output-1.png" width="415" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CadenasQuirales_files/figure-html/cell-10-output-1.png" width="415" height="503" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="cálculos-para-la-simetría-c_3" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Cálculos para la simetría <span class="math inline">\(C_{3}\)</span></h1>
 <p>Debajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría <span class="math inline">\(C_{2}\)</span>, y que además obtiene la polarización de los modos vibracionales.</p>
-<div class="cell" data-execution_count="10">
+<div id="86db33d0" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC3(k):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
@@ -434,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}:</p>
-<div class="cell" data-execution_count="11">
+<div id="927bdda0" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
@@ -462,106 +487,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CadenasQuirales_files/figure-html/cell-12-output-1.png" width="415" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CadenasQuirales_files/figure-html/cell-12-output-1.png" width="415" height="503" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="cálculos-para-la-simetría-c_4" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Cálculos para la simetría <span class="math inline">\(C_{4}\)</span></h1>
 <p>Debajo se muestra un bloque de código donde se define una función que construye y diagonaliza la matriz dinámica para una cadena con simetría <span class="math inline">\(C_{2}\)</span>, y que además obtiene la polarización de los modos vibracionales.</p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC4(k):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se define el tensor de esfuerzos de todo el sistema.</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matriz con constante de fuerza considerando una rotación respecto al plano x - y.</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  φxy <span class="op">=</span> pi<span class="op">/</span><span class="dv">3</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  Kx2 <span class="op">=</span> dot(T(φxy),dot(Kx,T(<span class="op">-</span>φxy)))</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matrices de fuerza para cada uno de los vectores en la red.</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  K12 <span class="op">=</span> dot(U(<span class="dv">0</span>),dot(Kx2,U(<span class="dv">0</span>)))</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  K13 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  K14 <span class="op">=</span> dot(U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">2</span>),dot(Kx2,U(pi<span class="op">/</span><span class="dv">2</span>)))</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  K23 <span class="op">=</span> dot(U(pi<span class="op">/</span><span class="dv">2</span>),dot(Kx2,U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">2</span>)))</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  K24 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  K34 <span class="op">=</span> dot(U(pi),dot(Kx,U(<span class="op">-</span>pi)))</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  DicMat   <span class="op">=</span> { <span class="dv">0</span>: (K12 <span class="op">+</span> K13 <span class="op">+</span> K14)<span class="op">/</span>m1,</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>               <span class="dv">2</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3),</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>               <span class="dv">3</span>: <span class="op">-</span>K14<span class="op">/</span>sqrt(m1<span class="op">*</span>m4)<span class="op">*</span>exp(<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>               <span class="dv">4</span>: <span class="op">-</span>K12.conj().T<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>               <span class="dv">5</span>: (K12 <span class="op">+</span> K23 <span class="op">+</span> K24)<span class="op">/</span>m2,</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>               <span class="dv">6</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>               <span class="dv">7</span>: <span class="op">-</span>K24<span class="op">/</span>sqrt(m2<span class="op">*</span>m4),</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>               <span class="dv">8</span>: <span class="op">-</span>K13.conj().T<span class="op">/</span>sqrt(m3<span class="op">*</span>m1),</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>               <span class="dv">9</span>: <span class="op">-</span>K23.conj().T<span class="op">/</span>sqrt(m3<span class="op">*</span>m2),</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>               <span class="dv">10</span>: (K13 <span class="op">+</span> K23 <span class="op">+</span> K34)<span class="op">/</span>m3,</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>               <span class="dv">11</span>: <span class="op">-</span>K34<span class="op">/</span>sqrt(m3<span class="op">*</span>m4),</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>               <span class="dv">12</span>: <span class="op">-</span>K14.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m1)<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>               <span class="dv">13</span>: <span class="op">-</span>K24.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m2),</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>               <span class="dv">14</span>: <span class="op">-</span>K34.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m3),</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>               <span class="dv">15</span>: (K14 <span class="op">+</span> K24 <span class="op">+</span> K34)<span class="op">/</span>m4}</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>  Dinteger <span class="op">=</span> array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>],</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>],</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>]])</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>  Dm <span class="op">=</span> [ [DicMat[i] <span class="cf">for</span> i <span class="kw">in</span> rw] <span class="cf">for</span> rw <span class="kw">in</span> Dinteger ]</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>  Dynamical <span class="op">=</span> asarray(np.bmat(Dm))</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>  ω<span class="dv">2</span>,eigvecs <span class="op">=</span> eigh(Dynamical)</span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se definen los operadores de Pseudomomento.</span></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>  S <span class="op">=</span> OperadorPseudomomento(<span class="dv">4</span>)</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>  pseudomom <span class="op">=</span> []</span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>    pseudomom.append(expectedval(eigvec,S))</span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c7c1d193" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rad(x):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">*</span>pi<span class="op">/</span><span class="dv">180</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="06069813" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> EigenfrequenciesC4(k):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Función que regresa las eigenfrecuencias para un vector recíproco kz dado."""</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se define el tensor de esfuerzos de todo el sistema.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matriz con constante de fuerza considerando una rotación respecto al plano x - y.</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  φxy <span class="op">=</span> pi<span class="op">/</span><span class="dv">3</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  Kx2 <span class="op">=</span> dot(T(φxy),dot(Kx,T(<span class="op">-</span>φxy)))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matrices de fuerza para cada uno de los vectores en la red.</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  K12 <span class="op">=</span> dot(U(<span class="dv">0</span>),dot(Kx2,U(<span class="dv">0</span>)))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  K13 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  K14 <span class="op">=</span> dot(U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">2</span>),dot(Kx2,U(pi<span class="op">/</span><span class="dv">2</span>)))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  K23 <span class="op">=</span> dot(U(pi<span class="op">/</span><span class="dv">2</span>),dot(Kx2,U(<span class="op">-</span>pi<span class="op">/</span><span class="dv">2</span>)))</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  K24 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  K34 <span class="op">=</span> dot(U(pi),dot(Kx,U(<span class="op">-</span>pi)))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  DicMat   <span class="op">=</span> { <span class="dv">0</span>: (K12 <span class="op">+</span> K13 <span class="op">+</span> K14)<span class="op">/</span>m1,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>: <span class="op">-</span>K12<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>               <span class="dv">2</span>: <span class="op">-</span>K13<span class="op">/</span>sqrt(m1<span class="op">*</span>m3),</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>               <span class="dv">3</span>: <span class="op">-</span>K14<span class="op">/</span>sqrt(m1<span class="op">*</span>m4)<span class="op">*</span>exp(<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>               <span class="dv">4</span>: <span class="op">-</span>K12.conj().T<span class="op">/</span>sqrt(m1<span class="op">*</span>m2),</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>               <span class="dv">5</span>: (K12 <span class="op">+</span> K23 <span class="op">+</span> K24)<span class="op">/</span>m2,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>               <span class="dv">6</span>: <span class="op">-</span>K23<span class="op">/</span>sqrt(m2<span class="op">*</span>m3),</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>               <span class="dv">7</span>: <span class="op">-</span>K24<span class="op">/</span>sqrt(m2<span class="op">*</span>m4),</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>               <span class="dv">8</span>: <span class="op">-</span>K13.conj().T<span class="op">/</span>sqrt(m3<span class="op">*</span>m1),</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>               <span class="dv">9</span>: <span class="op">-</span>K23.conj().T<span class="op">/</span>sqrt(m3<span class="op">*</span>m2),</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>               <span class="dv">10</span>: (K13 <span class="op">+</span> K23 <span class="op">+</span> K34)<span class="op">/</span>m3,</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>               <span class="dv">11</span>: <span class="op">-</span>K34<span class="op">/</span>sqrt(m3<span class="op">*</span>m4),</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>               <span class="dv">12</span>: <span class="op">-</span>K14.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m1)<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>k<span class="op">*</span>c),</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>               <span class="dv">13</span>: <span class="op">-</span>K24.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m2),</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>               <span class="dv">14</span>: <span class="op">-</span>K34.conj().T<span class="op">/</span>sqrt(m4<span class="op">*</span>m3),</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>               <span class="dv">15</span>: (K14 <span class="op">+</span> K24 <span class="op">+</span> K34)<span class="op">/</span>m4}</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>  Dinteger <span class="op">=</span> array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>],</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>],</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>]])</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>  Dm <span class="op">=</span> [ [DicMat[i] <span class="cf">for</span> i <span class="kw">in</span> rw] <span class="cf">for</span> rw <span class="kw">in</span> Dinteger ]</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>  Dynamical <span class="op">=</span> asarray(np.bmat(Dm))</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  ω<span class="dv">2</span>,eigvecs <span class="op">=</span> eigh(Dynamical)</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Se definen los operadores de Pseudomomento.</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>  S <span class="op">=</span> OperadorPseudomomento(<span class="dv">4</span>)</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>  pseudomom <span class="op">=</span> []</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ω<span class="dv">2</span>)):</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>    eigvec <span class="op">=</span> eigvecs[:,i]</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>    pseudomom.append(expectedval(eigvec,S))</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt(<span class="bu">abs</span>(ω<span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span><span class="op">/</span>pi,pseudomom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente, se muestra la gráfica de bandas para la cadena $C_{4}:</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>BandasC4 <span class="op">=</span> []</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>PseudomomC4 <span class="op">=</span> []</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>KevaluateC4 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC4,Kpoints) ))</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,psmom <span class="kw">in</span> KevaluateC4:</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  BandasC4.append(ω<span class="dv">2</span>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  PseudomomC4.append(psmom)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>BandasC4 <span class="op">=</span> array(BandasC4)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>PseudomomC4 <span class="op">=</span> array(PseudomomC4)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>numKC4,nbandsC4 <span class="op">=</span> shape(BandasC4)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>kenumC4 <span class="op">=</span> arange(numKC4)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC4):</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  graficaC4 <span class="op">=</span> ax.scatter(kenumC4,BandasC4.T[j],c <span class="op">=</span> PseudomomC4.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC4)</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="928436d8" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Kpoints <span class="op">=</span> np.linspace(<span class="op">-</span>pi<span class="op">/</span>c,pi<span class="op">/</span>c,<span class="dv">500</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Klabels <span class="op">=</span> [<span class="vs">r"K/2"</span>,<span class="vs">r"Γ"</span>,<span class="vs">r"K/2"</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>Kticks <span class="op">=</span> concatenate([[<span class="dv">0</span>],[<span class="dv">250</span>],[<span class="dv">500</span>]])</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>BandasC4 <span class="op">=</span> []</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>PseudomomC4 <span class="op">=</span> []</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>KevaluateC4 <span class="op">=</span> (<span class="bu">list</span>( <span class="bu">map</span>(EigenfrequenciesC4,Kpoints) ))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ω<span class="dv">2</span>,psmom <span class="kw">in</span> KevaluateC4:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  BandasC4.append(ω<span class="dv">2</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  PseudomomC4.append(psmom)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>BandasC4 <span class="op">=</span> array(BandasC4)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>PseudomomC4 <span class="op">=</span> array(PseudomomC4)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>numKC4,nbandsC4 <span class="op">=</span> shape(BandasC4)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>kenumC4 <span class="op">=</span> arange(numKC4)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">1</span>,nrows<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">4.5</span>,<span class="dv">6</span>))</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(nbandsC4):</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  graficaC4 <span class="op">=</span> ax.scatter(kenumC4,BandasC4.T[j],c <span class="op">=</span> PseudomomC4.T[j],cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,vmax <span class="op">=</span> <span class="dv">1</span>, vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>,s <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(graficaC4)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(Kticks)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(Klabels,fontsize <span class="op">=</span> <span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="CadenasQuirales_files/figure-html/cell-14-output-1.png" width="415" height="503"></p>
+<div>
+<figure class="figure">
+<p><img src="CadenasQuirales_files/figure-html/cell-15-output-1.png" width="415" height="503" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -596,9 +633,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -634,10 +685,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -647,8 +697,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -663,6 +722,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -704,17 +995,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link  aria-label=" introducción"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introducción</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nanocinta.html" class="pagination-link">
+      <a href="./nanocinta.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Descripción de una nanocinta de grafeno</span>">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descripción de una nanocinta de grafeno</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

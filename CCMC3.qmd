@@ -36,6 +36,8 @@ a = 1
 # Longitud de la celda unitaria.
 c = 3 * a * tan(φxy)
 
+avec = array([0,0,c])
+
 #Rotación de φ respecto al plano x - y.
 def T(φ):
   return array([[cos(φ) ,0.  ,sin(φ)],
@@ -55,8 +57,8 @@ r2 = dot(U(2*pi/3),r1) + array([0,0,c/3])
 r3 = dot(U(4*pi/3),r1)+ array([0,0,2*c/3])
 
 # Posición de los átomos en la celda vecina. 
-r1plus = r1 + [0,0,c]
-r3minus = r3 - [0,0,c]
+r1plus = r1 + avec
+r3minus = r3 - avec
 
 positions = array([r1,r2,r3])
 
@@ -244,7 +246,7 @@ Se definieron funciones que calculaba la polarización de fonón, la CCM y el ps
 ```{python}
 def CCM_general(ω,eigvecs):
   CCM = []
-  for i in range(len(ω2)):
+  for i in range(len(ω)):
     eigvec = eigvecs[:,i]
     q1 = sqrt(m1) * eigvec[0:3]
     q2 = sqrt(m2) * eigvec[3:6]
@@ -289,7 +291,7 @@ def Pz_general(ω,eigvecs):
   pzlist = []
   for i in range(len(ω)):
     eigvec = eigvecs[:,i]
-    ω = sqrt(abs(ω2[i]))/2/pi
+    ω2 = ω[i]
     q1 = sqrt(m1) * eigvec[0:3]
     q2 = sqrt(m2) * eigvec[3:6]
     q3 = sqrt(m3) * eigvec[6:]
@@ -305,6 +307,13 @@ def Pz_general(ω,eigvecs):
   return pzlist
 ```
 Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}$ junto con los respectivos valores de CCM en cada punto:
+
+```{python}
+w2,eigvecs = EigenfrequenciesC3(0.1)
+p0 = Pol_general(w2,eigvecs)
+
+print(p0)
+```
 
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
@@ -368,3 +377,138 @@ ax.set_xticklabels(Klabels,fontsize = 20);
 Ahora, hacemos el estudio de quiralidad mediante el cálculo del Pseudomomento escalar. Dado un modo $k$, este está determinado por $$(\sum p^{z}L^{z})_{k} = -(\omega_{k})^{2}\left[\sum_{i}m_{i}c^{z}_{ki}\left(x_{i}c^{y}_{k,i} - y_{i}c^{x}_{k,i}\right)\right].$$ Debajo, se define una función que calcula el valor del escalar de pseudomomento para cada valor de $k$.
 
 
+## Animación de modos normales
+
+```{python}
+def Animacion(k,n,num = 4):
+
+    ωchirl,Eigenvectors = EigenfrequenciesC3(k)
+
+    ωchirl = ωchirl[n]
+    Eigenvectors = Eigenvectors[:,n]
+
+    A = 0.5
+
+    """NX,NY,NZ = meshgrid( range(-num + 1,num),range(-num+1,num),range(-num+1,num))
+    NX = NX.flatten()
+    NY = NY.flatten()
+    NZ = NZ.flatten()
+    NNs = column_stack([NX,NY,NZ])"""
+    NZ = array( range(-num + 1,num))  
+    NNs = column_stack([NZ])
+    NZ = NZ.flatten()
+    NNs = column_stack([NZ])
+    avecs1 = [avec]
+    xr,yr,zr = dot( NNs,avecs1 ).T   
+    xeq1,yeq1,zeq1 = dot( NNs,avecs1 ).T + + kron(r1,ones(((2*num-1),1))).T
+    xeq2,yeq2,zeq2 = dot( NNs,avecs1 ).T + kron(r2,ones(((2*num-1),1))).T
+    xeq3,yeq3,zeq3 = dot( NNs,avecs1 ).T + kron(r3,ones(((2*num-1),1))).T
+
+    R = array([xr,yr,zr]).T
+
+    if ωchirl < 10E-3:
+        T      = 10
+    else: 
+        T = 2*pi/ωchirl # periodo
+        
+    veces  = 5       # número de periodos
+
+
+    # Posición en el tiempo cero
+    t0  = 0
+    u10 = A*exp(1J*ωchirl*t0-1J*dot(R,array([0,0,k])))
+    x10 = xeq1 + Eigenvectors[0]*u10
+    y10 = yeq1 + Eigenvectors[1]*u10
+    z10 = zeq1 + Eigenvectors[2]*u10
+    x20 = xeq2 + Eigenvectors[3]*u10
+    y20 = yeq2 + Eigenvectors[4]*u10
+    z20 = zeq2 + Eigenvectors[5]*u10
+    x30 = xeq3 + Eigenvectors[6]*u10
+    y30 = yeq3 + Eigenvectors[7]*u10
+    z30 = zeq3 + Eigenvectors[8]*u10
+
+
+    time   = linspace(t0,veces*T,endpoint=False)
+
+
+    Frames = []
+    for t in time:
+        u1 = A*exp(1J*ωchirl*t-1J*dot(R,array([0,0,k])))
+        x1 = xeq1 + Eigenvectors[0]*u1
+        y1 = yeq1 + Eigenvectors[1]*u1
+        z1 = zeq1 + Eigenvectors[2]*u1
+        x2 = xeq2 + Eigenvectors[3]*u1
+        y2 = yeq2 + Eigenvectors[4]*u1
+        z2 = zeq2 + Eigenvectors[5]*u1
+        x3 = xeq3 + Eigenvectors[6]*u1
+        y3 = yeq3 + Eigenvectors[7]*u1
+        z3 = zeq3 + Eigenvectors[8]*u1
+        Frames.append( go.Frame(data=[ go.Scatter3d(x=x1.real,
+                                                y=y1.real,
+                                                z=z1.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}'),
+                                    go.Scatter3d(x=x2.real,
+                                                y=y2.real,
+                                                z=z2.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}'),
+                                   go.Scatter3d(x=x3.real,
+                                                y=y3.real,
+                                                z=z3.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}')             ]) )
+
+
+    fig = go.Figure(
+        data=[ go.Scatter3d(x=x10.real,
+                                                y=y10.real,
+                                                z=z10.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}'),
+                                    go.Scatter3d(x=x20.real,
+                                                y=y20.real,
+                                                z=z20.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}'),
+                                   go.Scatter3d(x=x30.real,
+                                                y=y30.real,
+                                                z=z30.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=10),
+                                                name=f'time = {t:.2f}')             ],
+        frames = Frames
+    )
+
+    fig.update_layout(xaxis= dict(range=[-0.5, 0.5], autorange=False),
+                        yaxis= dict(range=[-0.5, 0.5], autorange=False),
+                        scene={
+                        'xaxis': {'range': [-5.2*num, 5.2*num], 'rangemode': 'tozero', 'tickmode': "linear", 'tick0': -5, 'dtick': 1},
+                        'yaxis': {'range': [-5.2*num, 5.2*num], 'rangemode': 'tozero', 'tickmode': "linear", 'tick0': -5, 'dtick': 1},
+                        'zaxis': {'range': [-5.2*num, 5.2*num], 'rangemode': 'tozero', 'tickmode': "linear", 'tick0': -5, 'dtick': 1},
+                        'aspectratio': {
+                            'x': 1,
+                            'y': 1,
+                            'z': 1,                       }},
+                        showlegend=True,
+                        title="Start Title",
+                        updatemenus=[dict(type    = "buttons",
+                                            buttons = [dict(label="Play",
+                                                            method  = "animate",
+                                                            args    = [None,
+                                                                        dict(frame       = dict(duration=100,redraw=True), 
+                                                                            transition  = dict(duration=100),
+                                                                            fromcurrent = True,
+                                                                            mode        = 'immediate')])])]),
+
+    fig.show()
+```
+
+```{python}
+Animacion(0.1,5,2)
+```
