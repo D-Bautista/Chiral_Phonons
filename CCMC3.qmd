@@ -678,9 +678,7 @@ MovimientoPlano(4)
 def MovPlano(n):
   fig = go.Figure()
 
-  #Kpoints = np.linspace(-pi/c,pi/c,500)
-
-  Kpoints = np.linspace(0.467,0.468,501)
+  Kpoints = np.linspace(-pi/c,pi/c,500)
 
   # Add traces, one for each slider step
   for k in Kpoints:
@@ -727,7 +725,8 @@ def MovPlano(n):
       step = dict(
           method="update",
           args=[{"visible": [False] * len(fig.data)},
-                {"title": "Trayectoria correspondiente a : " + str(i)}],  # layout attribute
+                {"title": "Trayectoria correspondiente a : " + str(i)}],
+                label = f"{K: .2f}",  # layout attribute
       )
       step["args"][0]["visible"][i:i+3] = [True,True,True]  # Toggle i'th trace to "visible"
       steps.append(step)
