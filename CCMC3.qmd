@@ -14,7 +14,7 @@ Debajo, se definen varias constantes a emplear. Dentro de estas están las masas
 ```{python}
 # Masas de los distintos sitios. 
 m1 = 1
-m2 = 1
+m2 = 1.5
 m3 = 1
 
 M = [m1,m2,m3]
@@ -518,8 +518,8 @@ Animacion(0.05,5,1)
 
 
 ```{python}
-kplot = 0.5*pi/c
-nband = 0
+kplot = -0.05
+nband = 5
 
 r0 = positions.reshape((9,))
 A = 2
@@ -531,11 +531,11 @@ def rt(t,k,nband):
   ωchirl = ωchirl[int(nband)]
   Eigenvectors = Eigenvectors[:,nband]
 
-  rt = (r0 + A*Eigenvectors*exp(-1J*ωchirl*t)).real
+  ro = (r0 + A*Eigenvectors*exp(-1J*ωchirl*t)).real
 
-  r1 = rt[:3]
-  r2 = rt[3:6]
-  r3 = rt[6:]
+  r1 = ro[:3]
+  r2 = ro[3:6]
+  r3 = ro [6:]
 
   return r1,r2,r3
 ```
@@ -678,7 +678,9 @@ MovimientoPlano(4)
 def MovPlano(n):
   fig = go.Figure()
 
-  Kpoints = np.linspace(-pi/c,pi/c,500)
+  #Kpoints = np.linspace(-pi/c,pi/c,500)
+
+  Kpoints = np.linspace(0.467,0.468,501)
 
   # Add traces, one for each slider step
   for k in Kpoints:
@@ -719,14 +721,13 @@ def MovPlano(n):
                 x=X3,
                 y=Y3))
 
-  fig.data[10].visible = True
   # Create and add slider
   steps = []
   for i in range(0,len(fig.data),3):
       step = dict(
           method="update",
           args=[{"visible": [False] * len(fig.data)},
-                {"title": "Trayectoria correspondiente a : " + str(Kpoints[i])}],  # layout attribute
+                {"title": "Trayectoria correspondiente a : " + str(i)}],  # layout attribute
       )
       step["args"][0]["visible"][i:i+3] = [True,True,True]  # Toggle i'th trace to "visible"
       steps.append(step)
@@ -738,9 +739,20 @@ def MovPlano(n):
       steps=steps
   )]
 
-  fig.update_layout(
+  fig.update_layout(xaxis= dict(range=[-2, 2], autorange=False),
+                        yaxis= dict(range=[-2, 2], autorange=False),
+                        scene={
+                        'xaxis': {'range': [-2, 2], 'rangemode': 'tozero', 'tickmode': "linear", 'tick0': -5, 'dtick': 1},
+                        'yaxis': {'range': [-2, 2], 'rangemode': 'tozero', 'tickmode': "linear", 'tick0': -5, 'dtick': 1},
+                        'aspectratio': {
+                            'x': 1,
+                            'y': 1                      }},
       sliders=sliders
   )
+  yaxis=dict(
+       autorange = False,
+       fixedrange= True
+   )
 
   fig.show()
 ```
