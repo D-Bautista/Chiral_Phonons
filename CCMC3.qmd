@@ -3,6 +3,8 @@
 ```{python}
 from pylab import *
 import plotly.graph_objects as go
+import functools
+import itertools
 ```
 
  En este capítulo se estudiará la quiralidad de los modos normales de una cadena quiral con simetría $C_{3}$. Los criterios usados son la polarización de fonón, el CCM y el pseudoescalar de momento angular.
@@ -309,13 +311,6 @@ def Pz_general(ω,eigvecs):
 Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}$ junto con los respectivos valores de CCM en cada punto:
 
 ```{python}
-w2,eigvecs = EigenfrequenciesC3(0.1)
-p0 = Pol_general(w2,eigvecs)
-
-print(p0)
-```
-
-```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
 
 Klabels = [r"K/2",r"Γ",r"K/2"]
@@ -343,6 +338,7 @@ BandasC3 = array(BandasC3)
 PolC3 = array(PolC3)
 PzC3 = array(PzC3)
 ```
+
 
 ```{python}
 numKC3,nbandsC3 = shape(BandasC3)
@@ -416,7 +412,7 @@ def Animacion(k,n,num = 4):
 
     # Posición en el tiempo cero
     t0  = 0
-    u10 = A*exp(1J*ωchirl*t0-1J*dot(R,array([0,0,k])))
+    u10 = A*exp(-1J*ωchirl*t0+1J*dot(R,array([0,0,k])))
     x10 = xeq1 + Eigenvectors[0]*u10
     y10 = yeq1 + Eigenvectors[1]*u10
     z10 = zeq1 + Eigenvectors[2]*u10
@@ -433,7 +429,7 @@ def Animacion(k,n,num = 4):
 
     Frames = []
     for t in time:
-        u1 = A*exp(1J*ωchirl*t-1J*dot(R,array([0,0,k])))
+        u1 = A*exp(-1J*ωchirl*t+1J*dot(R,array([0,0,k])))
         x1 = xeq1 + Eigenvectors[0]*u1
         y1 = yeq1 + Eigenvectors[1]*u1
         z1 = zeq1 + Eigenvectors[2]*u1
@@ -447,19 +443,19 @@ def Animacion(k,n,num = 4):
                                                 y=y1.real,
                                                 z=z1.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}'),
                                     go.Scatter3d(x=x2.real,
                                                 y=y2.real,
                                                 z=z2.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}'),
                                    go.Scatter3d(x=x3.real,
                                                 y=y3.real,
                                                 z=z3.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}')             ]) )
 
 
@@ -468,19 +464,19 @@ def Animacion(k,n,num = 4):
                                                 y=y10.real,
                                                 z=z10.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}'),
                                     go.Scatter3d(x=x20.real,
                                                 y=y20.real,
                                                 z=z20.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}'),
                                    go.Scatter3d(x=x30.real,
                                                 y=y30.real,
                                                 z=z30.real,
                                                 mode="markers",
-                                                marker=dict(color="blue",size=10),
+                                                marker=dict(color="blue",size=5),
                                                 name=f'time = {t:.2f}')             ],
         frames = Frames
     )
@@ -510,5 +506,245 @@ def Animacion(k,n,num = 4):
 ```
 
 ```{python}
-Animacion(0.1,5,2)
+Animacion(-0.05,5,1)
+```
+```{python}
+#Animacion(0.5,5,2)
+```
+
+```{python}
+Animacion(0.05,5,1)
+```
+
+
+```{python}
+kplot = 0.5*pi/c
+nband = 0
+
+r0 = positions.reshape((9,))
+A = 2
+
+def rt(t,k,nband):
+
+  ωchirl,Eigenvectors = EigenfrequenciesC3(k)
+
+  ωchirl = ωchirl[int(nband)]
+  Eigenvectors = Eigenvectors[:,nband]
+
+  rt = (r0 + A*Eigenvectors*exp(-1J*ωchirl*t)).real
+
+  r1 = rt[:3]
+  r2 = rt[3:6]
+  r3 = rt[6:]
+
+  return r1,r2,r3
+```
+
+```{python}
+
+ωchirl,Eigenvectors = EigenfrequenciesC3(kplot)
+ωchirl = ωchirl[nband]
+
+periodo = 2*pi/ωchirl
+
+t = linspace(0,periodo,500)
+R = array(list(map(rt,t,itertools.repeat(kplot),itertools.repeat(nband))))
+
+X1,Y1,Z1 = R[:,0].T
+X2,Y2,Z2 = R[:,1].T
+X3,Y3,Z3 = R[:,2].T
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(6,6))
+
+ax.scatter(X1,Y1,c = t,cmap = "Blues",vmax = periodo, vmin = 0,s = 2*A)
+ax.scatter(X2,Y2,c = t,cmap = "Reds",vmax = periodo, vmin = 0,s = 2*A)
+ax.scatter(X3,Y3,c = t,cmap = "Greens",vmax = periodo, vmin = 0,s = 2*A)
+
+cmap1 = matplotlib.cm.get_cmap('Blues')
+cmap2 = matplotlib.cm.get_cmap('Reds')
+cmap3 = matplotlib.cm.get_cmap('Greens')
+
+rgba1 = cmap1(periodo)
+rgba2 = cmap2(periodo)
+rgba3 = cmap3(periodo)
+
+ax.arrow(X1[0],Y1[0],(X1[1]-X1[0])*0.01,(Y1[1]-Y1[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba1,ec=rgba1)
+ax.arrow(X2[0],Y2[0],(X2[1]-X2[0])*0.01,(Y2[1]-Y2[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba2,ec=rgba2)
+ax.arrow(X3[0],Y3[0],(X3[1]-X3[0])*0.01,(Y3[1]-Y3[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba3,ec=rgba3)
+
+ax.set_ylabel("y",fontsize = 20)
+ax.set_xlabel("x",fontsize = 20)
+```
+
+```{python}
+def MovimientoPlano(n):
+
+    ωchirl,Eigenvectors = EigenfrequenciesC3(0)
+    ωchirl = ωchirl[n]
+
+    Kpoints = np.linspace(-pi/c,pi/c,500)
+
+    # Movimiento para k distinto de cero
+
+    ωchirl,Eigenvectors = EigenfrequenciesC3(0)
+    ωchirl = ωchirl[n]
+
+    periodo = 2*pi/ωchirl
+
+    t = linspace(0,periodo,200)
+
+    R = array(list(map(rt,t,itertools.repeat(0),itertools.repeat(n))))
+
+    X10,Y10,Z10 = R[:,0].T
+    X20,Y20,Z20 = R[:,1].T
+    X30,Y30,Z30 = R[:,2].T
+
+    
+
+    # Posición para k distinto de cero 
+
+    Frames = []
+    for k in Kpoints:
+
+        ωchirl,Eigenvectors = EigenfrequenciesC3(k)
+        ωchirl = ωchirl[n]
+
+        periodo = 2*pi/ωchirl
+        t = linspace(0,periodo,200)
+
+        Rk = array(list(map(rt,t,itertools.repeat(k),itertools.repeat(n))))
+
+        X1,Y1,Z1 = Rk[:,0].T
+        X2,Y2,Z2 = Rk[:,1].T
+        X3,Y3,Z3 = Rk[:,2].T
+
+        Frames.append( go.Frame(data=[ go.Scatter(x=X1,
+                                                y=Y1,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=5),
+                                                name=f'time = {k:.2f}'),
+                                    go.Scatter(x=X2,
+                                                y=Y2,
+                                                mode="markers",
+                                                marker=dict(color="red",size=5),
+                                                name=f'time = {k:.2f}'),
+                                   go.Scatter(x=X3.real,
+                                                y=Y3.real,
+                                                mode="markers",
+                                                marker=dict(color="green",size=5),
+                                                name=f'time = {k:.2f}')             ]) )
+
+
+    fig = go.Figure(
+        data=[ go.Scatter3d(x=X10.real,
+                                                y=Y10.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=5),
+                                                name=f'time = {k:.2f}'),
+                                    go.Scatter3d(x=X20.real,
+                                                y=Y20.real,
+                                                mode="markers",
+                                                marker=dict(color="red",size=5),
+                                                name=f'time = {k:.2f}'),
+                                   go.Scatter3d(x=X30.real,
+                                                y=Y30.real,
+                                                mode="markers",
+                                                marker=dict(color="blue",size=5),
+                                                name=f'time = {k:.2f}')             ],
+        frames = Frames
+    )
+
+    fig.update_layout(xaxis= dict(range=[-2., 2.], autorange=False),
+                        yaxis= dict(range=[-2., 2.], autorange=False),
+                        showlegend=True,
+                        title="Start Title",
+                        updatemenus=[dict(type    = "buttons",
+                                            buttons = [dict(label="Play",
+                                                            method  = "animate",
+                                                            args    = [None,
+                                                                        dict(frame       = dict(duration=100,redraw=True), 
+                                                                            transition  = dict(duration=100),
+                                                                            fromcurrent = True,
+                                                                            mode        = 'immediate')])])]),
+
+    fig.show()
+```
+
+```{python}
+MovimientoPlano(4)
+```
+
+```{python}
+def MovPlano(n):
+  fig = go.Figure()
+
+  Kpoints = np.linspace(-pi/c,pi/c,500)
+
+  # Add traces, one for each slider step
+  for k in Kpoints:
+      ωchirl,Eigenvectors = EigenfrequenciesC3(k)
+      ωchirl = ωchirl[n]
+
+      periodo = 2*pi/ωchirl
+      t = linspace(0,periodo,200)
+
+      Rk = array(list(map(rt,t,itertools.repeat(k),itertools.repeat(n))))
+
+      X1,Y1,Z1 = Rk[:,0].T
+      X2,Y2,Z2 = Rk[:,1].T
+      X3,Y3,Z3 = Rk[:,2].T
+
+      X = [X1,X2,X3]
+      Y = [Y1,Y2,Y3]
+    
+      fig.add_trace(
+            go.Scatter(
+                visible=False,
+                line=dict(color="blue", width=6),
+                name="K = " + str(k),
+                x=X1,
+                y=Y1))
+      fig.add_trace(
+            go.Scatter(
+                visible=False,
+                line=dict(color="red", width=6),
+                name="K = " + str(k),
+                x=X2,
+                y=Y2))
+      fig.add_trace(
+            go.Scatter(
+                visible=False,
+                line=dict(color="green", width=6),
+                name="K = " + str(k),
+                x=X3,
+                y=Y3))
+
+  fig.data[10].visible = True
+  # Create and add slider
+  steps = []
+  for i in range(0,len(fig.data),3):
+      step = dict(
+          method="update",
+          args=[{"visible": [False] * len(fig.data)},
+                {"title": "Trayectoria correspondiente a : " + str(Kpoints[i])}],  # layout attribute
+      )
+      step["args"][0]["visible"][i:i+3] = [True,True,True]  # Toggle i'th trace to "visible"
+      steps.append(step)
+
+  sliders = [dict(
+      active=10,
+      currentvalue={"prefix": "Punto K: "},
+      pad={"t": 50},
+      steps=steps
+  )]
+
+  fig.update_layout(
+      sliders=sliders
+  )
+
+  fig.show()
+```
+
+```{python}
+MovPlano(4)
 ```
