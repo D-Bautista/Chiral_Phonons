@@ -303,7 +303,7 @@ def Pz_general(ω,eigvecs):
     pz = 0
 
     for i in range(len(Q)):
-        pz = pz + M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
+        pz += M[i]*Q[i][2]*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
     pzlist.append(pz)
 
   return pzlist
@@ -364,7 +364,7 @@ ax.set_xticklabels(Klabels,fontsize = 20);
 ```{python}
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC3):
-  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PzC3.T[j],cmap = "coolwarm",vmax = 0.1, vmin = -0.1,s = 5)
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PzC3.T[j],cmap = "coolwarm",vmax = 0.5, vmin = -0.5,s = 5)
 fig.colorbar(graficaC3)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
@@ -518,9 +518,8 @@ Animacion(0.05,5,1)
 
 
 ```{python}
-kplot = -0.05
-nband = 5
-
+kplot = 0.05
+nband = 0
 r0 = positions.reshape((9,))
 A = 2
 
@@ -701,21 +700,21 @@ def MovPlano(n):
             go.Scatter(
                 visible=False,
                 line=dict(color="blue", width=6),
-                name="K = " + str(k),
+                name="K = " + f"{k: .2f}",
                 x=X1,
                 y=Y1))
       fig.add_trace(
             go.Scatter(
                 visible=False,
                 line=dict(color="red", width=6),
-                name="K = " + str(k),
+                name="K = " + f"{k: .2f}",
                 x=X2,
                 y=Y2))
       fig.add_trace(
             go.Scatter(
                 visible=False,
                 line=dict(color="green", width=6),
-                name="K = " + str(k),
+                name="K = " + f"{k: .2f}",
                 x=X3,
                 y=Y3))
 
@@ -726,7 +725,7 @@ def MovPlano(n):
           method="update",
           args=[{"visible": [False] * len(fig.data)},
                 {"title": "Trayectoria correspondiente a : " + str(i)}],
-                label = f"{K: .2f}",  # layout attribute
+                label = f"{K[i]: .2f}",  # layout attribute
       )
       step["args"][0]["visible"][i:i+3] = [True,True,True]  # Toggle i'th trace to "visible"
       steps.append(step)
