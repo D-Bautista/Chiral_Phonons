@@ -11,10 +11,10 @@ Debajo, se definen varias constantes a emplear. Dentro de estas están las masas
 
 ```{python}
 # Masas de los distintos sitios. 
-m1 = 1.2
-m2 = 2.4
-m3 = 1.6
-m4 = 2.0
+m1 = 1
+m2 = 2
+m3 = 1
+m4 = 2
 
 M = [m1,m2,m3,m4]
 

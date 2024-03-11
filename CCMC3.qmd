@@ -14,7 +14,7 @@ Debajo, se definen varias constantes a emplear. Dentro de estas están las masas
 ```{python}
 # Masas de los distintos sitios. 
 m1 = 1
-m2 = 1.5
+m2 = 1
 m3 = 1
 
 M = [m1,m2,m3]

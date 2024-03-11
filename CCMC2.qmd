@@ -10,7 +10,7 @@ Los cálculos de la estructura de bandas se realizan de forma análoga a los des
 ```{python}
 # Masas de los distintos sitios. 
 m1 = 1
-m2 = 1
+m2 = 1.5
 
 M = [m1,m2]
 
