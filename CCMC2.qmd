@@ -10,7 +10,7 @@ Los cálculos de la estructura de bandas se realizan de forma análoga a los des
 ```{python}
 # Masas de los distintos sitios. 
 m1 = 1
-m2 = 1.5
+m2 = 1
 
 M = [m1,m2]
 
@@ -267,7 +267,8 @@ def Pz_general(ω,eigvecs):
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
 
-Klabels = [r"K/2",r"Γ",r"K/2"]
+#Klabels = [r"K/2",r"Γ",r"K/2"]
+Klabels = [r"-π/c",r"Γ",r"π/c"]
 Kticks = concatenate([[0],[250],[500]])
 
 BandasC2 = []

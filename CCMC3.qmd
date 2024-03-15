@@ -308,12 +308,42 @@ def Pz_general(ω,eigvecs):
 
   return pzlist
 ```
+
+```{python}
+def Pz_generalVg(k):
+  pzlist = []
+  h = 1e-10
+
+  ωk,eigvecs = EigenfrequenciesC3(k)
+  ω1,eigvecs1 = EigenfrequenciesC3(k + h)
+
+  
+  for i in range(len(ωk)):
+    eigvec = eigvecs[:,i]
+    vg = (ω1[i] - ωk[i])/h
+    q1 = sqrt(m1) * eigvec[0:3]
+    q2 = sqrt(m2) * eigvec[3:6]
+    q3 = sqrt(m3) * eigvec[6:]
+
+    Q = [q1,q2,q3]
+
+    pz = 0
+
+    for i in range(len(Q)):
+        pz += M[i]*vg*(X[i]*Q[i][1] - Y[i]*Q[i][0]).real
+    pzlist.append(pz)
+
+  return pzlist
+```
+
+
 Finalmente, se muestra la gráfica de bandas para la cadena $C_{3}$ junto con los respectivos valores de CCM en cada punto:
 
 ```{python}
 Kpoints = np.linspace(-pi/c,pi/c,500)
 
-Klabels = [r"K/2",r"Γ",r"K/2"]
+#Klabels = [r"K/2",r"Γ",r"K/2"]
+Klabels = [r"-π/c",r"Γ",r"π/c"]
 Kticks = concatenate([[0],[250],[500]])
 
 BandasC3 = []
@@ -324,6 +354,8 @@ PzC3 = []
 
 KevaluateC3 = (list( map(EigenfrequenciesC3,Kpoints) ))
 
+PZVg = (list( map(Pz_generalVg,Kpoints) ))
+
 for ω2,eigvec in KevaluateC3:
   BandasC3.append(ω2)
   EigvecsC3.append(eigvec)
@@ -333,12 +365,13 @@ for i in range(len(BandasC3)):
   PolC3.append(Pol_general(BandasC3[i],EigvecsC3[i]))
   PzC3.append(Pz_general(BandasC3[i],EigvecsC3[i]))
 
+
 CCMC3 = array(CCMC3)
 BandasC3 = array(BandasC3)
 PolC3 = array(PolC3)
 PzC3 = array(PzC3)
+PZVg = array(PZVg)
 ```
-
 
 ```{python}
 numKC3,nbandsC3 = shape(BandasC3)
@@ -347,6 +380,18 @@ kenumC3 = arange(numKC3)
 fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
 for j in range(nbandsC3):
   graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PolC3.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
+
+```{python}
+numKC3,nbandsC3 = shape(BandasC3)
+kenumC3 = arange(numKC3)
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC3):
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PZVg.T[j],cmap = "coolwarm",vmax = 0.05, vmin = -0.05,s = 5)
 fig.colorbar(graficaC3)
 ax.set_xticks(Kticks)
 ax.set_xticklabels(Klabels,fontsize = 20);
@@ -513,7 +558,7 @@ Animacion(-0.05,5,1)
 ```
 
 ```{python}
-Animacion(0.05,5,1)
+print(c)
 ```
 
 
@@ -758,3 +803,76 @@ def MovPlano(n):
 ```{python}
 MovPlano(4)
 ```
+
+
+Esta celda temporal es para hacer las gráficas de Luis.
+
+```{python}
+
+kplot = 0.0
+nband = 4
+r0 = positions.reshape((9,))
+A = 2
+
+numplot = 250 + floor(250*kplot/(pi/c))
+
+def rt(t,k,nband):
+
+  ωchirl,Eigenvectors = EigenfrequenciesC3(k)
+
+  ωchirl = ωchirl[int(nband)]
+  Eigenvectors = Eigenvectors[:,nband]
+
+  ro = (r0 + A*Eigenvectors*exp(-1J*ωchirl*t)).real
+
+  r1 = ro[:3]
+  r2 = ro[3:6]
+  r3 = ro [6:]
+
+  return r1,r2,r3
+
+ωchirl,Eigenvectors = EigenfrequenciesC3(kplot)
+ωchirl = ωchirl[nband]
+
+periodo = 2*pi/ωchirl
+
+t = linspace(0,periodo,500)
+R = array(list(map(rt,t,itertools.repeat(kplot),itertools.repeat(nband))))
+
+X1,Y1,Z1 = R[:,0].T
+X2,Y2,Z2 = R[:,1].T
+X3,Y3,Z3 = R[:,2].T
+
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(6,6))
+
+ax.scatter(X1,Y1,c = t,cmap = "Blues",vmax = periodo, vmin = 0,s = 2*A)
+ax.scatter(X2,Y2,c = t,cmap = "Reds",vmax = periodo, vmin = 0,s = 2*A)
+ax.scatter(X3,Y3,c = t,cmap = "Greens",vmax = periodo, vmin = 0,s = 2*A)
+
+cmap1 = matplotlib.cm.get_cmap('Blues')
+cmap2 = matplotlib.cm.get_cmap('Reds')
+cmap3 = matplotlib.cm.get_cmap('Greens')
+
+rgba1 = cmap1(periodo)
+rgba2 = cmap2(periodo)
+rgba3 = cmap3(periodo)
+
+ax.arrow(X1[0],Y1[0],(X1[1]-X1[0])*0.01,(Y1[1]-Y1[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba1,ec=rgba1)
+ax.arrow(X2[0],Y2[0],(X2[1]-X2[0])*0.01,(Y2[1]-Y2[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba2,ec=rgba2)
+ax.arrow(X3[0],Y3[0],(X3[1]-X3[0])*0.01,(Y3[1]-Y3[0])*0.01,head_width = 0.066*A,head_length = 0.1*A,fc = rgba3,ec=rgba3)
+
+ax.set_ylabel("y",fontsize = 20)
+ax.set_xlabel("x",fontsize = 20)
+```
+
+```{python}
+fig,ax = plt.subplots(ncols=1,nrows=1,figsize=(4.5,6))
+for j in range(nbandsC3):
+  graficaC3 = ax.scatter(kenumC3,BandasC3.T[j],c = PolC3.T[j],cmap = "coolwarm",vmax = 1, vmin = -1,s = 5)
+ax.scatter(numplot,ωchirl,c = 'red',s = 25)
+fig.colorbar(graficaC3)
+ax.set_xticks(Kticks)
+ax.set_xticklabels(Klabels,fontsize = 20);
+```
+
+250
